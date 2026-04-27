@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sportlink | Cricket Dashboard</title>
+    <meta name="description" content="Access live cricket channels with Sportlink's premium streaming dashboard.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff3c3c;
+            --bg: #0a0a0a;
+            --surface: #1a1a1a;
+            --text: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.6);
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255, 60, 60, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(255, 60, 60, 0.05) 0%, transparent 40%);
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 2rem 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #ffffff, #ff3c3c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            position: relative;
+        }
+
+        #search {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            background: var(--surface);
+            border: 1px solid var(--glass-border);
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        #search:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(255, 60, 60, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .channel-card {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid var(--glass-border);
+            aspect-ratio: 1/1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .channel-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: var(--primary);
+            background: rgba(255, 60, 60, 0.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .channel-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: var(--glass);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            border: 1px solid var(--glass-border);
+        }
+
+        .channel-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--text);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 1rem;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        /* Loading Skeleton */
+        .skeleton {
+            background: var(--surface);
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .channel-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
+            .channel-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Sportlink</h1>
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search Cricket Channels..." autocomplete="off">
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="channel-grid" id="grid">
+            <!-- Channels will be injected here -->
+            <div class="channel-card skeleton"></div>
+            <div class="channel-card skeleton"></div>
+            <div class="channel-card skeleton"></div>
+            <div class="channel-card skeleton"></div>
+            <div class="channel-card skeleton"></div>
+            <div class="channel-card skeleton"></div>
+            <div class="channel-card skeleton"></div>
+            <div class="channel-card skeleton"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Sportlink Premium. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const grid = document.getElementById('grid');
+        const search = document.getElementById('search');
+        let channelsData = [];
+
+        async function init() {
+            try {
+                // We fetch the channels.json generated by the script
+                const response = await fetch('Channel/channels.json');
+                channelsData = await response.json();
+                
+                // Clear skeletons
+                grid.innerHTML = '';
+                
+                displayChannels(channelsData);
+            } catch (error) {
+                console.error('Error loading channels:', error);
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Failed to load channels. Make sure you generated them first.</p>';
+            }
+        }
+
+        function displayChannels(list) {
+            grid.innerHTML = '';
+            list.forEach(ch => {
+                const card = document.createElement('a');
+                card.className = 'channel-card';
+                // Filename is safe_name.html
+                const fileName = ch.name.replace(/ /g, '_') + '.html';
+                card.href = 'Channel/' + fileName;
+                
+                // Extract first letter or acronym for icon fallback
+                const acronym = ch.name.split('_').map(w => w[0]).join('').substring(0, 3).toUpperCase();
+                
+                let iconHtml = `<div class="icon-box">${acronym}</div>`;
+                if (ch.logo) {
+                    iconHtml = `<img src="${ch.logo}" alt="${ch.name}" style="width: 100%; height: 60px; object-fit: contain; margin-bottom: 1rem; border-radius: 10px;">`;
+                }
+
+                card.innerHTML = `
+                    ${iconHtml}
+                    <div class="channel-name">${ch.name.replace(/_/g, ' ')}</div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        search.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = channelsData.filter(ch => 
+                ch.name.toLowerCase().includes(term)
+            );
+            displayChannels(filtered);
+        });
+
+        init();
+    </script>
+</body>
+</html>
