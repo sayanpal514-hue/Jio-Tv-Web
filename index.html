@@ -3,276 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sportlink | Cricket Dashboard</title>
-    <meta name="description" content="Access live cricket channels with Sportlink's premium streaming dashboard.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>JioTV Dashboard - Sayan</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #ff3c3c;
-            --bg: #0a0a0a;
-            --surface: #1a1a1a;
+            --primary: #ff3e3e;
+            --bg: #0a0a0b;
+            --card-bg: #161618;
             --text: #ffffff;
-            --text-dim: rgba(255, 255, 255, 0.6);
-            --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-dim: #a0a0a0;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
         }
 
         body {
             background-color: var(--bg);
             color: var(--text);
-            font-family: 'Outfit', sans-serif;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 20% 20%, rgba(255, 60, 60, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 80% 80%, rgba(255, 60, 60, 0.05) 0%, transparent 40%);
+            padding: 20px;
             min-height: 100vh;
         }
 
         header {
-            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto 40px;
             text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glass-border);
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(to right, #ffffff, #ff3c3c);
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #fff, #ff3e3e);
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .search-container {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
             max-width: 600px;
-            margin: 1.5rem auto 0;
-            position: relative;
+            margin: 0 auto 30px;
         }
 
         #search {
             width: 100%;
-            padding: 1rem 1.5rem;
-            border-radius: 50px;
-            background: var(--surface);
-            border: 1px solid var(--glass-border);
+            padding: 15px 25px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(22, 22, 24, 0.8);
+            backdrop-filter: blur(10px);
             color: white;
-            font-family: inherit;
-            font-size: 1rem;
+            font-size: 1.1rem;
             outline: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         #search:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(255, 60, 60, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            box-shadow: 0 0 20px rgba(255, 62, 62, 0.2);
         }
 
         .channel-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 1.5rem;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .channel-card {
-            background: var(--surface);
-            border-radius: 20px;
-            padding: 1.5rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 20px;
             text-decoration: none;
             color: inherit;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.05);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid var(--glass-border);
-            aspect-ratio: 1/1;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .channel-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-            transform: translateX(-100%);
-            transition: 0.5s;
+            gap: 15px;
         }
 
         .channel-card:hover {
-            transform: translateY(-10px) scale(1.05);
+            transform: translateY(-5px);
+            background: #1c1c1f;
             border-color: var(--primary);
-            background: rgba(255, 60, 60, 0.05);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
 
-        .channel-card:hover::before {
-            transform: translateX(100%);
-        }
-
-        .icon-box {
-            width: 60px;
-            height: 60px;
-            background: var(--glass);
-            border-radius: 15px;
+        .logo-container {
+            width: 100px;
+            height: 100px;
+            background: #000;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            border: 1px solid var(--glass-border);
-        }
-
-        .channel-name {
-            font-size: 0.9rem;
-            font-weight: 600;
-            line-height: 1.3;
-            color: var(--text);
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            line-clamp: 2;
-            -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
-        footer {
-            text-align: center;
-            padding: 4rem 1rem;
-            color: var(--text-dim);
+        .logo-container img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        .channel-name {
+            font-weight: 600;
+            font-size: 1rem;
+            line-height: 1.2;
+            height: 2.4em;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .channel-group {
             font-size: 0.8rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Loading Skeleton */
-        .skeleton {
-            background: var(--surface);
-            animation: pulse 1.5s infinite ease-in-out;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
-        }
-
-        /* Mobile optimization */
         @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            .channel-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
-            .channel-card { padding: 1rem; }
+            .channel-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 15px;
+            }
+            h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
-
     <header>
-        <h1>Sportlink</h1>
-        <div class="search-container">
-            <input type="text" id="search" placeholder="Search Cricket Channels..." autocomplete="off">
-        </div>
+        <h1>JioTV +</h1>
+        <p style="color: var(--text-dim)">Stream over 1000+ channels instantly</p>
     </header>
 
-    <div class="container">
-        <div class="channel-grid" id="grid">
-            <!-- Channels will be injected here -->
-            <div class="channel-card skeleton"></div>
-            <div class="channel-card skeleton"></div>
-            <div class="channel-card skeleton"></div>
-            <div class="channel-card skeleton"></div>
-            <div class="channel-card skeleton"></div>
-            <div class="channel-card skeleton"></div>
-            <div class="channel-card skeleton"></div>
-            <div class="channel-card skeleton"></div>
-        </div>
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Search for channels..." autocomplete="off">
     </div>
 
-    <footer>
-        <p>&copy; 2026 Sportlink Premium. All rights reserved.</p>
-    </footer>
+    <div class="channel-grid" id="grid">
+        <a href="channel/colors-hd.html" class="channel-card" data-name="Colors HD" data-group="Entertainment">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/ColorsHD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Colors HD</div>  <div class="channel-group">Entertainment</div></a>
+<a href="channel/star-gold-hd.html" class="channel-card" data-name="Star Gold HD" data-group="Movies">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Gold_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Gold HD</div>  <div class="channel-group">Movies</div></a>
+<a href="channel/colors-gujarati.html" class="channel-card" data-name="Colors Gujarati" data-group="Gujarati">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/ColorsGujarati.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Colors Gujarati</div>  <div class="channel-group">Gujarati</div></a>
+<a href="channel/mtv.html" class="channel-card" data-name="MTV" data-group="Music">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/MTV.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">MTV</div>  <div class="channel-group">Music</div></a>
+<a href="channel/colors-rishtey.html" class="channel-card" data-name="Colors Rishtey" data-group="Entertainment">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/ColorsRishtey.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Colors Rishtey</div>  <div class="channel-group">Entertainment</div></a>
+<a href="channel/star-jalsha-hd.html" class="channel-card" data-name="Star Jalsha HD" data-group="Bengali">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Jalsha_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Jalsha HD</div>  <div class="channel-group">Bengali</div></a>
+<a href="channel/star-pravah-hd.html" class="channel-card" data-name="Star Pravah HD" data-group="Marathi">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Pravah_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Pravah HD</div>  <div class="channel-group">Marathi</div></a>
+<a href="channel/star-vijay-hd.html" class="channel-card" data-name="Star Vijay HD" data-group="Tamil">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Vijay_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Vijay HD</div>  <div class="channel-group">Tamil</div></a>
+<a href="channel/suvarna-hd.html" class="channel-card" data-name="Suvarna HD" data-group="Kannada">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Suvarna_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Suvarna HD</div>  <div class="channel-group">Kannada</div></a>
+<a href="channel/zee-anmol-cinema.html" class="channel-card" data-name="Zee Anmol Cinema" data-group="Movies">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/ZeeAnmolCinema.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Zee Anmol Cinema</div>  <div class="channel-group">Movies</div></a>
+<a href="channel/colors-tamil-hd.html" class="channel-card" data-name="Colors Tamil HD" data-group="Tamil">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/ColorsTamilHD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Colors Tamil HD</div>  <div class="channel-group">Tamil</div></a>
+<a href="channel/colors-cineplex.html" class="channel-card" data-name="Colors Cineplex" data-group="Movies">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Colors_Cineplex.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Colors Cineplex</div>  <div class="channel-group">Movies</div></a>
+<a href="channel/colors-marathi-hd.html" class="channel-card" data-name="Colors Marathi HD" data-group="Marathi">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Colors_Marathi_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Colors Marathi HD</div>  <div class="channel-group">Marathi</div></a>
+<a href="channel/colors-kannada-hd.html" class="channel-card" data-name="Colors Kannada HD" data-group="Kannada">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Colors_Kannada_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Colors Kannada HD</div>  <div class="channel-group">Kannada</div></a>
+<a href="channel/maa-movies-hd.html" class="channel-card" data-name="Maa Movies HD" data-group="Telugu">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Maa_Movies_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Maa Movies HD</div>  <div class="channel-group">Telugu</div></a>
+<a href="channel/colors-super.html" class="channel-card" data-name="Colors Super" data-group="Kannada">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/ColorsSuper.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Colors Super</div>  <div class="channel-group">Kannada</div></a>
+<a href="channel/star-bharat-hd.html" class="channel-card" data-name="Star Bharat HD" data-group="Entertainment">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Bharat_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Bharat HD</div>  <div class="channel-group">Entertainment</div></a>
+<a href="channel/star-movies-hd.html" class="channel-card" data-name="Star Movies HD" data-group="English">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Movies_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Movies HD</div>  <div class="channel-group">English</div></a>
+<a href="channel/star-movies-select-hd.html" class="channel-card" data-name="Star Movies Select HD" data-group="English">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Movies_Select_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Movies Select HD</div>  <div class="channel-group">English</div></a>
+<a href="channel/maa-movies.html" class="channel-card" data-name="Maa Movies" data-group="Telugu">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Maa_Movies.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Maa Movies</div>  <div class="channel-group">Telugu</div></a>
+<a href="channel/maa-hd.html" class="channel-card" data-name="Maa HD" data-group="Telugu">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Maa_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Maa HD</div>  <div class="channel-group">Telugu</div></a>
+<a href="channel/star-gold-select-hd.html" class="channel-card" data-name="Star Gold Select HD" data-group="Movies">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Gold_Select_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Gold Select HD</div>  <div class="channel-group">Movies</div></a>
+<a href="channel/star-movies.html" class="channel-card" data-name="Star Movies" data-group="English">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Movies.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Movies</div>  <div class="channel-group">English</div></a>
+<a href="channel/suvarna.html" class="channel-card" data-name="Suvarna" data-group="Kannada">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Suvarna.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Suvarna</div>  <div class="channel-group">Kannada</div></a>
+<a href="channel/star-gold-select.html" class="channel-card" data-name="Star Gold Select" data-group="Movies">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Gold_Select.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Gold Select</div>  <div class="channel-group">Movies</div></a>
+<a href="channel/maa-music.html" class="channel-card" data-name="Maa Music" data-group="Telugu">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Maa_Music.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Maa Music</div>  <div class="channel-group">Telugu</div></a>
+<a href="channel/star-plus-hd.html" class="channel-card" data-name="Star Plus HD" data-group="Entertainment">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Plus_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Plus HD</div>  <div class="channel-group">Entertainment</div></a>
+<a href="channel/star-utsav-movies.html" class="channel-card" data-name="Star Utsav Movies" data-group="Tamil">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Utsav_Movies.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Utsav Movies</div>  <div class="channel-group">Tamil</div></a>
+<a href="channel/maa-gold.html" class="channel-card" data-name="Maa Gold" data-group="Telugu">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Maa_Gold.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Maa Gold</div>  <div class="channel-group">Telugu</div></a>
+<a href="channel/star-maa.html" class="channel-card" data-name="Star Maa" data-group="Telugu">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Maa.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Maa</div>  <div class="channel-group">Telugu</div></a>
+<a href="channel/suvarna-plus.html" class="channel-card" data-name="Suvarna Plus" data-group="Kannada">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Suvarna_Plus.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Suvarna Plus</div>  <div class="channel-group">Kannada</div></a>
+<a href="channel/star-utsav.html" class="channel-card" data-name="Star Utsav" data-group="Entertainment">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Utsav.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Utsav</div>  <div class="channel-group">Entertainment</div></a>
+<a href="channel/colors-infinity-hd.html" class="channel-card" data-name="Colors Infinity HD" data-group="English">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Colors_Infinity_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Colors Infinity HD</div>  <div class="channel-group">English</div></a>
+<a href="channel/colors-gujarati-cinema.html" class="channel-card" data-name="Colors Gujarati Cinema" data-group="Gujarati">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Colors_Gujarati_Cinema.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Colors Gujarati Cinema</div>  <div class="channel-group">Gujarati</div></a>
+<a href="channel/colors-tamil.html" class="channel-card" data-name="Colors Tamil" data-group="Tamil">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Colors_Tamil.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Colors Tamil</div>  <div class="channel-group">Tamil</div></a>
+<a href="channel/disney-channel.html" class="channel-card" data-name="Disney Channel" data-group="Kids">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Disney_Channel.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Disney Channel</div>  <div class="channel-group">Kids</div></a>
+<a href="channel/disney-junior.html" class="channel-card" data-name="Disney Junior" data-group="Kids">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Disney_Junior.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Disney Junior</div>  <div class="channel-group">Kids</div></a>
+<a href="channel/disney-international-hd.html" class="channel-card" data-name="Disney International HD" data-group="Kids">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Disney_International_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Disney International HD</div>  <div class="channel-group">Kids</div></a>
+<a href="channel/hungama.html" class="channel-card" data-name="Hungama" data-group="Kids">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Hungama.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Hungama</div>  <div class="channel-group">Kids</div></a>
+<a href="channel/super-hungama.html" class="channel-card" data-name="Super Hungama" data-group="Kids">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Super_Hungama.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Super Hungama</div>  <div class="channel-group">Kids</div></a>
+<a href="channel/colors-cineplex-hd.html" class="channel-card" data-name="Colors Cineplex HD" data-group="Movies">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/ColorsCineplexHD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Colors Cineplex HD</div>  <div class="channel-group">Movies</div></a>
+<a href="channel/colors-kannada-cinema.html" class="channel-card" data-name="Colors Kannada Cinema" data-group="Kannada">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/ColorsKannadaCinema.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Colors Kannada Cinema</div>  <div class="channel-group">Kannada</div></a>
+<a href="channel/colors-bangla-cinema.html" class="channel-card" data-name="Colors Bangla Cinema" data-group="Bengali">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Colors_Bangla_Cinema.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Colors Bangla Cinema</div>  <div class="channel-group">Bengali</div></a>
+<a href="channel/colors-cineplex-bollywood.html" class="channel-card" data-name="Colors Cineplex Bollywood" data-group="Movies">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/ColorsCineplexBollywood.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Colors Cineplex Bollywood</div>  <div class="channel-group">Movies</div></a>
+<a href="channel/star-sports-select-1-hd.html" class="channel-card" data-name="Star Sports Select 1 HD" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/96/65/302113_1749664252703_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports Select 1 HD</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-select-1.html" class="channel-card" data-name="Star Sports Select 1" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/13/82/301994_1749664069587_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports Select 1</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-select-2-hd.html" class="channel-card" data-name="Star Sports Select 2 HD" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/98/79/302114_1749665414817_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports Select 2 HD</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-select-2.html" class="channel-card" data-name="Star Sports Select 2" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/98/48/301989_1749664475828_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports Select 2</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-1-hd.html" class="channel-card" data-name="Star Sports 1 HD" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/76/32/301981_1749665664018_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 1 HD</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-1.html" class="channel-card" data-name="Star Sports 1" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/56/92/302115_1749665579801_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 1</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-1-hindi-hd.html" class="channel-card" data-name="Star Sports 1 Hindi HD" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/5/6/301982_1749665314605_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 1 Hindi HD</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-1-hindi.html" class="channel-card" data-name="Star Sports 1 Hindi" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/13/81/302112_1749665154709_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 1 Hindi</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-2-hd.html" class="channel-card" data-name="Star Sports 2 HD" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/41/51/301983_1749666169105_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 2 HD</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-2.html" class="channel-card" data-name="Star Sports 2" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/11/30/302116_1749666029079_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 2</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-2-hindi-hd.html" class="channel-card" data-name="Star Sports 2 Hindi HD" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/56/36/301229_1742214332015_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 2 Hindi HD</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-2-hindi.html" class="channel-card" data-name="Star Sports 2 Hindi" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/57/17/302124_1749130246443_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 2 Hindi</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-3.html" class="channel-card" data-name="Star Sports 3" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/78/2/302117_1749666092192_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 3</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-1-tamil-hd.html" class="channel-card" data-name="Star Sports 1 Tamil HD" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/19/19/302122_1749662923298_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 1 Tamil HD</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-1-tamil.html" class="channel-card" data-name="Star Sports 1 Tamil" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/69/73/301995_1749664384503_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 1 Tamil</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-1-telugu-hd.html" class="channel-card" data-name="Star Sports 1 Telugu HD" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/19/57/302123_1749663029798_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 1 Telugu HD</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-1-telugu.html" class="channel-card" data-name="Star Sports 1 Telugu" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/26/67/302119_1749662981095_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 1 Telugu</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-1-kannada.html" class="channel-card" data-name="Star Sports 1 Kannada" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/13/91/302118_1749663894692_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 1 Kannada</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-2-kannada.html" class="channel-card" data-name="Star Sports 2 Kannada" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/11/37/301993_1749664589518_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 2 Kannada</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-2-tamil-hd.html" class="channel-card" data-name="Star Sports 2 Tamil HD" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/50/43/302120_1749664850896_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 2 Tamil HD</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-2-tamil.html" class="channel-card" data-name="Star Sports 2 Tamil" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/74/92/301561_1749664725619_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 2 Tamil</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-2-telugu-hd.html" class="channel-card" data-name="Star Sports 2 Telugu HD" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/84/67/302121_1749664974599_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 2 Telugu HD</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-sports-2-telugu.html" class="channel-card" data-name="Star Sports 2 Telugu" data-group="Sports">  <div class="logo-container"><img src="https://img.media.jio.com/tvpimages/41/94/301562_1749665043898_l_medium.jpg" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Sports 2 Telugu</div>  <div class="channel-group">Sports</div></a>
+<a href="channel/star-gold-2-hd.html" class="channel-card" data-name="Star Gold 2 HD" data-group="Movies">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Gold_2_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Gold 2 HD</div>  <div class="channel-group">Movies</div></a>
+<a href="channel/star-gold-romance.html" class="channel-card" data-name="Star Gold Romance" data-group="Movies">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Gold_Romance.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Gold Romance</div>  <div class="channel-group">Movies</div></a>
+<a href="channel/star-gold-thrills.html" class="channel-card" data-name="Star Gold Thrills" data-group="Movies">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Gold_Thrills.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Gold Thrills</div>  <div class="channel-group">Movies</div></a>
+<a href="channel/star-pravah-picture.html" class="channel-card" data-name="Star Pravah Picture" data-group="Marathi">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Pravah_Picture.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Pravah Picture</div>  <div class="channel-group">Marathi</div></a>
+<a href="channel/star-pravah-picture-hd.html" class="channel-card" data-name="Star Pravah Picture HD" data-group="Marathi">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Pravah_Picture_HD.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Pravah Picture HD</div>  <div class="channel-group">Marathi</div></a>
+<a href="channel/star-kiran.html" class="channel-card" data-name="Star Kiran" data-group="Odia">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Kiran.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Kiran</div>  <div class="channel-group">Odia</div></a>
+<a href="channel/star-movies-select.html" class="channel-card" data-name="Star Movies Select" data-group="English">  <div class="logo-container"><img src="https://jiotv.catchup.cdn.jio.com/dare_images/images/Star_Movies_Select.png" onerror="this.src='https://www.jiotv.com/images/jiotv_logo.png'"></div>  <div class="channel-name">Star Movies Select</div>  <div class="channel-group">English</div></a>
+    </div>
 
     <script>
-        const grid = document.getElementById('grid');
         const search = document.getElementById('search');
-        let channelsData = [];
-
-        async function init() {
-            try {
-                // We fetch the channels.json generated by the script
-                const response = await fetch('Channel/channels.json');
-                channelsData = await response.json();
-                
-                // Clear skeletons
-                grid.innerHTML = '';
-                
-                displayChannels(channelsData);
-            } catch (error) {
-                console.error('Error loading channels:', error);
-                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Failed to load channels. Make sure you generated them first.</p>';
-            }
-        }
-
-        function displayChannels(list) {
-            grid.innerHTML = '';
-            list.forEach(ch => {
-                const card = document.createElement('a');
-                card.className = 'channel-card';
-                // Filename is safe_name.html
-                const fileName = ch.name.replace(/ /g, '_') + '.html';
-                card.href = 'Channel/' + fileName;
-                
-                // Extract first letter or acronym for icon fallback
-                const acronym = ch.name.split('_').map(w => w[0]).join('').substring(0, 3).toUpperCase();
-                
-                let iconHtml = `<div class="icon-box">${acronym}</div>`;
-                if (ch.logo) {
-                    iconHtml = `<img src="${ch.logo}" alt="${ch.name}" style="width: 100%; height: 60px; object-fit: contain; margin-bottom: 1rem; border-radius: 10px;">`;
-                }
-
-                card.innerHTML = `
-                    ${iconHtml}
-                    <div class="channel-name">${ch.name.replace(/_/g, ' ')}</div>
-                `;
-                grid.appendChild(card);
-            });
-        }
+        const cards = document.querySelectorAll('.channel-card');
 
         search.addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
-            const filtered = channelsData.filter(ch => 
-                ch.name.toLowerCase().includes(term)
-            );
-            displayChannels(filtered);
+            cards.forEach(card => {
+                const name = card.dataset.name.toLowerCase();
+                const group = card.dataset.group.toLowerCase();
+                if (name.includes(term) || group.includes(term)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         });
-
-        init();
     </script>
 </body>
 </html>

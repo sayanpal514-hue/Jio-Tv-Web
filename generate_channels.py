@@ -1,40 +1,207 @@
+#!/usr/bin/env python3
+"""
+generate_channel.py
+-------------------
+Fetches the JioTV M3U playlist, parses each channel's stream URL and
+ClearKey DRM credentials, then generates a self-contained HTML player
+page for every channel inside the  channel/  directory.
+
+Usage:
+    python generate_channel.py
+"""
+
 import os
 import re
-import requests
 import json
-import shutil
+import base64
+import urllib.request
+import urllib.error
 
-# Configuration
-M3U_URL = "https://raw.githubusercontent.com/rkdyiptv/Playlist/refs/heads/main/Playlist/Cricket.m3u/index.html"
-OUTPUT_DIR = "Channel"
+# ---------------------------------------------------------------------------
+# CONFIG
+# ---------------------------------------------------------------------------
 
-# Ensure output directory exists and is empty
-if os.path.exists(OUTPUT_DIR):
-    shutil.rmtree(OUTPUT_DIR)
-os.makedirs(OUTPUT_DIR)
+# Remote M3U playlist URL (set to "" to skip and use LOCAL_M3U_PATH instead)
+M3U_URL = "https://raw.githubusercontent.com/sportlive18/Sky-F1/refs/heads/main/jtv.m3u"
 
-HTML_TEMPLATE = """<!DOCTYPE html>
+# Local M3U fallback — set this path if the remote URL is unavailable
+# Example: LOCAL_M3U_PATH = r"d:\Jio Tv +\jiotv.m3u"
+LOCAL_M3U_PATH = ""
+
+# Config for standard channels
+COOKIE_URL = "https://allinonereborn.online/jstrweb2/cookies.json"
+
+# Config for 76 special channels
+COOKIE_JSON_URL_76 = "https://allinonereborn.online/jtv-fetch/jstarcookie/cookie.json"
+
+AD_URL = "https://crn77.com/4/10986573"
+GA_ID = "G-L7VPXZYQPN"
+
+OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "channel")
+
+# ---------------------------------------------------------------------------
+# HELPERS
+# ---------------------------------------------------------------------------
+
+def fetch_text(url: str, timeout: int = 15) -> str:
+    """Download a URL and return its text content."""
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                          "AppleWebKit/537.36 Chrome/124 Safari/537.36"
+        },
+    )
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        return resp.read().decode("utf-8", errors="replace")
+
+
+def slug(name: str) -> str:
+    """Convert a channel name to a safe filename slug."""
+    name = name.lower().strip()
+    name = re.sub(r"[^\w\s-]", "", name)       # remove special chars
+    name = re.sub(r"[\s_]+", "-", name)         # spaces → hyphens
+    name = re.sub(r"-{2,}", "-", name)           # collapse double hyphens
+    return name.strip("-") or "channel"
+
+
+def b64url_to_hex(b64: str) -> str:
+    """Convert a base64url string (no padding) to a lowercase hex string."""
+    # Add padding
+    padded = b64 + "=" * (-len(b64) % 4)
+    return base64.urlsafe_b64decode(padded).hex()
+
+
+def parse_clearkey(license_key_str: str):
+    """
+    Extract (key_id_hex, key_hex) from a KODIPROP clearkey license string.
+
+    Accepts two common formats:
+      1. JSON  → {"keys":[{"kty":"oct","k":"<b64>","kid":"<b64>"}],"type":"temporary"}
+      2. Plain → <key_id_hex>:<key_hex>
+    """
+    license_key_str = license_key_str.strip()
+
+    # --- Format 1: JSON ---
+    if license_key_str.startswith("{"):
+        try:
+            obj = json.loads(license_key_str)
+            for entry in obj.get("keys", []):
+                kid_hex = b64url_to_hex(entry["kid"])
+                k_hex   = b64url_to_hex(entry["k"])
+                return kid_hex, k_hex
+        except (json.JSONDecodeError, KeyError, Exception):
+            pass
+
+    # --- Format 2: hex:hex ---
+    if ":" in license_key_str:
+        parts = license_key_str.split(":", 1)
+        if len(parts) == 2 and all(re.fullmatch(r"[0-9a-fA-F]+", p.strip()) for p in parts):
+            return parts[0].strip().lower(), parts[1].strip().lower()
+
+    return None, None
+
+
+def parse_m3u(content: str):
+    """
+    Parse an M3U playlist and return a list of channel dicts:
+        {name, logo, group, stream_url, key_id, key}
+    """
+    channels = []
+    lines = content.splitlines()
+
+    i = 0
+    while i < len(lines):
+        line = lines[i].strip()
+
+        if not line.startswith("#EXTINF"):
+            i += 1
+            continue
+
+        # --- Parse #EXTINF attributes ---
+        name  = ""
+        logo  = ""
+        group = ""
+
+        name_match = re.search(r",(.+)$", line)
+        if name_match:
+            name = name_match.group(1).strip()
+
+        logo_match  = re.search(r'tvg-logo="([^"]*)"', line)
+        group_match = re.search(r'group-title="([^"]*)"', line)
+        if logo_match:
+            logo = logo_match.group(1)
+        if group_match:
+            group = group_match.group(1)
+
+        # --- Scan following lines for KODIPROP / stream URL ---
+        key_id = ""
+        key    = ""
+        stream_url = ""
+
+        j = i + 1
+        while j < len(lines):
+            nxt = lines[j].strip()
+
+            if nxt.startswith("#KODIPROP:inputstream.adaptive.license_key"):
+                # e.g.  #KODIPROP:inputstream.adaptive.license_key={"keys":...}
+                val = nxt.split("=", 1)[1] if "=" in nxt else ""
+                key_id, key = parse_clearkey(val)
+
+            elif nxt.startswith("#"):
+                pass  # other directive — skip
+
+            elif nxt:  # non-empty, non-comment → stream URL
+                stream_url = nxt
+                j += 1
+                break
+
+            j += 1
+
+        i = j  # advance outer pointer past the block we just consumed
+
+        if stream_url and name:
+            channels.append(
+                {
+                    "name":       name,
+                    "logo":       logo,
+                    "group":      group,
+                    "stream_url": stream_url,
+                    "key_id":     key_id or "",
+                    "key":        key    or "",
+                }
+            )
+
+    return channels
+
+
+# ---------------------------------------------------------------------------
+# HTML TEMPLATE
+# ---------------------------------------------------------------------------
+
+
+HTML_TEMPLATE_76 = """\
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{CHANNEL_TITLE}</title>
+<title>%%CHANNEL_NAME%% | Sayan</title>
 <meta name="referrer" content="no-referrer">
 <script src="https://cdn.jsdelivr.net/npm/shaka-player@4.16.2/dist/shaka-player.ui.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shaka-player@4.16.2/dist/controls.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FMP9REY96D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<style>
+:root {
+    --primary: #ff3c3c;
+    --bg: #000;
+    --surface: rgba(255, 255, 255, 0.05);
+    --glass: rgba(0, 0, 0, 0.6);
+}
 
-  gtag('config', 'G-FMP9REY96D');
-</script>
-  <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;height:100%;background:#000;overflow:hidden;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+html,body{width:100%;height:100%;background:var(--bg);overflow:hidden;font-family:'Outfit', sans-serif}
 
 .shaka-video-container{
 position:fixed;
@@ -49,22 +216,70 @@ video{
 width:100%;
 height:100%;
 object-fit:contain;
-background:#000;
+}
+
+/* Header/Overlay */
+.player-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 15px 25px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: opacity 0.3s ease;
+}
+
+.back-btn {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    background: rgba(255,255,255,0.1);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+}
+
+.back-btn:hover { background: var(--primary); transform: scale(1.1); }
+
+.channel-info { display: flex; align-items: center; gap: 12px; }
+
+.channel-logo {
+    height: 35px;
+    width: auto;
+    max-width: 100px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+}
+
+.channel-name {
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .custom-watermark{
 position:absolute;
 z-index:40;
 pointer-events:none;
-top:65%;
-left:6%;
-transform:translateY(-50%);
-font-size:11px;
-font-weight:600;
-color:rgba(255,255,255,0.12);
+top:15%;
+right:5%;
+font-size:12px;
+font-weight:800;
+color:rgba(255,255,255,0.15);
+letter-spacing: 1px;
 }
 
-/* --- Updated Modern Blocker Styles --- */
+/* --- Block Overlay --- */
 .block-overlay{
 position:fixed;
 inset:0;
@@ -84,50 +299,31 @@ background:rgba(20, 20, 20, 0.95);
 border-radius:16px;
 border:1px solid rgba(255, 255, 255, 0.1);
 box-shadow:0 20px 50px rgba(0,0,0,0.5);
-animation: fadeInUp 0.6s ease-out;
 }
 
-@keyframes fadeInUp {
-from { opacity: 0; transform: translateY(30px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
-.block-title{
-font-size:42px;
-font-weight:800;
-color:#ffffff;
-text-transform:uppercase;
-letter-spacing:2px;
-margin-bottom:20px;
-text-shadow:0 0 10px rgba(255, 0, 0, 0.3);
-}
-
-.block-sub{
-font-size:14px;
-font-weight:500;
-color:rgba(255, 255, 255, 0.6);
-line-height:1.6;
-}
-
-/* Icon hidden as requested, but keeping structure if needed later */
-.block-icon{ display: none; }
-.block-note{ display: none; }
+.block-title{ font-size:32px; font-weight:800; color:#fff; margin-bottom:15px; text-transform: uppercase;}
+.block-sub{ font-size:14px; color:rgba(255,255,255,0.6); line-height:1.6; }
 
 @media(max-width:700px){
-.custom-watermark{font-size:9px;top:60%;left:16%}
-.block-title{font-size:28px}
-.block-box{padding:25px}
-.block-sub{font-size:12px}
+    .player-header { padding: 10px 15px; }
+    .channel-name { font-size: 15px; }
+    .channel-logo { height: 25px; }
 }
 </style>
-    
 </head>
-    
 <body>
 
+<div class="player-header" id="header">
+    <a href="../index.html" class="back-btn">←</a>
+    <div class="channel-info">
+        <img src="%%CHANNEL_LOGO%%" alt="" class="channel-logo" onerror="this.style.display='none'">
+        <span class="channel-name">%%CHANNEL_NAME%%</span>
+    </div>
+</div>
+
 <div class="shaka-video-container" id="player-container">
-<video id="video" autoplay muted playsinline preload="metadata"></video>
-<div class="custom-watermark"> </div>
+    <video id="video" autoplay muted playsinline preload="metadata"></video>
+    <div class="custom-watermark">SAYAN</div>
 </div>
 
 <script>
@@ -136,26 +332,18 @@ line-height:1.6;
   function isSandboxedEnv(){
     try {
       if (window.self === window.top) return false;
-      if (window.frameElement && window.frameElement.hasAttribute("sandbox")) {
-        return true;
-      }
+      if (window.frameElement && window.frameElement.hasAttribute("sandbox")) return true;
       try {
         document.domain = document.domain;
-        if (window.frameElement && !window.frameElement.getAttribute("sandbox")) {
-             return false;
-        }
-      } catch (e) {
-         return true;
-      }
+        if (window.frameElement && !window.frameElement.getAttribute("sandbox")) return false;
+      } catch (e) { return true; }
       return false;
-    } catch(e) {
-      return true;
-    }
+    } catch(e) { return true; }
   }
+
   function triggerBlockScreen(title, message){
     const container = document.getElementById("player-container");
     const video = document.getElementById("video");
-    
     try {
       video.pause();
       video.removeAttribute('src');
@@ -164,7 +352,6 @@ line-height:1.6;
 
     const overlay = document.createElement("div");
     overlay.className = "block-overlay";
-    overlay.id = "sandbox-block-display";
     overlay.innerHTML = `
       <div class="block-box">
         <div class="block-title">${title}</div>
@@ -173,205 +360,389 @@ line-height:1.6;
     `;
     document.body.appendChild(overlay);
     container.style.display = 'none';
+    document.getElementById('header').style.display = 'none';
   }
-  if(isSandboxedEnv()){
 
-    triggerBlockScreen('Disable Sandbox', 'Opening Chrome Browser Only & Disable Ad blocker');
+  if(isSandboxedEnv()){
+    triggerBlockScreen('Access Denied', 'Please open in a standard browser and disable ad-blockers.');
     return;
   }
+
   const CONFIG={
-    streamUrl:"{STREAM_URL}",
-    keyId:"{KEY_ID}",
-    key:"{KEY}",
-    cookie:"{COOKIE}",
-    cookieUrl:"https://sayan10-sportlink-cookies.pages.dev/api/cookie.json"
+    streamUrl:"%%STREAM_URL%%",
+    keyId:"%%KEY_ID%%",
+    key:"%%KEY%%",
+    cookie:"%%CHANNEL_COOKIE%%"
   };
 
   document.addEventListener("DOMContentLoaded",async()=>{
-
     shaka.polyfill.installAll();
     if(!shaka.Player.isBrowserSupported()) return;
 
     const video=document.getElementById("video");
     const container=document.getElementById("player-container");
+    const header=document.getElementById("header");
 
-    video.muted=true;
+    let hideTimeout;
+    const showHeader = () => {
+        header.style.opacity = '1';
+        clearTimeout(hideTimeout);
+        hideTimeout = setTimeout(() => {
+            header.style.opacity = '0';
+        }, 3000);
+    };
+    container.addEventListener('mousemove', showHeader);
+    container.addEventListener('touchstart', showHeader);
+    showHeader();
 
     const player=new shaka.Player();
     await player.attach(video);
 
     const ui=new shaka.ui.Overlay(player,container,video);
-
     ui.configure({
-  addBigPlayButton: true,
-  controlPanelElements: [
-    "mute",           // First - volume/mute button
-    "play_pause",     // Second - play/pause button  
-    "time_and_duration", // Third - timeline timings (00:00 / 00:00)
-    "spacer",
-    "quality",
-    "picture_in_picture",
-    "fullscreen"
-  ],
-  seekBarColors: {
-    base: "white",
-    buffered: "red", 
-    played: "green"
-  }
-});
+      addBigPlayButton: true,
+      controlPanelElements: ["mute","play_pause","time_and_duration","spacer","quality","picture_in_picture","fullscreen"]
+    });
 
-    const drmConfig = (CONFIG.keyId && CONFIG.key) ? {clearKeys:{[CONFIG.keyId]:CONFIG.key}} : {};
+    const drmConfig = {};
+    if (CONFIG.keyId && CONFIG.key) {
+      drmConfig.clearKeys = {[CONFIG.keyId]: CONFIG.key};
+    }
+
     player.configure({
       drm: drmConfig,
       manifest:{defaultPresentationDelay:5},
-      streaming:{
-        lowLatencyMode:true,
-        bufferingGoal:10,
-        rebufferingGoal:2,
-        safeSeekOffset:5
-      }
+      streaming:{ lowLatencyMode:true, bufferingGoal:10, rebufferingGoal:2 }
     });
 
-    let cookieValue=CONFIG.cookie || "";
-
-    if(!cookieValue){
-        try{
-          const response=await fetch(CONFIG.cookieUrl,{cache:"no-store"});
-          const data=await response.json();
-          cookieValue=data.cookie||"";
-        }catch(e){}
-    }
-
-    if(cookieValue){
-      player.getNetworkingEngine().registerRequestFilter((type,request)=>{
+    player.getNetworkingEngine().registerRequestFilter((type,request)=>{
         request.headers["Referer"]="https://www.jiotv.com/";
         request.headers["User-Agent"]="plaYtv/7.1.5 (Linux;Android 13) ExoPlayerLib/2.11.6";
-        request.headers["Cookie"]=cookieValue;
-
-        let urlCookie=cookieValue.startsWith("__hdnea__=")?cookieValue.substring(10):cookieValue;
-
-        if((type===shaka.net.NetworkingEngine.RequestType.MANIFEST||
-        type===shaka.net.NetworkingEngine.RequestType.SEGMENT)&&
-        !request.uris[0].includes("__hdnea__")){
-          const sep=request.uris[0].includes("?")?"&":"?";
-          request.uris[0]+=sep+"__hdnea__="+urlCookie;
+        
+        if(CONFIG.cookie){
+            request.headers["Cookie"]=CONFIG.cookie;
+            let urlCookie=CONFIG.cookie.startsWith("__hdnea__=")?CONFIG.cookie.substring(10):CONFIG.cookie;
+            if((type===shaka.net.NetworkingEngine.RequestType.MANIFEST||
+                type===shaka.net.NetworkingEngine.RequestType.SEGMENT)&&
+                !request.uris[0].includes("__hdnea__")){
+                const sep=request.uris[0].includes("?")?"&":"?";
+                request.uris[0]+=sep+"__hdnea__="+urlCookie;
+            }
         }
-      });
-    }
+    });
 
     try{
       await player.load(CONFIG.streamUrl);
       video.play().catch(()=>{});
     }catch(e){}
 
-    video.addEventListener("play",()=>{
-      video.muted=false;
-    });
-
+    video.addEventListener("play",()=>{ video.muted=false; });
   });
 })();
 </script>
-  <script>(function(s){s.dataset.zone='10603308',s.src='https://bvtpk.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-  
 </body>
-</html>"""
+</html>
+"""
 
-def generate():
-    print(f"Fetching playlist from {M3U_URL}...")
-    try:
-        response = requests.get(M3U_URL)
-        response.raise_for_status()
-        content = response.text
-    except Exception as e:
-        print(f"Failed to fetch playlist: {e}")
+# ---------------------------------------------------------------------------
+# DASHBOARD TEMPLATE
+# ---------------------------------------------------------------------------
+
+DASHBOARD_TEMPLATE = """\
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JioTV Dashboard - Sayan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff3e3e;
+            --bg: #0a0a0b;
+            --card-bg: #161618;
+            --text: #ffffff;
+            --text-dim: #a0a0a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        header {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #fff, #ff3e3e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .search-container {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        #search {
+            width: 100%;
+            padding: 15px 25px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(22, 22, 24, 0.8);
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        #search:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(255, 62, 62, 0.2);
+        }
+
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .channel-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-5px);
+            background: #1c1c1f;
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .logo-container {
+            width: 100px;
+            height: 100px;
+            background: #000;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .logo-container img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        .channel-name {
+            font-weight: 600;
+            font-size: 1rem;
+            line-height: 1.2;
+            height: 2.4em;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .channel-group {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 600px) {
+            .channel-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 15px;
+            }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>JioTV +</h1>
+        <p style="color: var(--text-dim)">Stream over 1000+ channels instantly</p>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Search for channels..." autocomplete="off">
+    </div>
+
+    <div class="channel-grid" id="grid">
+        %%CHANNELS_HTML%%
+    </div>
+
+    <script>
+        const search = document.getElementById('search');
+        const cards = document.querySelectorAll('.channel-card');
+
+        search.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            cards.forEach(card => {
+                const name = card.dataset.name.toLowerCase();
+                const group = card.dataset.group.toLowerCase();
+                if (name.includes(term) || group.includes(term)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+"""
+
+# ---------------------------------------------------------------------------
+# MAIN
+# ---------------------------------------------------------------------------
+
+def main():
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+    # --- Fetch / read M3U ---
+    m3u_content = ""
+    if M3U_URL:
+        print(f"[+] Fetching M3U playlist from:\n    {M3U_URL}")
+        try:
+            m3u_content = fetch_text(M3U_URL)
+            print("[+] Remote M3U fetched successfully.")
+        except urllib.error.URLError as e:
+            print(f"[!] Remote fetch failed: {e}")
+
+    if not m3u_content:
+        print("[!] No M3U content available.")
         return
 
-    lines = content.splitlines()
-    channels = []
-    
-    current_key_id = ""
-    current_key = ""
-    
-    for line in lines:
-        line = line.strip()
-        if not line:
-            continue
-            
-        # Match license key (KODIPROP format)
-        if 'adaptive.license_key=' in line:
-            parts = line.split('adaptive.license_key=')
-            if len(parts) > 1:
-                keys = parts[1].strip()
-                if ':' in keys:
-                    kparts = keys.split(':')
-                    current_key_id = kparts[0]
-                    current_key = kparts[1]
-        
-        # Match stream URL (JioTV MPD format)
-        elif line.startswith("https://") and ".mpd" in line:
-            # Extract URL and optional cookie
-            parts = line.split('|cookie=')
-            clean_url = parts[0].strip()
-            cookie = parts[1].strip() if len(parts) > 1 else ""
-            
-            # Extract channel name from URL
-            match = re.search(r'/bpk-tv/([^/]+)/', clean_url)
-            if match:
-                ch_name = match.group(1)
-            else:
-                ch_name = clean_url.split('/')[-2] if '/' in clean_url else "Channel"
-            
-            # Map logo
-            # Strategy: Strip _BTS and check if a .png exists in logos/
-            base_name = ch_name.replace('_BTS', '')
-            logo_path = ""
-            
-            # Specific mappings for tricky names
-            if ch_name == "Star_Sports_Select_HD_1_BTS":
-                logo_path = "logos/Star_Sports_Select_1.png"
-            
-            if not logo_path:
-                if os.path.exists(f"logos/{base_name}.png"):
-                    logo_path = f"logos/{base_name}.png"
-                elif os.path.exists(f"logos/{ch_name}.png"):
-                    logo_path = f"logos/{ch_name}.png"
-            
-            channels.append({
-                "name": ch_name, 
-                "url": clean_url, 
-                "keyId": current_key_id, 
-                "key": current_key, 
-                "cookie": cookie,
-                "logo": logo_path
-            })
+    # --- Fetch Standard Cookie ---
+    print(f"[+] Fetching standard cookie from:\n    {COOKIE_URL}")
+    standard_cookie = ""
+    try:
+        cookies_data = json.loads(fetch_text(COOKIE_URL))
+        for item in cookies_data:
+            if "cookie" in item:
+                standard_cookie = item["cookie"]
+                break
+        print(f"[+] Standard cookie fetched: {standard_cookie[:30]}...")
+    except Exception as e:
+        print(f"[!] Failed to fetch standard cookie: {e}")
 
-    print(f"Found {len(channels)} channels. Starting generation...")
+    # --- Fetch 76 Special Cookies ---
+    print(f"[+] Fetching special 76 cookies from:\n    {COOKIE_JSON_URL_76}")
+    special_76_cookies = {}
+    try:
+        raw_76 = json.loads(fetch_text(COOKIE_JSON_URL_76))
+        # Each entry has "channel_name" and "final_url" with __hdnea__=...
+        for res in raw_76.get("failed_results", []): 
+            name = res.get("channel_name")
+            url = res.get("error_details", {}).get("final_url", "")
+            if "__hdnea__=" in url:
+                token = url.split("__hdnea__=")[1].split("&")[0]
+                special_76_cookies[name] = "__hdnea__=" + token
+        print(f"[+] Found {len(special_76_cookies)} special cookies.")
+    except Exception as e:
+        print(f"[!] Failed to fetch 76 cookies: {e}")
+
+    # --- Parse channels ---
+    channels = parse_m3u(m3u_content)
+    print(f"[+] Found {len(channels)} channels in M3U")
+
+    # --- Generate HTML files ---
+    generated = 0
+    skipped   = 0
+    dashboard_items = []
+
+    # Use HTML_TEMPLATE_76 as the unified template
+    template = HTML_TEMPLATE_76
 
     for ch in channels:
-        safe_name = ch['name'].replace(' ', '_')
-        file_path = os.path.join(OUTPUT_DIR, f"{safe_name}.html")
-        
-        # Format title
-        title = ch['name'].replace('_', ' ')
-        
-        content = HTML_TEMPLATE.replace("{CHANNEL_TITLE}", title) \
-                               .replace("{STREAM_URL}", ch['url']) \
-                               .replace("{KEY_ID}", ch['keyId']) \
-                               .replace("{KEY}", ch['key']) \
-                               .replace("{COOKIE}", ch['cookie'])
-        
-        with open(file_path, "w", encoding="utf-8") as f:
-            f.write(content)
-            
-    print(f"Successfully generated {len(channels)} files in {OUTPUT_DIR}/")
+        # ONLY process channels that are in the special cookies list
+        if ch["name"] not in special_76_cookies:
+            continue
 
-    # Generate channels.json for the dashboard
-    json_path = os.path.join(OUTPUT_DIR, "channels.json")
-    with open(json_path, "w", encoding="utf-8") as f:
-        json.dump(channels, f, indent=2)
-    print(f"Generated {json_path}")
+        slug_name = slug(ch["name"])
+        filename = slug_name + ".html"
+        filepath = os.path.join(OUTPUT_DIR, filename)
+
+        # Pick the right cookie (we know it's in special_76_cookies here)
+        channel_cookie = special_76_cookies[ch["name"]]
+        
+        html = (
+            template
+            .replace("%%CHANNEL_NAME%%", ch["name"])
+            .replace("%%CHANNEL_LOGO%%", ch["logo"])
+            .replace("%%STREAM_URL%%",   ch["stream_url"])
+            .replace("%%KEY_ID%%",       ch["key_id"])
+            .replace("%%KEY%%",          ch["key"])
+            .replace("%%CHANNEL_COOKIE%%", channel_cookie)
+        )
+
+        try:
+            with open(filepath, "w", encoding="utf-8") as f:
+                f.write(html)
+            generated += 1
+            
+            # Card HTML for dashboard
+            card_html = (
+                f'<a href="channel/{filename}" class="channel-card" data-name="{ch["name"]}" data-group="{ch["group"]}">'
+                f'  <div class="logo-container"><img src="{ch["logo"]}" onerror="this.src=\'https://www.jiotv.com/images/jiotv_logo.png\'"></div>'
+                f'  <div class="channel-name">{ch["name"]}</div>'
+                f'  <div class="channel-group">{ch["group"]}</div>'
+                f'</a>'
+            )
+            dashboard_items.append(card_html)
+                
+        except OSError as e:
+            print(f"  [ERR] {filename}: {e}")
+            skipped += 1
+
+    # --- Generate Dashboard ---
+    dashboard_html = DASHBOARD_TEMPLATE.replace("%%CHANNELS_HTML%%", "\n".join(dashboard_items))
+    try:
+        with open(os.path.join(os.path.dirname(__file__), "index.html"), "w", encoding="utf-8") as f:
+            f.write(dashboard_html)
+        print("[+] Dashboard index.html generated successfully.")
+    except OSError as e:
+        print(f"[!] Failed to generate dashboard: {e}")
+
+    print(f"\n[+] Done — {generated} files written, {skipped} skipped.")
 
 if __name__ == "__main__":
-    generate()
-
-
+    main()
