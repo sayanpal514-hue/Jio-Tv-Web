@@ -636,6 +636,11 @@ def main():
         try:
             m3u_content = fetch_text(M3U_URL)
             print("[+] Remote M3U fetched successfully.")
+            
+            m3u_path = os.path.join(os.path.dirname(__file__), "jiotv.m3u")
+            with open(m3u_path, "w", encoding="utf-8") as f:
+                f.write(m3u_content)
+            print(f"[+] Saved M3U playlist to {m3u_path}")
         except urllib.error.URLError as e:
             print(f"[!] Remote fetch failed: {e}")
 
