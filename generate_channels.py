@@ -22,20 +22,12 @@ import urllib.error
 # ---------------------------------------------------------------------------
 
 # Remote M3U playlist URL (set to "" to skip and use LOCAL_M3U_PATH instead)
-M3U_URL = "https://raw.githubusercontent.com/sportlive18/Sky-F1/refs/heads/main/jtv.m3u"
+M3U_URL = "https://jiotvplus.dr-strange.workers.dev/api/jiotvplus.m3u"
 
 # Local M3U fallback — set this path if the remote URL is unavailable
 # Example: LOCAL_M3U_PATH = r"d:\Jio Tv +\jiotv.m3u"
 LOCAL_M3U_PATH = ""
 
-# Config for standard channels
-COOKIE_URL = "https://allinonereborn.online/jstrweb2/cookies.json"
-
-# Config for 76 special channels
-COOKIE_JSON_URL_76 = "https://allinonereborn.online/jtv-fetch/jstarcookie/cookie.json"
-
-AD_URL = "https://crn77.com/4/10986573"
-GA_ID = "G-L7VPXZYQPN"
 
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "channel")
 
@@ -152,7 +144,7 @@ def parse_m3u(content: str):
                 pass  # other directive — skip
 
             elif nxt:  # non-empty, non-comment → stream URL
-                stream_url = nxt
+                stream_url = nxt.split("|")[0].strip()
                 j += 1
                 break
 
@@ -597,8 +589,8 @@ DASHBOARD_TEMPLATE = """\
 </head>
 <body>
     <header>
-        <h1>JioTV +</h1>
-        <p style="color: var(--text-dim)">Stream over 1000+ channels instantly</p>
+        <h1>JioTV Mini</h1>
+        <p style="color: var(--text-dim)">Premium channels</p>
     </header>
 
     <div class="search-container">
@@ -651,35 +643,6 @@ def main():
         print("[!] No M3U content available.")
         return
 
-    # --- Fetch Standard Cookie ---
-    print(f"[+] Fetching standard cookie from:\n    {COOKIE_URL}")
-    standard_cookie = ""
-    try:
-        cookies_data = json.loads(fetch_text(COOKIE_URL))
-        for item in cookies_data:
-            if "cookie" in item:
-                standard_cookie = item["cookie"]
-                break
-        print(f"[+] Standard cookie fetched: {standard_cookie[:30]}...")
-    except Exception as e:
-        print(f"[!] Failed to fetch standard cookie: {e}")
-
-    # --- Fetch 76 Special Cookies ---
-    print(f"[+] Fetching special 76 cookies from:\n    {COOKIE_JSON_URL_76}")
-    special_76_cookies = {}
-    try:
-        raw_76 = json.loads(fetch_text(COOKIE_JSON_URL_76))
-        # Each entry has "channel_name" and "final_url" with __hdnea__=...
-        for res in raw_76.get("failed_results", []): 
-            name = res.get("channel_name")
-            url = res.get("error_details", {}).get("final_url", "")
-            if "__hdnea__=" in url:
-                token = url.split("__hdnea__=")[1].split("&")[0]
-                special_76_cookies[name] = "__hdnea__=" + token
-        print(f"[+] Found {len(special_76_cookies)} special cookies.")
-    except Exception as e:
-        print(f"[!] Failed to fetch 76 cookies: {e}")
-
     # --- Parse channels ---
     channels = parse_m3u(m3u_content)
     print(f"[+] Found {len(channels)} channels in M3U")
@@ -693,16 +656,15 @@ def main():
     template = HTML_TEMPLATE_76
 
     for ch in channels:
-        # ONLY process channels that are in the special cookies list
-        if ch["name"] not in special_76_cookies:
-            continue
-
         slug_name = slug(ch["name"])
         filename = slug_name + ".html"
         filepath = os.path.join(OUTPUT_DIR, filename)
 
-        # Pick the right cookie (we know it's in special_76_cookies here)
-        channel_cookie = special_76_cookies[ch["name"]]
+        # Extract cookie from stream_url if present
+        channel_cookie = ""
+        if "__hdnea__=" in ch["stream_url"]:
+            token = ch["stream_url"].split("__hdnea__=")[1].split("&")[0]
+            channel_cookie = "__hdnea__=" + token
         
         html = (
             template
