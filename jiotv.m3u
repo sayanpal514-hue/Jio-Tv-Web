@@ -1,5 +1,5 @@
 #EXTM3U x-tvg-url="https://avkb.short.gy/jioepg.xml.gz"
-#DATE: Saturday, May 23, 2026 at 02:48:08 pm
+#DATE: Saturday, May 23, 2026 at 04:18:44 pm
 
 #EXTINF:-1 tvg-id="Star Sports 2 Hindi HD" tvg-name="Star Sports 2 Hindi HD" group-title="Sports" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/56/36/301229_1760688473714_l_medium.jpg",Star Sports 2 Hindi HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
@@ -289,7 +289,7 @@ https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_1_Telugu_BTS/WDVLive/index.mp
 #EXTINF:-1 tvg-id="Star Sports 2 Tamil HD" tvg-name="Star Sports 2 Tamil HD" group-title="Sports" tvg-language="Tamil" tvg-logo="https://img.media.jio.com/tvpimages/50/43/302120_1753202207980_l_medium.jpg",Star Sports 2 Tamil HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=dc44fe6251825774b90d58dcfa7d94e0:63e3ae853f483a86752b5b9e6d61eb20
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports2_Tamil_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1779507003~exp=1779528603~acl=/bpk-tv/Star_Sports2_Tamil_HD_BTS/WDVLive/*~hmac=d0e63fd48d46091cf875f0b9291a54693b033ceed4bdc4c2ce8d2513fa1a2bfd|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports2_Tamil_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1779525006~exp=1779546606~acl=/bpk-tv/Star_Sports2_Tamil_HD_BTS/WDVLive/*~hmac=5a7fd051ec320cecdfe6358d340a1329e2f6615213d956e51ce835b0bad1856b|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 2 Telugu HD" tvg-name="Star Sports 2 Telugu HD" group-title="Sports" tvg-language="Telugu" tvg-logo="https://img.media.jio.com/tvpimages/84/67/302121_1753185948642_l_medium.jpg",Star Sports 2 Telugu HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
