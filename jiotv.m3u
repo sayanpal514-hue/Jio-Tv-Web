@@ -1,323 +1,323 @@
 #EXTM3U x-tvg-url="https://avkb.short.gy/jioepg.xml.gz"
-#DATE: Friday, May 29, 2026 at 12:06:11 pm
+#DATE: Friday, May 29, 2026 at 04:08:07 pm
 
 #EXTINF:-1 tvg-id="Star Sports 2 Hindi HD" tvg-name="Star Sports 2 Hindi HD" group-title="Sports" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/56/36/301229_1760688473714_l_medium.jpg",Star Sports 2 Hindi HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=bd1ea6a1c1fb5dcdb709434e0826bbc0:f57f22cba32739ce7beb1fab3f3d060b
-https://jiotvpllive.cdn.jio.com/bpk-tv/StarSportsHD2Hin_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/StarSportsHD2Hin_BTS/WDVLive/*~hmac=67c495fd626279c5a00aeb65b1d90b09b1b4d85d84103d755f685b59d3d98051|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/StarSportsHD2Hin_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/StarSportsHD2Hin_BTS/WDVLive/*~hmac=607b1aa1d1f4c68714d368ccee7db1929df71c5f34bbe1cc17e5ff79defafe49|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports Khel" tvg-name="Star Sports Khel" group-title="Sports" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/88/40/301246_1760689455059_l_medium.jpg",Star Sports Khel
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=ab947ddbb9795d38bff35597b4f73108:2671e22eb7dc174c35b6aad4b113f7b0
-https://jiotvpllive.cdn.jio.com/bpk-tv/StarSportsKhel_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/StarSportsKhel_BTS/WDVLive/*~hmac=d7c4c15d524dc8958353d6c62459d02947211423c6404ca5c649bf67af74b229|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/StarSportsKhel_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/StarSportsKhel_BTS/WDVLive/*~hmac=2c529fe8ee19c696a005a5c87ef67dff31d4a1dcf492348145d452e9fd2e80c6|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Gold HD" tvg-name="Star Gold HD" group-title="Movies" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/65/42/301971_1753202660711_l_medium.jpg",Star Gold HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=ec7ad3786d9e5efa9e0c4aeb3e58c7b7:907509ccae7e68b30ae75b5d09fe60ef
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Gold_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Gold_HD_BTS/WDVLive/*~hmac=a7151bb274dc966fd05440f54a719b652d0a9fb2b73c9923c2ced3418751c7e6|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Gold_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Gold_HD_BTS/WDVLive/*~hmac=7d9edae4a29607b51ccba139b3d51c6c0ce174aedd5290a7835df275fe539be0|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Jalsha HD" tvg-name="Star Jalsha HD" group-title="Entertainment" tvg-language="Bengali" tvg-logo="https://img.media.jio.com/tvpimages/13/28/301972_1753203984227_l_medium.jpg",Star Jalsha HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=7810c0264da15a62b200a3254d041aed:cb1e3bcfcdb1281b85625b12dae6de43
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Jalsha_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Jalsha_HD_BTS/WDVLive/*~hmac=7f0625e1cc9f9320a0bf74ae682c67a45e5bb711fa0fb23feccb838b5ba596c7|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Jalsha_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Jalsha_HD_BTS/WDVLive/*~hmac=e59a90b72db883376a72796d80409dab0ddd84c2b7462ff631e267b1647d3f08|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Suvarna HD" tvg-name="Star Suvarna HD" group-title="Entertainment" tvg-language="Kannada" tvg-logo="https://img.media.jio.com/tvpimages/81/94/301974_1753190228953_l_medium.jpg",Star Suvarna HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=9065757e265f5f53a8f06a9c9c931d02:6fd7b25773ad2f9641ab5f65a1b18e42
-https://jiotvpllive.cdn.jio.com/bpk-tv/Suvarna_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Suvarna_HD_BTS/WDVLive/*~hmac=0640c34d607a69c6f030cbaf28d7f476d88b32a8da8f62b625c88760c560791e|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Suvarna_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Suvarna_HD_BTS/WDVLive/*~hmac=5168959b9b81c20bf8c7426afe761d48d97b5e7ae15be6cd0201acff19763acc|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Maa Movies HD" tvg-name="Star Maa Movies HD" group-title="Movies" tvg-language="Telugu" tvg-logo="https://img.media.jio.com/tvpimages/84/38/301978_1749652834239_l_medium.jpg",Star Maa Movies HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=6dff9a2c741754c1b75312c53bc83d92:b75a65f46065ee70de75a88fed692846
-https://jiotvpllive.cdn.jio.com/bpk-tv/Maa_Movies_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Maa_Movies_HD_BTS/WDVLive/*~hmac=ed6bbe3fec514e6dfd351efac26002d735fc181d9c194610ce22a61d1c792a4f|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Maa_Movies_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Maa_Movies_HD_BTS/WDVLive/*~hmac=4008f0b6a7b1ef5791e5edb0767b38f023183be74b9f510e9d3dd6f3c16b69aa|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Movies HD" tvg-name="Star Movies HD" group-title="Movies" tvg-language="English" tvg-logo="https://img.media.jio.com/tvpimages/57/79/301980_1753202724101_l_medium.jpg",Star Movies HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=6ac6943751e558b181da32727f03dff7:f36e5cd48252bcd0fcda2bfe21f5b365
-https://jiotvpllive.cdn.jio.com/bpk-tv/StarMoviesHD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/StarMoviesHD_BTS/WDVLive/*~hmac=3f5f1cb082a3eb7033ac8ef9349909e703de1faa85052c59d46e2f7199044f7e|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/StarMoviesHD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/StarMoviesHD_BTS/WDVLive/*~hmac=d638b4e7a5d2ed2d692d80cebdf5dbe588bd92711a3ca47aebdfa67ced3b809c|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 1 HD" tvg-name="Star Sports 1 HD" group-title="Sports" tvg-language="English" tvg-logo="https://img.media.jio.com/tvpimages/76/32/301981_1749665664018_l_medium.jpg",Star Sports 1 HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=965dc2ddb1d85138ad787999a7f30ca5:859695076e67fe961836b564db6d689c
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_HD1_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports_HD1_BTS/WDVLive/*~hmac=b563e84b20cc3bca668b2b3b12c627cd836da7fef7a72d5ca312d68a0cb8eb0b|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_HD1_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports_HD1_BTS/WDVLive/*~hmac=9ecfc12dc2c861db6b650d19d318316e84b381aab8653350b6aa9e7868312206|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 1 Hindi HD" tvg-name="Star Sports 1 Hindi HD" group-title="Sports" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/5/6/301982_1760005839122_l_medium.jpg",Star Sports 1 Hindi HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=400131994b445d8c8817202248760fda:2d56cb6f07a75b9aff165d534ae2bfc4
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_HD1_Hindi_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports_HD1_Hindi_BTS/WDVLive/*~hmac=7a23fa77bfc1c50ebd6bf7cfd9c11ebf0ce1e2ee3edd0f13cb15321bf1713a78|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_HD1_Hindi_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports_HD1_Hindi_BTS/WDVLive/*~hmac=e9deb30df00e224cbf0bce98b472dd129932f4f3a7fb0b7f777f690eaea6ff9e|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 2 HD" tvg-name="Star Sports 2 HD" group-title="Sports" tvg-language="English" tvg-logo="https://img.media.jio.com/tvpimages/41/51/301983_1768757796137_l_medium.jpg",Star Sports 2 HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=9457eb90129456fa8ea95e10ba4ac51e:e620a970cea474c491ac78ae71a4d764
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_HD2_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports_HD2_BTS/WDVLive/*~hmac=30dec0506a116f409f8facf38f52fd6f7f3cc416cda3997e04d2dfdcc2eb3f40|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_HD2_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports_HD2_BTS/WDVLive/*~hmac=d52afae99660b5ee83c7081b25ba3699484160e38ff82f065b45d114045e59a0|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Movies Select HD" tvg-name="Star Movies Select HD" group-title="Movies" tvg-language="English" tvg-logo="https://img.media.jio.com/tvpimages/79/1/301984_1753202771128_l_medium.jpg",Star Movies Select HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=b55393cd147a54debaf2b0f2d82b5d9f:6b168db49241a78c1b423ab9a29409ef
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Movies_Select_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Movies_Select_HD_BTS/WDVLive/*~hmac=ccc98aa3e633ee014e5d9a098a82b7f84a1644c43539b5662464e94cfc516b9f|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Movies_Select_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Movies_Select_HD_BTS/WDVLive/*~hmac=6493824c34bd0a5f56cdae4864b6468bc66f9c223bc3b48a2a1b4fbef52e3859|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Maa Movies" tvg-name="Star Maa Movies" group-title="Movies" tvg-language="Telugu" tvg-logo="https://img.media.jio.com/tvpimages/39/9/301985_1749652884224_l_medium.jpg",Star Maa Movies
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=f4c022053f355b4b9dca0093463d7ba0:9f06388c48bfb94cff9797e25847d1d1
-https://jiotvpllive.cdn.jio.com/bpk-tv/Maa_Movies_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Maa_Movies_BTS/WDVLive/*~hmac=9951e1ae60803993d7376300d1dbf5244c82042eda855465f8bfe21b6f04e572|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Maa_Movies_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Maa_Movies_BTS/WDVLive/*~hmac=ab64b5b0e1ecc8c763724ba8868aa50d2cb8b0c6b49dca47a521a33f1e3a2100|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Maa HD" tvg-name="Star Maa HD" group-title="Entertainment" tvg-language="Telugu" tvg-logo="https://img.media.jio.com/tvpimages/61/7/301986_1749652712205_l_medium.jpg",Star Maa HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=6c4b78251e865fc2a23a000374c8e725:983ecd2ffe60cdcf2e5e76ae229a5cb8
-https://jiotvpllive.cdn.jio.com/bpk-tv/Maa_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Maa_HD_BTS/WDVLive/*~hmac=f8981cb9961fd713d4a62a71d14359b75484fcd02955ead006261b0ddb94ef93|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Maa_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Maa_HD_BTS/WDVLive/*~hmac=05e34d1175b611c7575bc2e2d06809db49d673e8ebdb882bcf8c4932edd7f34a|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Gold Select HD" tvg-name="Star Gold Select HD" group-title="Movies" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/90/90/301988_1753204123581_l_medium.jpg",Star Gold Select HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=2cb38dd5e6235bd9936ad7a29bc7ffd8:281d7b329be4e22d4e0e3e1d508ba2a4
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Gold_Select_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Gold_Select_HD_BTS/WDVLive/*~hmac=2a3f9a75e8adcbe04b75acf57dc5a6f6c5dc4438a50d6beed1c10d7dfab7227b|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Gold_Select_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Gold_Select_HD_BTS/WDVLive/*~hmac=be4e144b64d32249747409be3294f1e25f545555dc445ebd5992d71f719a7dcf|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports Select 2" tvg-name="Star Sports Select 2" group-title="Sports" tvg-language="English" tvg-logo="https://img.media.jio.com/tvpimages/98/48/301989_1749664475828_l_medium.jpg",Star Sports Select 2
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=ec7d009d07aa5cbc81a441880530dfa5:8147983ad7402ebfc222d28b667a196f
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_Select_2_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports_Select_2_BTS/WDVLive/*~hmac=733b74e8d2583b0f33bc2e758c56447ec00977be5f7ac6ddb1e889a6fbcda87a|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_Select_2_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports_Select_2_BTS/WDVLive/*~hmac=3ce912fb1f53a8ade022971a098d0798f14c3b356e1eec3a404a14c021bdbf72|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Movies" tvg-name="Star Movies" group-title="Movies" tvg-language="English" tvg-logo="https://img.media.jio.com/tvpimages/30/15/301990_1753204237734_l_medium.jpg",Star Movies
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=e705c9330a935a119021d97c7677ce62:dd306a57de1715b0e1256d5c1737f485
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Movies_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Movies_BTS/WDVLive/*~hmac=6c3404ce1aedf7b70416c738ccf0dcc1bb1fd5f888fd804af74fee639dc5f938|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Movies_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Movies_BTS/WDVLive/*~hmac=5b1df2669ef6125dbb2d350a7211b8e5728a9a31adfbfc9ef775f7775d26bab0|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 2 Kannada" tvg-name="Star Sports 2 Kannada" group-title="Sports" tvg-language="Kannada" tvg-logo="https://img.media.jio.com/tvpimages/11/37/301993_1753188280006_l_medium.jpg",Star Sports 2 Kannada
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=7af2add2968a56309519ac2680c18f25:f992a14e0def17ccdfe16f58c4ce56c5
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_2_Kannada_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports_2_Kannada_BTS/WDVLive/*~hmac=7a22b84912cf370bfced7f16903d15bb711e9ee759f80e0597d35c53f826b636|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_2_Kannada_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports_2_Kannada_BTS/WDVLive/*~hmac=40046bacd93a2b273079175abd588375940bbca4d0b77c1acc9d85ac81724ffe|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports Select 1" tvg-name="Star Sports Select 1" group-title="Sports" tvg-language="English" tvg-logo="https://img.media.jio.com/tvpimages/13/82/301994_1753199406885_l_medium.jpg",Star Sports Select 1
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=ea7985dacbb95f1c9d62e5a1675142e5:39d5910ca04841b5f32bf24623cdae58
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_Select_1_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports_Select_1_BTS/WDVLive/*~hmac=7d06855d9462e96a059027e6b79c76195ebb9c83bceb3e94dd549a756e7bde49|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_Select_1_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports_Select_1_BTS/WDVLive/*~hmac=8bc830b325a3f435820453d2fac963e06970a5a0cc234a1436bf9a83cb69668b|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 1 Tamil" tvg-name="Star Sports 1 Tamil" group-title="Sports" tvg-language="Tamil" tvg-logo="https://img.media.jio.com/tvpimages/69/73/301995_1753199517868_l_medium.jpg",Star Sports 1 Tamil
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=d0d750ebd52b5756aa7fb833f61ceece:4ae62a20c030c918aad24193c1dda229
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_1_Tamil_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports_1_Tamil_BTS/WDVLive/*~hmac=c4cbfa51fcec4ede820f8029252767ed2e00d4fbe13de70c7153e5d90e2cab2f|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_1_Tamil_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports_1_Tamil_BTS/WDVLive/*~hmac=f50533f6df043689f7ebcebfa2a2bfdbab7a50b7dd8003f9e3a13db13a4194f4|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Maa Music" tvg-name="Star Maa Music" group-title="Music" tvg-language="Telugu" tvg-logo="https://img.media.jio.com/tvpimages/80/40/301996_1753183284182_l_medium.jpg",Star Maa Music
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=80cfb1a6a4b251dd9b9ae92782a35917:b4cd88f5d71fe94993dd3476cdd63f33
-https://jiotvpllive.cdn.jio.com/bpk-tv/Maa_Music_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Maa_Music_BTS/WDVLive/*~hmac=fa5356f3e05fe69277c4f88738988f342c814a165c2d2290e6a038e8b9ac6244|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Maa_Music_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Maa_Music_BTS/WDVLive/*~hmac=e5d7713129d0db8d560067a45050c97b1d5bf21adcf6c6e60b44df263478a4e2|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Plus HD" tvg-name="Star Plus HD" group-title="Entertainment" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/79/39/301998_1753187048300_l_medium.jpg",Star Plus HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=6f7b7241b2935a909d389fe318e5baaa:65783311644973348f359dc154bb41db
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Plus_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Plus_HD_BTS/WDVLive/*~hmac=655f205448f5072368c32cf9a6c9da3a6dbf6c161fa24f4f3bcf0c08253c949c|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Plus_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Plus_HD_BTS/WDVLive/*~hmac=038faebf56ad4af18e5ea92452e99d65f81b82cff09dc158aa9b3eba26d85b84|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Utsav Movies" tvg-name="Star Utsav Movies" group-title="Movies" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/59/51/302000_1753204345248_l_medium.jpg",Star Utsav Movies
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=1faf9c42dfe45669a70c470359886145:5a229a5f6f270c880b24014bf3cd6ee7
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Utsav_Movies_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Utsav_Movies_BTS/WDVLive/*~hmac=46ab8c51a68ea1387b7a9b18bee5ce21d738ae20a6ce398a0710112262a25fd8|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Utsav_Movies_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Utsav_Movies_BTS/WDVLive/*~hmac=7f4926a5d2c1a07830a9b6a59412139f92690a930ffcf446685f3790a9fbbf88|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Maa Gold" tvg-name="Star Maa Gold" group-title="Movies" tvg-language="Telugu" tvg-logo="https://img.media.jio.com/tvpimages/92/8/302001_1753187715915_l_medium.jpg",Star Maa Gold
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=516d26778a21587484208637d89ff773:77599313595e70e5903151b0592ffa15
-https://jiotvpllive.cdn.jio.com/bpk-tv/Maa_Gold_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Maa_Gold_BTS/WDVLive/*~hmac=fe028fae0aabdfc8deff7428d3b6372020bcd6e95e1d084343411710f07d216e|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Maa_Gold_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Maa_Gold_BTS/WDVLive/*~hmac=6812d5bd32ee47c998f84b1653411e80eb010e3e4c7512d9533523aa2a8be3b5|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Disney" tvg-name="Disney" group-title="Kids" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/1/35/302071_1753185243638_l_medium.jpg",Disney
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=5181d3e6698055578cedc5bfc86b3e56:3dca7917d8cf9bb7095dc72b48bdcd3c
-https://jiotvpllive.cdn.jio.com/bpk-tv/Disney_Channel_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Disney_Channel_BTS/WDVLive/*~hmac=a2da972e2b9c6e102c08d54583d60cc8c9029ab1ae94963b3dd1edc192233d97|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Disney_Channel_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Disney_Channel_BTS/WDVLive/*~hmac=afec610e115b513b5562f28284df88f6cc4b335933785b224a1515e20fbd1f78|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Hungama TV" tvg-name="Hungama TV" group-title="Kids" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/86/46/302072_1753187422934_l_medium.jpg",Hungama TV
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=454f8353caac500d95d641e0c7cfe048:0aaca46ea0f5096335598781fbe590e4
-https://jiotvpllive.cdn.jio.com/bpk-tv/Hungama_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Hungama_BTS/WDVLive/*~hmac=6c40c8ab83942b1d8ba3b04dde0e658fca93cd114b4b0663015397d5d10fcf22|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Hungama_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Hungama_BTS/WDVLive/*~hmac=e84ac5e110e655f88639c4c18609d04bcb979f037ca5d135f00cc80d6f9af796|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Disney Junior" tvg-name="Disney Junior" group-title="Kids" tvg-language="English" tvg-logo="https://img.media.jio.com/tvpimages/42/95/302074_1749651922595_l_medium.jpg",Disney Junior
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=1b1f9702f7d853c1b198495f64924311:40e11e60a12dd6c154dfea0ffbd5bda8
-https://jiotvpllive.cdn.jio.com/bpk-tv/Disney_Junior_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Disney_Junior_BTS/WDVLive/*~hmac=df29f4a0ba1ee370e2e42b06a889bfaed7061a61e56b3c054f1577adfe0dddad|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Disney_Junior_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Disney_Junior_BTS/WDVLive/*~hmac=69da1e62919745fb10d7c05fbf6e724fe76c733c1fa91378807d8eb28a37f1b2|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Gold 2" tvg-name="Star Gold 2" group-title="Movies" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/87/52/302077_1753204067118_l_medium.jpg",Star Gold 2
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=2db0cd9cb0685309b48e322c83192bda:e13bf7a33eb2e19a8f19568dd383ba6d
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Gold_2_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Gold_2_BTS/WDVLive/*~hmac=543471b350ae16c2a71b64d5d6c0045e60ce956127cea400efffcc868a42a738|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Gold_2_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Gold_2_BTS/WDVLive/*~hmac=b165626510b7e7abf847860e48dc3c5d1f03ac6673678867b66a103bbded2d9f|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Gold Select" tvg-name="Star Gold Select" group-title="Movies" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/81/53/302078_1753204173796_l_medium.jpg",Star Gold Select
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=09706397be655eb6a26c6ba99b65e6d5:acb1ebe04e2a29fe098d532d7a506846
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Gold_Select_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Gold_Select_BTS/WDVLive/*~hmac=94ac8e6b4a3bcc592309e21c34e7ec2cc015803f09f652bfe3405344ca2b375a|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Gold_Select_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Gold_Select_BTS/WDVLive/*~hmac=06a043b3cdffd3d677985d88717d68de516efa18942ef69a7ecafe02917cea1c|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Super Hungama" tvg-name="Super Hungama" group-title="Kids" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/49/37/302079_1753198865170_l_medium.jpg",Super Hungama
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=7a450f0820c4589690eb336c29f18da6:820e84119563b56d6e6f0bf514cbdc3c
-https://jiotvpllive.cdn.jio.com/bpk-tv/Super_Hungama_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Super_Hungama_BTS/WDVLive/*~hmac=d3010f671267f1821137df775e4136acc6fdc85a72ce1158c0f6fd4e0f2f15ae|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Super_Hungama_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Super_Hungama_BTS/WDVLive/*~hmac=068fae72225c01d6688b7510dce8ff2e4b2e6cf35b7e205b61f085bba337cdea|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Suvarna" tvg-name="Star Suvarna" group-title="Entertainment" tvg-language="Kannada" tvg-logo="https://img.media.jio.com/tvpimages/87/78/302080_1753202974933_l_medium.jpg",Star Suvarna
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=fc71d871cbf45818a5b3eb3652d75387:added6a0df4d0eab8758b0ed9f54ecf2
-https://jiotvpllive.cdn.jio.com/bpk-tv/Suvarna_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Suvarna_BTS/WDVLive/*~hmac=1ee09e7e21f5bfc9b50bf87010e35fe8379aa9898bf6a4753f41f2f482289a0a|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Suvarna_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Suvarna_BTS/WDVLive/*~hmac=d279cf8b97529b798362897b55c19bf1ac288c379778b3cf9b795d478e1ceba3|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Suvarna Plus" tvg-name="Star Suvarna Plus" group-title="Movies" tvg-language="Kannada" tvg-logo="https://img.media.jio.com/tvpimages/82/94/302081_1753202838405_l_medium.jpg",Star Suvarna Plus
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=843e1658f5915fdda0a5ecc5bd3dd726:88f0fd96990a66b1307094eaf4998119
-https://jiotvpllive.cdn.jio.com/bpk-tv/Suvarna_Plus_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Suvarna_Plus_BTS/WDVLive/*~hmac=045b2577fbe933254ab4e99c355d52e6653d9eb05aab33687dfeb446b6ed447e|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Suvarna_Plus_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Suvarna_Plus_BTS/WDVLive/*~hmac=769a89e2f84b8749658fb0b8a1b269849cdba92a5e1da1e9d60a5407e4853c4b|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Bharat" tvg-name="Star Bharat" group-title="Entertainment" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/49/44/302082_1753203942225_l_medium.jpg",Star Bharat
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=687cfa6d31645a91ba3c38a9acdfac7c:c035ca584ac0a2170b96e2fa4523f3be
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Bharat_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Bharat_BTS/WDVLive/*~hmac=6da2a20d8ce33df1b1e4900b6b2a0cd947a7f87dd4876f74c3cdca7b69281127|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Bharat_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Bharat_BTS/WDVLive/*~hmac=0756d75554d0e68ef1d30fa2029bdbfc3ce2fa74bdba14dbdb8a24415a9704cd|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Gold" tvg-name="Star Gold" group-title="Movies" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/11/79/302083_1753198669731_l_medium.jpg",Star Gold
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=940a0a4080f553cab03ec23a2e80cf7c:b162354170b54cb588182eb75681cac0
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Gold_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Gold_BTS/WDVLive/*~hmac=b4e77c6f710ec7a8a1bd62c36daf95bf4b8b9275dbf6c26b84a11c8a8304e1e5|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Gold_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Gold_BTS/WDVLive/*~hmac=11a32b116c57c7c74dbff61fbd24d3e7bad2a4fa0fa18a20ca0d2326e33487ec|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Plus" tvg-name="Star Plus" group-title="Entertainment" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/66/40/302084_1753189751700_l_medium.jpg",Star Plus
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=3bba2ffaf08b501796c5d9eb431460a4:7a62074c4c46f3b153259526481c02bf
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Plus_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Plus_BTS/WDVLive/*~hmac=fe30d9198ac653b72fae2d254afd57b79f7a0c85ce7ca1773b9686e3c43ccfdf|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Plus_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Plus_BTS/WDVLive/*~hmac=d7a4f4e36b1d1bc79cf78284aead0edca46b979fcaf9f9ef8959de0a8ab052db|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Vijay HD" tvg-name="Star Vijay HD" group-title="Entertainment" tvg-language="Tamil" tvg-logo="https://img.media.jio.com/tvpimages/41/51/302085_1768758078020_l_medium.jpg",Star Vijay HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=849d6b062b645abea937ec7f2b6b1686:1f65503420b88d11a16d4a4eacd95f0f
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Vijay_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Vijay_HD_BTS/WDVLive/*~hmac=729fd97d9c0e1f87e87e9427109a0d45646cfae2b146a200510a0556085dc9a3|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Vijay_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Vijay_HD_BTS/WDVLive/*~hmac=e3b5eefd689a0f79e847b509cbda6c736bba9771f34ce136ee0ea99496340013|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="STAR Utsav" tvg-name="STAR Utsav" group-title="Entertainment" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/34/40/302086_1753186825930_l_medium.jpg",STAR Utsav
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=63456f11b1bf599a93a6a4b9a76db2bf:b47756e4d8fb938dcbcb72d6d877fbc3
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Utsav_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Utsav_BTS/WDVLive/*~hmac=9dc4b6376fc9584ffeef09ef7e3aeafa59cccca2652bbd23eb317aef66534093|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Utsav_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Utsav_BTS/WDVLive/*~hmac=94d72ac00ad748d5774619757e48f8aa7e72ef635074cd213a45599d20263143|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Bharat HD" tvg-name="Star Bharat HD" group-title="Entertainment" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/60/42/302087_1753199815856_l_medium.jpg",Star Bharat HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=701524f373c55b2785ac49aab0bdc4a6:9de42eedb40f6c243848eb8aa8103e32
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Bharat_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Bharat_HD_BTS/WDVLive/*~hmac=2b1de8e15df0809310db2a80836e2c945714294844d5120e3a1348abbef67fe2|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Bharat_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Bharat_HD_BTS/WDVLive/*~hmac=44270d25b693c210b0ec07c5ff564f2b5d6e017c5935b52c6c4a85e8ad305ac0|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Disney International HD" tvg-name="Disney International HD" group-title="Entertainment" tvg-language="English" tvg-logo="https://img.media.jio.com/tvpimages/21/80/302088_1753191194063_l_medium.jpg",Disney International HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=d0e021aa91c65e68a7028c2a6a762eca:d50822403365e360d12840251cecee84
-https://jiotvpllive.cdn.jio.com/bpk-tv/Disney_International_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Disney_International_HD_BTS/WDVLive/*~hmac=ca2f31783c85afa4fd31965cd35e511fd91848d1cffcba1a680dd8d9c16a1c90|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Disney_International_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Disney_International_HD_BTS/WDVLive/*~hmac=34348355fee3224129587c294aa6077318afd9a84dfc345fc8abb787361ff54d|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Pravah" tvg-name="Star Pravah" group-title="Entertainment" tvg-language="Marathi" tvg-logo="https://img.media.jio.com/tvpimages/80/61/302090_1753198757881_l_medium.jpg",Star Pravah
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=3fb941b7c6fe54fb8f66b19804eff952:c1b742ed7b6d4eca1c6bdcb9041d9b80
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Pravah_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Pravah_BTS/WDVLive/*~hmac=f15a1455caf5b305a344910b9dfd9cbcbd417365d80fcee28f466971f09920a8|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Pravah_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Pravah_BTS/WDVLive/*~hmac=9abe6f1d708e5a5ed479d62f7c42becf93af64319ac19680711675e14b765032|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Pravah HD" tvg-name="Star Pravah HD" group-title="Entertainment" tvg-language="Marathi" tvg-logo="https://img.media.jio.com/tvpimages/32/30/302091_1753204309224_l_medium.jpg",Star Pravah HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=ac5fe0f7b01659a9aba3475523f71ae1:b2e3f3af283a309e24eabe6b8681282e
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Pravah_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Pravah_HD_BTS/WDVLive/*~hmac=79d2e23d39579932f5fcce92d8e4de1a81d2297b7fd8897ef84b5784db22faa9|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Pravah_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Pravah_HD_BTS/WDVLive/*~hmac=20310c2b817fb40b0afa219e8f1917f4c6a13d6b7ddead519fe7ba67263af4fd|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Vijay" tvg-name="Star Vijay" group-title="Entertainment" tvg-language="Tamil" tvg-logo="https://img.media.jio.com/tvpimages/1/40/302093_1753203140323_l_medium.jpg",Star Vijay
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=c5f2861efbc7552ba802dcae4e160359:4ea32867828280a4d6f36ea8fbbe38eb
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Vijay_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Vijay_BTS/WDVLive/*~hmac=9ccae312f262d83c901a01a004d2a17d7e3faa1b2f7f6f8abbd3ddc956139147|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Vijay_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Vijay_BTS/WDVLive/*~hmac=97ffe588548355d368fb1950c5d50e8388e81c6ea9ee2311fd079dda241797fd|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Pravah Pictures HD" tvg-name="Star Pravah Pictures HD" group-title="Movies" tvg-language="Marathi" tvg-logo="https://img.media.jio.com/tvpimages/48/78/302094_1753185803940_l_medium.jpg",Star Pravah Pictures HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=71f9041eea4954e6acf66f0c50d5ebf9:98148dde17f872774f443297745df456
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Pravah_Picture_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Pravah_Picture_HD_BTS/WDVLive/*~hmac=e8bc516a92477b778123e1489271bc5b4754f9cbdc30a93bf95a9a75a8b3dde9|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Pravah_Picture_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Pravah_Picture_HD_BTS/WDVLive/*~hmac=75f6f4738e5b9c675f95c4a61547abe19710dcecdfc5f2b1292f61724d79f599|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Kiran" tvg-name="Star Kiran" group-title="Entertainment" tvg-language="Odia" tvg-logo="https://img.media.jio.com/tvpimages/90/89/302097_1753202438759_l_medium.jpg",Star Kiran
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=e705c9330a935a119021d97c7677ce62:dd306a57de1715b0e1256d5c1737f485
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Kiran_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Kiran_BTS/WDVLive/*~hmac=b2e4500388eb34579594a14045abb41b1a561270c1d9629486efa36126e37961|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Kiran_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Kiran_BTS/WDVLive/*~hmac=0ea1430eb0bdf7014a3ea4ca30cf1eec5b8f0acc2d442235e79d391b40f40c00|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Jalsha" tvg-name="Star Jalsha" group-title="Entertainment" tvg-language="Bengali" tvg-logo="https://img.media.jio.com/tvpimages/78/46/302100_1753189580244_l_medium.jpg",Star Jalsha
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=9d4fac613fa6505c8f4c34269bad472a:4eb0380c9f3d517db1eeaa768a3e23ac
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Jalsha_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Jalsha_BTS/WDVLive/*~hmac=054cede26793bb351ac53b7db53af14e25f4e9742085149b8bc298a1090f98c5|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Jalsha_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Jalsha_BTS/WDVLive/*~hmac=e33269a9257ee271f3be2b6ba3ba6ca0a5e9a3245abbc01850cef920634f95a6|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Gold Romance" tvg-name="Star Gold Romance" group-title="Movies" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/26/56/302103_1753186907075_l_medium.jpg",Star Gold Romance
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=ee6e9f18a6c155e3855700b34fa8436f:b670c81b0e4f7f19f1fbeac0eaa7fba8
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Gold_Romance_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Gold_Romance_BTS/WDVLive/*~hmac=bb2509f6b5bbbc7fba2ba020c1fa5293d905ec972d9f97294b53069812018597|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Gold_Romance_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Gold_Romance_BTS/WDVLive/*~hmac=b00624399778312d544f57e02c3a47548d51868937ed3e53ba00886ab9b57929|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Gold 2 HD" tvg-name="Star Gold 2 HD" group-title="Movies" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/73/72/302104_1753204022975_l_medium.jpg",Star Gold 2 HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=e6afa4754bc15dd28ab6806f417d319d:6a74ef2884813547109ee96098610387
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Gold_2_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Gold_2_HD_BTS/WDVLive/*~hmac=6265221f5f83de61045793469981c57da2751ff936f316b60bf0d07dd6f3893c|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Gold_2_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Gold_2_HD_BTS/WDVLive/*~hmac=22fe282c2466be84c0132deebd5aa363706a7cffd3d1f71d00d5bcc7be6331d7|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Movies Select" tvg-name="Star Movies Select" group-title="Movies" tvg-language="English" tvg-logo="https://img.media.jio.com/tvpimages/73/98/302106_1753204271264_l_medium.jpg",Star Movies Select
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=4b7d579e28d45041ba78c3a92f0acc92:fbf33acfca489b1354955cbfb09570b5
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Movies_Select_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Movies_Select_BTS/WDVLive/*~hmac=4989a3af5e3eeaeb1062beaeb1f1f3e39d1be3588e3a3ad29d25df8d67d6aa1b|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Movies_Select_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Movies_Select_BTS/WDVLive/*~hmac=0bf93fc00ff38af88fe8b93d443aa426e75b034a8f2430026b6dea0334d90515|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Gold Thrills" tvg-name="Star Gold Thrills" group-title="Movies" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/0/16/302108_1753186948065_l_medium.jpg",Star Gold Thrills
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=189ccd629ff25ec1adc2e34d49b186eb:fd102ddbd3844b55b70c6aa23dbd212b
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Gold_Thrills_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Gold_Thrills_BTS/WDVLive/*~hmac=817feae773fe8065af66deaee1488d53b3fd3744f02ab1b93965e57d44e1f6d8|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Gold_Thrills_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Gold_Thrills_BTS/WDVLive/*~hmac=ab0c2257ea3f3a6dd1ece5253161b05fe4347169e6eed3d7d851cdfcb8ea1578|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Maa" tvg-name="Star Maa" group-title="Entertainment" tvg-language="Telugu" tvg-logo="https://img.media.jio.com/tvpimages/93/74/302110_1749653065828_l_medium.jpg",Star Maa
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=6744a252854352acbfe40413a14fca0f:1de605f98df36a7417eff631e1a0966a
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Maa_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Maa_BTS/WDVLive/*~hmac=628da9122c03627e24957d8e042c5c101a0d059d804222815f173e01685abbbc|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Maa_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Maa_BTS/WDVLive/*~hmac=90846b0f8e2abb8d6571b74859a71d048b7c1c3ed9a3c4131c5f54a94efde812|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 1 Hindi" tvg-name="Star Sports 1 Hindi" group-title="Sports" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/13/81/302112_1753186301051_l_medium.jpg",Star Sports 1 Hindi
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=8ea9b607549252068e260a5f4d7dd321:350c0aaffedf51cc1502e9543c7c885e
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_1_Hindi_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports_1_Hindi_BTS/WDVLive/*~hmac=d41a4bc2d0318d673aa4d9e62005adeb165b07d78c6b261b63f1a9a6770a5b47|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_1_Hindi_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports_1_Hindi_BTS/WDVLive/*~hmac=ff6681fe3dad5003cb382ea9563790f8b0862a980bb1c565413f10fdacd2be62|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports Select 1 HD" tvg-name="Star Sports Select 1 HD" group-title="Sports" tvg-language="English" tvg-logo="https://img.media.jio.com/tvpimages/96/65/302113_1753203781039_l_medium.jpg",Star Sports Select 1 HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=c2c048e439d65316beeda6ef64d5d0f8:e2fdc132cbdee65501b845ce414fce39
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_Select_HD_1_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports_Select_HD_1_BTS/WDVLive/*~hmac=50361d1c6f631da1df32994fe098e2c4ed3aac5d2623962d665a1c07ff5ab360|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_Select_HD_1_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports_Select_HD_1_BTS/WDVLive/*~hmac=a190c176c3a18d6d0b72ac837c2f38f47e0e0a1c02118ae6da55ace68fedbe99|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports Select 2 HD" tvg-name="Star Sports Select 2 HD" group-title="Sports" tvg-language="English" tvg-logo="https://img.media.jio.com/tvpimages/98/79/302114_1763719750811_l_medium.jpg",Star Sports Select 2 HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=6017d0514d425fa38f6e80ba6dcc852f:0018944b00adf2078f62386f30c68b74
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_Select_HD_2_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports_Select_HD_2_BTS/WDVLive/*~hmac=e3e672b581db861b4d64d8bcfe994427a4c8d7bb305c1c3749a17ebf637ed20a|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_Select_HD_2_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports_Select_HD_2_BTS/WDVLive/*~hmac=f9b9e9d8ce5f1ce39fe886e36e358c1b4a370c0051e4c387732b01c30f1b6035|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 1" tvg-name="Star Sports 1" group-title="Sports" tvg-language="English" tvg-logo="https://img.media.jio.com/tvpimages/56/92/302115_1753188405640_l_medium.jpg",Star Sports 1
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=df20894ec30954d3b28097c138f4cfda:ff9b6292b1cddbd11a046029cb314634
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_1_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports_1_BTS/WDVLive/*~hmac=e265de76661f52485c34ec5442d80b2f4a12acb85de7b1238172883a7750b7f1|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_1_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports_1_BTS/WDVLive/*~hmac=3ada4319f37bcb0ef73df48576e6db2d31f57b4decba9c71c9f88fe0dce25917|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 2" tvg-name="Star Sports 2" group-title="Sports" tvg-language="English" tvg-logo="https://img.media.jio.com/tvpimages/11/30/302116_1753202249350_l_medium.jpg",Star Sports 2
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=fc3aafe80845584199a637249fad2ffa:ca4474972fdb4bf8ecb164482853c692
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_2_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports_2_BTS/WDVLive/*~hmac=f19418c28a5e0744048673df82073a1291e8ef67e4742aaadd35ff9be5e3e0ba|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_2_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports_2_BTS/WDVLive/*~hmac=7a29915e8372d7e333b2da14c70fd95b37e05a15e38dc359e46bc0cb4fd1fbbb|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 3" tvg-name="Star Sports 3" group-title="Sports" tvg-language="English" tvg-logo="https://img.media.jio.com/tvpimages/78/2/302117_1753186010525_l_medium.jpg",Star Sports 3
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=e4e8647eaf0659ac85f61765a5abcdc1:d749c9b27505beb0e1a8b6c30ca65de6
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_3_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports_3_BTS/WDVLive/*~hmac=0717af68ac7f4f9e617567f2e7f137598a85d6c62dc1effb432e713ead1cf0a1|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_3_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports_3_BTS/WDVLive/*~hmac=6023406bfcc7bbe6bda43a03b756fcf5f0b1a88fb714b1cc3931354df59c67df|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 1 Kannada" tvg-name="Star Sports 1 Kannada" group-title="Sports" tvg-language="Kannada" tvg-logo="https://img.media.jio.com/tvpimages/13/91/302118_1753188136273_l_medium.jpg",Star Sports 1 Kannada
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=9a6d058fa40b5460a946178900eb44cb:791d7444110cec32d731ca0c33ac6c15
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_1_Kannada_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports_1_Kannada_BTS/WDVLive/*~hmac=09de51d75dd248e3f378d4d49415bd95559dc3235c448d7310f14b2fba8fa937|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_1_Kannada_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports_1_Kannada_BTS/WDVLive/*~hmac=ce7c742d9457db32d9a6f697aeef294b0cb8cfcc596b21a689ba6ff6f7cfc7f8|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 1 Telugu" tvg-name="Star Sports 1 Telugu" group-title="Sports" tvg-language="Telugu" tvg-logo="https://img.media.jio.com/tvpimages/26/67/302119_1753202588449_l_medium.jpg",Star Sports 1 Telugu
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=200a6dd89c6b5a48b9991d8ab57fc7d2:1f62834669a97e92ea1f3263274853fc
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_1_Telugu_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports_1_Telugu_BTS/WDVLive/*~hmac=6162b39d95639879824f63e1a34380746bddd081ac711455791bb845697bc36d|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_1_Telugu_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports_1_Telugu_BTS/WDVLive/*~hmac=e233b5b29cac3ec719231da49b0034ee349c50952a7e252d19765b019b1b2749|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 2 Tamil HD" tvg-name="Star Sports 2 Tamil HD" group-title="Sports" tvg-language="Tamil" tvg-logo="https://img.media.jio.com/tvpimages/50/43/302120_1753202207980_l_medium.jpg",Star Sports 2 Tamil HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=dc44fe6251825774b90d58dcfa7d94e0:63e3ae853f483a86752b5b9e6d61eb20
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports2_Tamil_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports2_Tamil_HD_BTS/WDVLive/*~hmac=0227b701bc19eeffe0fea6798cd7d597cb4911f7736edd6dc64b595bb9b9f424|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports2_Tamil_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports2_Tamil_HD_BTS/WDVLive/*~hmac=7110e98f2c8a5c6518ac8d1124bd4b7e30b8fdc80a67e0eeed878f3ab98ad657|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 2 Telugu HD" tvg-name="Star Sports 2 Telugu HD" group-title="Sports" tvg-language="Telugu" tvg-logo="https://img.media.jio.com/tvpimages/84/67/302121_1753185948642_l_medium.jpg",Star Sports 2 Telugu HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=c8a2fb190fc957c1b8333af9a7a39d31:be7497b59d4ce9e33d29bfd1d38bad1d
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports2_Telugu_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports2_Telugu_HD_BTS/WDVLive/*~hmac=2ca410267f3582f9c345c5b11ab13fc703086d6af866c708824ce2c32a4cf82f|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports2_Telugu_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports2_Telugu_HD_BTS/WDVLive/*~hmac=e2761da1a78034a796b4b03dad6bd79ea47d1a3887b866ea97c8dc708f40cc72|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 1 Tamil HD" tvg-name="Star Sports 1 Tamil HD" group-title="Sports" tvg-language="Tamil" tvg-logo="https://img.media.jio.com/tvpimages/19/19/302122_1753202507581_l_medium.jpg",Star Sports 1 Tamil HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=2272c0bc6b2e5cb090b1f55996e0026c:943923934de1d5536ab01c67fca8b337
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_1_Tamil_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports_1_Tamil_HD_BTS/WDVLive/*~hmac=968e5ee7783523c564110a1de1580e931153426bd9103318e614af7cad239e1d|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_1_Tamil_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports_1_Tamil_HD_BTS/WDVLive/*~hmac=1d2c142a9b7a5b0b0a426e08b1e6372757d313e24fbf64c5c8260026905aa489|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 1 Telugu HD" tvg-name="Star Sports 1 Telugu HD" group-title="Sports" tvg-language="Telugu" tvg-logo="https://img.media.jio.com/tvpimages/19/57/302123_1753189676336_l_medium.jpg",Star Sports 1 Telugu HD
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=49e84b9edfd85379b90c81b7d2d3d2bf:19c82d3ff094fa06af95820a1572ecb5
-https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_1_Telugu_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/Star_Sports_1_Telugu_HD_BTS/WDVLive/*~hmac=95516ed1c3a9f35abde1f79bb88e37dafd234764d9ae057bd285565e5d2a9ce7|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/Star_Sports_1_Telugu_HD_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/Star_Sports_1_Telugu_HD_BTS/WDVLive/*~hmac=ad050d6377aafeed8861d6dd0dd6de43021488ca69547d4506e7914af150aebd|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 2 Hindi" tvg-name="Star Sports 2 Hindi" group-title="Sports" tvg-language="Hindi" tvg-logo="https://img.media.jio.com/tvpimages/57/17/302124_1760690004317_l_medium.jpg",Star Sports 2 Hindi
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=a3ed8dc0e0cb5d238da80ee0a85bd2e1:67a96992e6406606f3480ab58d7f540c
-https://jiotvpllive.cdn.jio.com/bpk-tv/StarSports2Hin_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/StarSports2Hin_BTS/WDVLive/*~hmac=9aa34c960c315ef0ff9e34035a6807f23624d855385c2d5e872574114704b904|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/StarSports2Hin_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/StarSports2Hin_BTS/WDVLive/*~hmac=498a653aab264be349616c24a0ce440246ff7fc1d6de68d217142b9bc362a60b|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 2 Telugu" tvg-name="Star Sports 2 Telugu" group-title="Sports" tvg-language="Telugu" tvg-logo="https://img.media.jio.com/tvpimages/63/39/304029_1759237888163_l_medium.jpg",Star Sports 2 Telugu
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=6576a2664bc1563db2abd4fc192152b2:452e28454297a4193dbdf8f5cebc70b0
-https://jiotvpllive.cdn.jio.com/bpk-tv/StarSports2Telugu_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/StarSports2Telugu_BTS/WDVLive/*~hmac=4b56bddc0a4d7a0cf91cded3b380e188d40e065ef4d1c7064801fc7c7b9c787a|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/StarSports2Telugu_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/StarSports2Telugu_BTS/WDVLive/*~hmac=944c1c32f2644bf6d837b3f8f5b27b3ecebbadffdc909a79f48f56174c6af1d4|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
 #EXTINF:-1 tvg-id="Star Sports 2 Tamil" tvg-name="Star Sports 2 Tamil" group-title="Sports" tvg-language="Tamil" tvg-logo="https://img.media.jio.com/tvpimages/28/30/304030_1759239181645_l_medium.jpg",Star Sports 2 Tamil
 #KODIPROP:inputstream.adaptive.license_type=com.clearkey.alpha
 #KODIPROP:inputstream.adaptive.license_key=3c1b335c4bb858a7a6ac5a883d898a09:6eeff4302a7d19befd43c6b7b5fac268
-https://jiotvpllive.cdn.jio.com/bpk-tv/StarSports2Tamil_BTS/WDVLive/index.mpd?__hdnea__=st=1780021827~exp=1780043427~acl=/bpk-tv/StarSports2Tamil_BTS/WDVLive/*~hmac=2df27f95519f96a102d938e92e0139986f814cda154f5d6accd08cefeb8f4977|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+https://jiotvpllive.cdn.jio.com/bpk-tv/StarSports2Tamil_BTS/WDVLive/index.mpd?__hdnea__=st=1780036205~exp=1780057805~acl=/bpk-tv/StarSports2Tamil_BTS/WDVLive/*~hmac=cb9b2e69104cbcfcdda7016632d857dddf05220b69a1a65cf0674970aa4111e9|user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
 
