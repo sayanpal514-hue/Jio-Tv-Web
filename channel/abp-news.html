@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ABP News | Sayan</title>
+<meta name="referrer" content="no-referrer">
+<script src="https://cdn.jsdelivr.net/npm/shaka-player@4.16.2/dist/shaka-player.ui.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shaka-player@4.16.2/dist/controls.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary: #ff3c3c;
+    --bg: #000;
+    --surface: rgba(255, 255, 255, 0.05);
+    --glass: rgba(0, 0, 0, 0.6);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:var(--bg);overflow:hidden;font-family:'Outfit', sans-serif}
+
+.shaka-video-container{
+position:fixed;
+inset:0;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+video{
+width:100%;
+height:100%;
+object-fit:contain;
+}
+
+/* Header/Overlay */
+.player-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 15px 25px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: opacity 0.3s ease;
+}
+
+.back-btn {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    background: rgba(255,255,255,0.1);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+}
+
+.back-btn:hover { background: var(--primary); transform: scale(1.1); }
+
+.channel-info { display: flex; align-items: center; gap: 12px; }
+
+.channel-logo {
+    height: 35px;
+    width: auto;
+    max-width: 100px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+}
+
+.channel-name {
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.custom-watermark{
+position:absolute;
+z-index:40;
+pointer-events:none;
+top:15%;
+right:5%;
+font-size:12px;
+font-weight:800;
+color:rgba(255,255,255,0.15);
+letter-spacing: 1px;
+}
+
+/* --- Block Overlay --- */
+.block-overlay{
+position:fixed;
+inset:0;
+z-index:99999;
+display:flex;
+align-items:center;
+justify-content:center;
+background:radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+text-align:center;
+}
+
+.block-box{
+padding:40px;
+max-width:500px;
+width:90%;
+background:rgba(20, 20, 20, 0.95);
+border-radius:16px;
+border:1px solid rgba(255, 255, 255, 0.1);
+box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+.block-title{ font-size:32px; font-weight:800; color:#fff; margin-bottom:15px; text-transform: uppercase;}
+.block-sub{ font-size:14px; color:rgba(255,255,255,0.6); line-height:1.6; }
+
+@media(max-width:700px){
+    .player-header { padding: 10px 15px; }
+    .channel-name { font-size: 15px; }
+    .channel-logo { height: 25px; }
+}
+</style>
+</head>
+<body>
+
+<div class="player-header" id="header">
+    <a href="../index.html" class="back-btn">←</a>
+    <div class="channel-info">
+        <img src="https://img.media.jio.com/tvpimages/23/60/300001_1769914722596_l_medium.jpg" alt="" class="channel-logo" onerror="this.style.display='none'">
+        <span class="channel-name">ABP News</span>
+    </div>
+</div>
+
+<div class="shaka-video-container" id="player-container">
+    <video id="video" autoplay muted playsinline preload="metadata"></video>
+    <div class="custom-watermark">SAYAN</div>
+</div>
+
+<script>
+(function(){
+  
+  function isSandboxedEnv(){
+    try {
+      if (window.self === window.top) return false;
+      if (window.frameElement && window.frameElement.hasAttribute("sandbox")) return true;
+      try {
+        document.domain = document.domain;
+        if (window.frameElement && !window.frameElement.getAttribute("sandbox")) return false;
+      } catch (e) { return true; }
+      return false;
+    } catch(e) { return true; }
+  }
+
+  function triggerBlockScreen(title, message){
+    const container = document.getElementById("player-container");
+    const video = document.getElementById("video");
+    try {
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+    } catch(e){}
+
+    const overlay = document.createElement("div");
+    overlay.className = "block-overlay";
+    overlay.innerHTML = `
+      <div class="block-box">
+        <div class="block-title">${title}</div>
+        <div class="block-sub">${message}</div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+    container.style.display = 'none';
+    document.getElementById('header').style.display = 'none';
+  }
+
+  if(isSandboxedEnv()){
+    triggerBlockScreen('Access Denied', 'Please open in a standard browser and disable ad-blockers.');
+    return;
+  }
+
+  const CONFIG={
+    streamUrl:"https://video.twimg.com/amplify_video/2061250913436868608/pl/fHSEKDqkGKpJyb34.m3u8?tag=14",
+    keyId:"",
+    key:"",
+    cookie:""
+  };
+
+  document.addEventListener("DOMContentLoaded",async()=>{
+    shaka.polyfill.installAll();
+    if(!shaka.Player.isBrowserSupported()) return;
+
+    const video=document.getElementById("video");
+    const container=document.getElementById("player-container");
+    const header=document.getElementById("header");
+
+    let hideTimeout;
+    const showHeader = () => {
+        header.style.opacity = '1';
+        clearTimeout(hideTimeout);
+        hideTimeout = setTimeout(() => {
+            header.style.opacity = '0';
+        }, 3000);
+    };
+    container.addEventListener('mousemove', showHeader);
+    container.addEventListener('touchstart', showHeader);
+    showHeader();
+
+    const player=new shaka.Player();
+    await player.attach(video);
+
+    const ui=new shaka.ui.Overlay(player,container,video);
+    ui.configure({
+      addBigPlayButton: true,
+      controlPanelElements: ["mute","play_pause","time_and_duration","spacer","quality","picture_in_picture","fullscreen"]
+    });
+
+    const drmConfig = {};
+    if (CONFIG.keyId && CONFIG.key) {
+      drmConfig.clearKeys = {[CONFIG.keyId]: CONFIG.key};
+    }
+
+    player.configure({
+      drm: drmConfig,
+      manifest:{defaultPresentationDelay:5},
+      streaming:{ lowLatencyMode:true, bufferingGoal:10, rebufferingGoal:2 }
+    });
+
+    player.getNetworkingEngine().registerRequestFilter((type,request)=>{
+        request.headers["Referer"]="https://www.jiotv.com/";
+        request.headers["User-Agent"]="plaYtv/7.1.5 (Linux;Android 13) ExoPlayerLib/2.11.6";
+        
+        if(CONFIG.cookie){
+            request.headers["Cookie"]=CONFIG.cookie;
+            let urlCookie=CONFIG.cookie.startsWith("__hdnea__=")?CONFIG.cookie.substring(10):CONFIG.cookie;
+            if((type===shaka.net.NetworkingEngine.RequestType.MANIFEST||
+                type===shaka.net.NetworkingEngine.RequestType.SEGMENT)&&
+                !request.uris[0].includes("__hdnea__")){
+                const sep=request.uris[0].includes("?")?"&":"?";
+                request.uris[0]+=sep+"__hdnea__="+urlCookie;
+            }
+        }
+    });
+
+    try{
+      await player.load(CONFIG.streamUrl);
+      video.play().catch(()=>{});
+    }catch(e){}
+
+    video.addEventListener("play",()=>{ video.muted=false; });
+  });
+})();
+</script>
+</body>
+</html>
