@@ -9,7 +9,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 # Configuration
 M3U_URL = "https://raw.githubusercontent.com/opensourceflix/Friday/refs/heads/main/tmp/%25/privates.m3u8"
-OUTPUT_DIR = "Channel"
+OUTPUT_DIR = "channel"
 
 # Ensure output directory exists and is clean
 if os.path.exists(OUTPUT_DIR):
