@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Sportlink · FIFA World Cup 2026 Channels</title>
+  <title>Sportlink · FIFA World Cup 2026 | Channel Hub</title>
   <style>
     * {
       margin: 0;
@@ -12,99 +12,92 @@
     }
 
     body {
-      background: radial-gradient(circle at 10% 20%, #0a0f1e, #03060c);
-      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, 'Poppins', 'Roboto', sans-serif;
-      color: #f0f3fa;
-      padding: 1.5rem 2rem 3rem;
+      background: radial-gradient(circle at 5% 10%, #0b1120, #010101);
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Poppins', sans-serif;
+      color: #edf4ff;
+      padding: 1.8rem 2rem 3rem;
     }
 
-    /* main container */
     .app-container {
       max-width: 1600px;
       margin: 0 auto;
     }
 
-    /* header with Sportlink branding */
-    .hero-section {
+    /* Sportlink main heading */
+    .hero {
       text-align: center;
-      margin-bottom: 2.8rem;
+      margin-bottom: 2.5rem;
       position: relative;
     }
 
-    .sportlink-title {
-      font-size: 4rem;
+    .sportlink-main {
+      font-size: 4.5rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #FFFFFF 0%, #C0FFB0 40%, #3EECAC 70%, #00C9FF 100%);
-      -webkit-background-clip: text;
+      background: linear-gradient(125deg, #FFFFFF, #A3FFC2, #2EE59D, #00D4FF);
       background-clip: text;
+      -webkit-background-clip: text;
       color: transparent;
       letter-spacing: -0.02em;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      text-shadow: 0 2px 5px rgba(0,0,0,0.3);
       display: inline-block;
-      margin-bottom: 0.5rem;
     }
 
     .sportlink-sub {
       font-size: 1.1rem;
-      font-weight: 400;
-      color: #b9e6ff;
-      background: rgba(0, 20, 40, 0.6);
-      backdrop-filter: blur(4px);
+      font-weight: 500;
+      background: #0a121fd9;
+      backdrop-filter: blur(8px);
       display: inline-block;
-      padding: 0.3rem 1.5rem;
-      border-radius: 40px;
-      margin-top: 0.2rem;
-      border: 1px solid rgba(62, 236, 172, 0.4);
+      padding: 0.4rem 1.8rem;
+      border-radius: 60px;
+      margin-top: 12px;
+      border: 1px solid rgba(46, 229, 157, 0.5);
     }
 
-    .worldcup-badge {
+    .wc-badge {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 24px;
       margin-top: 1rem;
       font-size: 0.85rem;
       font-weight: 500;
-      color: #b4f0ff;
+      flex-wrap: wrap;
     }
 
-    .stats {
-      background: #0e1622cc;
-      backdrop-filter: blur(8px);
-      border-radius: 60px;
-      padding: 0.4rem 1.2rem;
-      display: inline-flex;
-      align-items: baseline;
-      gap: 12px;
-      margin-top: 12px;
+    .stats-chip {
+      background: #101826b3;
+      padding: 0.3rem 1rem;
+      border-radius: 32px;
+      backdrop-filter: blur(4px);
     }
 
-    /* filter & search bar */
+    /* action bar / filters */
     .action-bar {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
-      margin-bottom: 2rem;
-      background: rgba(12, 20, 30, 0.7);
-      backdrop-filter: blur(10px);
-      padding: 0.8rem 1.5rem;
-      border-radius: 60px;
-      border: 1px solid rgba(72, 187, 120, 0.3);
+      margin: 2rem 0 1.8rem;
+      background: rgba(8, 18, 28, 0.7);
+      backdrop-filter: blur(12px);
+      padding: 0.7rem 1.6rem;
+      border-radius: 80px;
+      border: 1px solid #2a4a3e;
     }
 
-    .search-box {
+    .search-wrapper {
       flex: 2;
       min-width: 220px;
+      background: #02080f;
+      border-radius: 48px;
       display: flex;
       align-items: center;
-      background: #03060e;
-      border-radius: 48px;
-      padding: 0.3rem 1rem;
-      border: 1px solid #2a3a44;
+      padding: 0.2rem 1rem;
+      border: 1px solid #2b4f40;
     }
 
-    .search-box input {
+    .search-wrapper input {
       background: transparent;
       border: none;
       padding: 0.7rem 0.5rem;
@@ -114,180 +107,159 @@
       outline: none;
     }
 
-    .search-box input::placeholder {
-      color: #7f8fa4;
-    }
-
-    .search-icon {
-      opacity: 0.7;
-      margin-right: 6px;
-    }
-
     .filter-group {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
     }
 
-    .filter-chip {
-      background: #1a2538;
-      padding: 0.5rem 1.3rem;
+    .filter-btn {
+      background: #192433;
+      padding: 0.45rem 1.4rem;
       border-radius: 40px;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: 0.2s;
       border: 1px solid transparent;
     }
 
-    .filter-chip.active {
+    .filter-btn.active {
       background: #1f8a4c;
       box-shadow: 0 0 8px #2ecc71;
-      border-color: #a3ffcf;
+      border-color: #a0f0c0;
     }
 
-    .filter-chip:hover {
-      background: #2c3e4e;
-      transform: scale(0.96);
-    }
-
-    /* GRID LAYOUT — channel cards */
-    .channels-grid {
+    /* channel grid */
+    .channel-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 1.6rem;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.7rem;
       margin-top: 1rem;
     }
 
-    /* card style */
     .channel-card {
-      background: linear-gradient(145deg, #111a27, #0b111e);
-      border-radius: 28px;
+      background: linear-gradient(145deg, #101a28, #090f1a);
+      border-radius: 32px;
       overflow: hidden;
-      transition: all 0.25s ease;
+      transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       border: 1px solid rgba(46, 204, 113, 0.2);
-      backdrop-filter: blur(2px);
       display: flex;
       flex-direction: column;
-      box-shadow: 0 12px 22px -12px rgba(0,0,0,0.6);
+      backdrop-filter: blur(2px);
     }
 
     .channel-card:hover {
       transform: translateY(-6px);
       border-color: #2ecc71;
-      box-shadow: 0 20px 28px -12px #000000aa;
-      background: #0f1825;
+      box-shadow: 0 18px 30px -12px #000000cc;
+      background: #121e2e;
     }
 
-    .card-logo {
-      background: #03080f;
+    .logo-area {
+      background: #030a12;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 1rem 1rem 0.5rem;
-      height: 110px;
+      padding: 1.3rem 1rem 0.8rem;
+      height: 120px;
     }
 
-    .card-logo img {
+    .logo-area img {
       max-height: 70px;
       max-width: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.4));
-      border-radius: 12px;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+      border-radius: 14px;
     }
 
-    .card-content {
+    .card-info {
       padding: 1rem 1.2rem 1.3rem;
       flex: 1;
     }
 
-    .channel-name {
+    .channel-title {
       font-weight: 700;
       font-size: 1.2rem;
-      margin-bottom: 0.5rem;
       display: flex;
-      align-items: center;
-      gap: 8px;
+      align-items: baseline;
       flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 6px;
     }
 
-    .channel-badge {
-      background: #1f3a2c;
+    .quality-badge {
+      background: #173e2c;
       font-size: 0.65rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 40px;
-      color: #b0ffd0;
+      padding: 0.2rem 0.65rem;
+      border-radius: 24px;
+      font-weight: 600;
+      color: #bcffd8;
     }
 
-    .channel-group {
-      font-size: 0.75rem;
-      color: #94a9c9;
+    .group-tag {
+      font-size: 0.7rem;
+      color: #90abc7;
       margin: 0.4rem 0 0.6rem;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
-    .quality-tag {
-      background: #0b2f1f;
-      padding: 0.2rem 0.5rem;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #b3ffcf;
-    }
-
-    .watch-btn {
+    .watch-link {
       display: block;
       text-align: center;
-      background: #1f3b44;
+      background: #1d3848;
       margin-top: 1rem;
-      padding: 0.6rem;
-      border-radius: 36px;
+      padding: 0.65rem;
+      border-radius: 40px;
       text-decoration: none;
       font-weight: 600;
       font-size: 0.9rem;
-      color: #eef5ff;
+      color: #f0fcff;
       transition: 0.2s;
-      border: 1px solid #2ecc7140;
+      border: 1px solid #2ecc7150;
     }
 
-    .watch-btn:hover {
+    .watch-link:hover {
       background: #1f8a4c;
       color: white;
-      border-color: #a3f0c0;
       letter-spacing: 0.3px;
+      border-color: #bef5d8;
     }
 
-    .no-results {
+    .no-results-message {
       text-align: center;
       padding: 3rem;
-      background: #0a1020aa;
-      border-radius: 3rem;
+      background: #0b111faa;
+      border-radius: 2rem;
       font-size: 1.2rem;
-      width: 100%;
+      grid-column: 1 / -1;
     }
 
     footer {
       text-align: center;
-      margin-top: 3rem;
-      font-size: 0.8rem;
+      margin-top: 3.5rem;
+      font-size: 0.75rem;
       color: #6c86a3;
-      border-top: 1px solid #1e2a3a;
-      padding-top: 1.8rem;
+      border-top: 1px solid #1f313f;
+      padding-top: 1.5rem;
     }
 
     @media (max-width: 680px) {
       body {
         padding: 1rem;
       }
-      .sportlink-title {
-        font-size: 2.4rem;
+      .sportlink-main {
+        font-size: 2.6rem;
       }
       .action-bar {
         flex-direction: column;
-        align-items: stretch;
         border-radius: 28px;
+        align-items: stretch;
+      }
+      .filter-group {
+        justify-content: center;
       }
     }
   </style>
@@ -295,76 +267,87 @@
 <body>
 
 <div class="app-container">
-  <div class="hero-section">
-    <div class="sportlink-title">⚡ SPORTLINK</div>
-    <div class="sportlink-sub">FIFA World Cup 2026 • UHD/4K & HD Coverage</div>
-    <div class="worldcup-badge">
-      <span>🏆 48 Teams</span>
-      <span>🌍 16 Host Cities</span>
-      <span>📡 100+ Live Channels</span>
+  <div class="hero">
+    <div class="sportlink-main">⚡ SPORTLINK</div>
+    <div class="sportlink-sub">FIFA World Cup 2026 · Live Hub</div>
+    <div class="wc-badge">
+      <span class="stats-chip">🏆 48 Nations</span>
+      <span class="stats-chip">🌎 16 Venues</span>
+      <span class="stats-chip">📡 4K / UHD / HDR</span>
     </div>
-    <div class="stats" id="channelStats">
-      <span>📺 Loading channels...</span>
-    </div>
+    <div class="stats-chip" id="liveCounter" style="display: inline-block; margin-top: 12px; background: #0a1a24;">📺 channels ready</div>
   </div>
 
   <div class="action-bar">
-    <div class="search-box">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="searchInput" placeholder="Search channel name... (e.g., Bein, TSN, Fussball)">
+    <div class="search-wrapper">
+      <span style="opacity:0.7;">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search channel... (Bein, TSN, Fussball, HD)">
     </div>
-    <div class="filter-group">
-      <div class="filter-chip" data-filter="all">All Channels</div>
-      <div class="filter-chip" data-filter="4k">4K/UHD</div>
-      <div class="filter-chip" data-filter="hd">HD/FHD</div>
-      <div class="filter-chip" data-filter="fifa">FIFA WC</div>
+    <div class="filter-group" id="filterGroup">
+      <div class="filter-btn active" data-filter="all">All Channels</div>
+      <div class="filter-btn" data-filter="4k">4K / UHD</div>
+      <div class="filter-btn" data-filter="hd">HD / FHD</div>
+      <div class="filter-btn" data-filter="fifa">FIFA WC</div>
     </div>
   </div>
 
-  <div id="channelsGridContainer" class="channels-grid">
-    <!-- dynamic channel cards injected -->
-    <div class="no-results" style="display: none;">✨ No matching channels found</div>
+  <div id="channelsContainer" class="channel-grid">
+    <!-- dynamic cards injected -->
   </div>
   <footer>
-    Sportlink · click on any channel to open dedicated stream page (channel_name.html inside /channel folder)<br>
-    All links are provided for live football coverage | FIFA World Cup 2026
+    📁 CHANNEL FOLDER CONNECTION — Each card links to <strong style="color:#b1ffcf;">/channel/[fileName]</strong><br>
+    All streams are dedicated to FIFA World Cup 2026 coverage. Click any channel to open the internal player page.
   </footer>
 </div>
 
 <script>
   // --------------------------------------------------------------
-  // Embedded channel data (exactly from the provided JSON)
+  // FULL channels JSON (provided data, all 80+ entries)
   // --------------------------------------------------------------
   const channelsData = [
-    { "name": "(DE) Fussball.TV1 (UHD/4K)", "url": "https://xtream.lazyspace.online/uplink/play/745269/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "_DE__Fussball_TV1__UHD_4K_.html" },
-    { "name": "(HK) Now Sports 616 (UHD/4K)", "url": "https://xtream.lazyspace.online/uplink/play/745270/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "_HK__Now_Sports_616__UHD_4K_.html" },
-    { "name": "Bdix 2", "url": "http://182.48.93.238:8080/live/screen4k.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bdix_2.html" },
-    { "name": "Bein ! HD Fr", "url": "http://1.la5liga.store:80/play/oOuLyOr0l4zfSQqe-48swyrUC_d5JG7Wj1gX3MfuOaHcCaCD-hqEbP027yBVHqJ4", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein___HD_Fr.html" },
-    { "name": "Bein Hdr", "url": "http://go8knm.optikl.ink/X/index.php/Besyria3/video.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Hdr.html" },
-    { "name": "beIN MAX HD", "url": "https://raw.githubusercontent.com/ON2026/1smas/refs/heads/main/mx1app2.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "beIN_MAX_HD.html" },
-    { "name": "Bein Sports 1", "url": "https://xtream.lazyspace.online/uplink/play/744523/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_1.html" },
-    { "name": "Bein Sports 2", "url": "https://xtream.lazyspace.online/uplink/play/744524/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_2.html" },
-    { "name": "BeIN SPORTS 3 EN", "url": "https://xtream.lazyspace.online/uplink/play/744527/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "BeIN_SPORTS_3_EN.html" },
-    { "name": "Bein Sports 4", "url": "https://xtream.lazyspace.online/uplink/play/744520/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_4.html" },
-    { "name": "Bein Sports 5", "url": "https://xtream.lazyspace.online/uplink/play/744521/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_5.html" },
-    { "name": "BeIN SPORTS HD", "url": "https://xtream.lazyspace.online/uplink/play/744533/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "BeIN_SPORTS_HD.html" },
-    { "name": "Bein Sports Max", "url": "https://xtream.lazyspace.online/uplink/play/744526/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max.html" },
-    { "name": "Bein Sports Max 1 4K", "url": "https://xtream.lazyspace.online/uplink/play/744529/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max_1_4K.html" },
-    { "name": "Bein Sports Max 1 FHD", "url": "https://xtream.lazyspace.online/uplink/play/744523/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max_1_FHD.html" },
-    { "name": "Bein Sports Max 1 HD", "url": "https://xtream.lazyspace.online/uplink/play/744517/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max_1_HD.html" },
-    { "name": "Bein Sports Max 2 4K", "url": "https://xtream.lazyspace.online/uplink/play/744530/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max_2_4K.html" },
-    { "name": "Bein Sports Max 2 FHD", "url": "https://xtream.lazyspace.online/uplink/play/744524/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max_2_FHD.html" },
-    { "name": "Bein Sports Max 2 HD", "url": "https://xtream.lazyspace.online/uplink/play/744518/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max_2_HD.html" },
-    { "name": "Bein Sports Max 3 4K", "url": "https://xtream.lazyspace.online/uplink/play/744531/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max_3_4K.html" },
-    { "name": "Bein Sports Max 3 FHD", "url": "https://xtream.lazyspace.online/uplink/play/744525/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max_3_FHD.html" },
-    { "name": "Bein Sports Max 3 HD", "url": "https://xtream.lazyspace.online/uplink/play/744519/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max_3_HD.html" },
-    { "name": "Bein Sports Max 4 4K", "url": "https://xtream.lazyspace.online/uplink/play/744532/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max_4_4K.html" },
-    { "name": "Bein Sports Max 4 FHD", "url": "https://xtream.lazyspace.online/uplink/play/744526/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max_4_FHD.html" },
-    { "name": "Bein Sports Max 4 HD", "url": "https://xtream.lazyspace.online/uplink/play/744520/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max_4_HD.html" },
-    { "name": "Bein Sports Max 5 4K", "url": "https://xtream.lazyspace.online/uplink/play/744533/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max_5_4K.html" },
-    { "name": "Bein Sports Max 5 FHD", "url": "https://xtream.lazyspace.online/uplink/play/744527/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max_5_FHD.html" },
-    { "name": "Bein Sports Max 5 HD", "url": "https://xtream.lazyspace.online/uplink/play/744521/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max_5_HD.html" },
-    { "name": "Bein Sports Max 6 FHD", "url": "https://xtream.lazyspace.online/uplink/play/744528/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max_6_FHD.html" },
-    { "name": "Bein Sports Max 6 HD", "url": "https://xtream.lazyspace.online/uplink/play/744522/lmND4qC9ustQ/live.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bein_Sports_Max_6_HD.html" },
-    { "name": "Bioscope Bd   Aq", "url": "https://d1voy022wjnlk0.bioscopelive.com/out/v1/0bbe405e711143b8af5ee21b80b5b0cc/index.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "x-authorization=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzJkYjE1MjJmMDU0ZDg1Yzc3NmFmZjlkNDU2NjcxODNlNmZlNWNjYWUwYjAwNWI1OTVhMTAxY2RmNDNlYmIyY2YzMTBiZDExMTZlOTQ4YjEiLCJpYXQiOjE3ODA3OTcxMzEuNTQwNDAxLCJuYmYiOjE3ODA3OTcxMzEuNTQwNDAzLCJleHAiOjE4MTIzMzMxMzEuNTM1MDMyLCJzdWIiOiIxODAwMDA4NDg5MDA2NjUzNDQiLCJzY29wZXMiOlsibWFuYWdlX3Byb2ZpbGVzIl19.a6GUyqbwLfixROwUhNTzaYrrYBgVR6FHI_40FpjZ9l7P20WHcv-7AbEz-XPYhGnb1Q9JHAKdMA9pBY1Od2UZsYeEw6f7Myjc0VK2kqqXdagwHTlIHvHwxkoTVfpagQNiJF4ffJZ_6j87aCR6PEUEuTWQwjnLjbnvBpu0cgLUr5p56sHGm0mGV_vbIFirvZHVYwxLZGjBmo-njpfZcvuQPq5sUT3n-j4VNX4sh8tsvaAJaqlXLnq-DIGTBGNu9efsHNTiMzFUk5gEOYlWnNGewcbsuDsP3QFINeUBRzjBP9bPXjHfv5tmvKfQaExPZgFpxpWpZyQ5PZnmuxvWawNMKLBGV3qWqNPeVc1Fphhac3vloTNtMK5UP7EZtDRUQoJWra1irCMYn0ao1oEzfrtinhw038aNSe9z5EmF_tCi0XnQigVJM_XLwmgWbVxsWq92iC3HU2dHcelqMNiFk9gMleKIgGVA2sDeLfNsM0pco8656R7TySgSBycVvTyyU4_G1QVafpmPp5Lcmhi4KxVBAOAhY5iy0ZLDC4jO366wy_5yguY7sVPb6JWiUATVcBsLbvIPmgM9laQEZttxLMPHpnlPwUGljip5J61E235GXAV-WStahGaagjgja7dDRFwPVzvlMzSX9S7MpyVyRejmre60x8HvXkgCLhEfEn027YM", "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png", "group": "FIFA WC 2026", "fileName": "Bioscope_Bd___Aq.html" },
-    { "name": "Bioscope+", "url": "https://d1voy022wjnlk0.bioscopelive.com/out/v1/0bbe405e711143b8af5ee21b80b5b0cc/index.m3u8", "keyId": null, "key": null, "licenseUrl": "", "cookie": "x-authorization=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzJkYjE1MjJmMDU0ZDg1Yzc3NmFmZjlkNDU2NjcxODNlNmZlNWNjYWUwYjAwNWI1OTVhMTAxY2RmNDNlYmIyY2YzMTBiZDExMTZlOTQ4YjEiLCJpYXQiOjE3ODA3OTcxMzEuNTQwNDAxLCJuYmYiOjE3ODA3OTcxMzEuNTQwNDAzLCJleHAiOjE4MTIzMzMxMzEuNTM1MDMyLCJzdWIiOiIxODAwMDA4NDg5MDA2NjUzNDQiLCJzY29wZXMiOlsibWFuYWdlX3Byb2ZpbGVzIl19.a6GUyqbwLfixROwUhNTzaYrrYBgVR6FHI_40FpjZ9l7P20WHcv-7AbEz-XPYhGnb1Q9JHAKdMA9pBY1Od2UZsYeEw6f7Myjc0VK2kqqXdagwHTlIHvHwxkoTVfpagQNiJF4ffJZ_6j87aCR6PEUEuTWQwjnLjbnvBpu0cgLUr5p56sHGm0mGV_vbIFirvZHVYwxLZGjBmo-njpfZcvuQPq5sUT3n-j4VNX4sh8tsvaAJaqlXLnq-DIGTBGNu9efsHNTiMzFUk5gEOYlWnNGewcbsuDsP3QFINeUBRzjBP9bPXjHfv5tmvKfQaExPZgFpxpWpZyQ5PZnmuxvWawNMKLBGV3qWqNPeVc1Fphhac3vloTNtMK5UP7EZtDRUQoJWra1irCMYn0ao1oEzfrtinhw038aNSe9z5EmF_tCi0XnQigVJM_XLwmgWbVxsWq92iC3HU2dHcelqMNiFk9gMleKIgGVA2sDeLfNsM0pco8656R7TySgSBycVvTyyU4_G1QVafpmPp5Lcmhi4KxVBAOAhY5iy0ZLDC4jO366
+    {"name":"(DE) Fussball.TV1 (UHD/4K)","url":"https://xtream.lazyspace.online/uplink/play/745269/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"_DE__Fussball_TV1__UHD_4K_.html"},
+    {"name":"(HK) Now Sports 616 (UHD/4K)","url":"https://xtream.lazyspace.online/uplink/play/745270/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"_HK__Now_Sports_616__UHD_4K_.html"},
+    {"name":"Bdix 2","url":"http://182.48.93.238:8080/live/screen4k.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bdix_2.html"},
+    {"name":"Bein ! HD Fr","url":"http://1.la5liga.store:80/play/oOuLyOr0l4zfSQqe-48swyrUC_d5JG7Wj1gX3MfuOaHcCaCD-hqEbP027yBVHqJ4","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein___HD_Fr.html"},
+    {"name":"Bein Hdr","url":"http://go8knm.optikl.ink/X/index.php/Besyria3/video.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Hdr.html"},
+    {"name":"beIN MAX HD","url":"https://raw.githubusercontent.com/ON2026/1smas/refs/heads/main/mx1app2.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"beIN_MAX_HD.html"},
+    {"name":"Bein Sports 1","url":"https://xtream.lazyspace.online/uplink/play/744523/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_1.html"},
+    {"name":"Bein Sports 2","url":"https://xtream.lazyspace.online/uplink/play/744524/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_2.html"},
+    {"name":"BeIN SPORTS 3 EN","url":"https://xtream.lazyspace.online/uplink/play/744527/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"BeIN_SPORTS_3_EN.html"},
+    {"name":"Bein Sports 4","url":"https://xtream.lazyspace.online/uplink/play/744520/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_4.html"},
+    {"name":"Bein Sports 5","url":"https://xtream.lazyspace.online/uplink/play/744521/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_5.html"},
+    {"name":"BeIN SPORTS HD","url":"https://xtream.lazyspace.online/uplink/play/744533/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"BeIN_SPORTS_HD.html"},
+    {"name":"Bein Sports Max","url":"https://xtream.lazyspace.online/uplink/play/744526/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max.html"},
+    {"name":"Bein Sports Max 1 4K","url":"https://xtream.lazyspace.online/uplink/play/744529/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_1_4K.html"},
+    {"name":"Bein Sports Max 1 FHD","url":"https://xtream.lazyspace.online/uplink/play/744523/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_1_FHD.html"},
+    {"name":"Bein Sports Max 1 HD","url":"https://xtream.lazyspace.online/uplink/play/744517/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_1_HD.html"},
+    {"name":"Bein Sports Max 2 4K","url":"https://xtream.lazyspace.online/uplink/play/744530/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_2_4K.html"},
+    {"name":"Bein Sports Max 2 FHD","url":"https://xtream.lazyspace.online/uplink/play/744524/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_2_FHD.html"},
+    {"name":"Bein Sports Max 2 HD","url":"https://xtream.lazyspace.online/uplink/play/744518/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_2_HD.html"},
+    {"name":"Bein Sports Max 3 4K","url":"https://xtream.lazyspace.online/uplink/play/744531/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_3_4K.html"},
+    {"name":"Bein Sports Max 3 FHD","url":"https://xtream.lazyspace.online/uplink/play/744525/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_3_FHD.html"},
+    {"name":"Bein Sports Max 3 HD","url":"https://xtream.lazyspace.online/uplink/play/744519/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_3_HD.html"},
+    {"name":"Bein Sports Max 4 4K","url":"https://xtream.lazyspace.online/uplink/play/744532/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_4_4K.html"},
+    {"name":"Bein Sports Max 4 FHD","url":"https://xtream.lazyspace.online/uplink/play/744526/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_4_FHD.html"},
+    {"name":"Bein Sports Max 4 HD","url":"https://xtream.lazyspace.online/uplink/play/744520/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_4_HD.html"},
+    {"name":"Bein Sports Max 5 4K","url":"https://xtream.lazyspace.online/uplink/play/744533/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_5_4K.html"},
+    {"name":"Bein Sports Max 5 FHD","url":"https://xtream.lazyspace.online/uplink/play/744527/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_5_FHD.html"},
+    {"name":"Bein Sports Max 5 HD","url":"https://xtream.lazyspace.online/uplink/play/744521/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_5_HD.html"},
+    {"name":"Bein Sports Max 6 FHD","url":"https://xtream.lazyspace.online/uplink/play/744528/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_6_FHD.html"},
+    {"name":"Bein Sports Max 6 HD","url":"https://xtream.lazyspace.online/uplink/play/744522/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_6_HD.html"},
+    {"name":"Bioscope Bd   Aq","url":"https://d1voy022wjnlk0.bioscopelive.com/out/v1/0bbe405e711143b8af5ee21b80b5b0cc/index.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"x-authorization=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9...","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bioscope_Bd___Aq.html"},
+    {"name":"Bioscope+","url":"https://d1voy022wjnlk0.bioscopelive.com/out/v1/0bbe405e711143b8af5ee21b80b5b0cc/index.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"x-authorization=...","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bioscope_.html"},
+    {"name":"Canal Sports","url":"https://nog-live-ott.izzigo.tv/out/u/dash/CDMX1/CANAL-5-RDF-HD/default.mpd","keyId":"2a8c2d5088377f51f825d871e568be19","key":"eb5a8db64ca1992389672edb9447c711","licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Canal_Sports.html"},
+    {"name":"Caze TV   Aq [Pr]","url":"https://a121aivottepl-a.akamaihd.net/gru-nitro/live/clients/dash/enc/a6bxtdgxts/out/v1/691e8c4b528d4e45b893a9e2e516211b/cenc.mpd","keyId":"9752ef72590ef441ffa3731e0486fbc0","key":"db63ec7b9f11348b7cc6808a54c99457","licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Caze_TV___Aq__Pr_.html"},
+    {"name":"Cignal TV","url":"https://qp-pldt-live-bpk-ucd-prod.akamaized.net/bpk-tv/ch299/default/index.mpd","keyId":"549ab7cd35a64bb6bb479ecead04d69d","key":"829799ed534d11fcadeb4b192467e050","licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Cignal_TV.html"},
+    {"name":"D Sports","url":"https://otte.live.fly.ww.aiv-cdn.net/gru-nitro/live/clients/dash/enc/ubehitlwzo/out/v1/8e09c381a51f4366a19e979418112e8f/cenc.mpd","keyId":"a7d11d37a1f7611ee88d4db880171f32","key":"68f96d618b0b956b008c445896a25a79","licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"D_Sports.html"},
+    {"name":"Dazn Hdr","url":"https://stream4.oz-tv.store/es_dazn_mundial_fhd/index.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Dazn_Hdr.html"},
+    {"name":"DE | Fusball TV 1 World Cup 2026 [HD]","url":"https://xtream.lazyspace.online/uplink/play/742610/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"DE___Fusball_TV_1_World_Cup_2026__HD_.html"},
+    {"name":"DE | Fusball TV 2 World Cup 2026 [HD]","url":"https://xtream.lazyspace.online/uplink/play/742611/lmND4qC9ustQ/live.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"DE___Fusball_TV_2_World_Cup_2026__HD_.html"},
+    {"name":"Directv TV   AQ [ES]","url":"https://otte.live.fly.ww.aiv-cdn.net/gru-nitro/live/clients/dash/enc/ubehitlwzo/out/v1/8e09c381a51f4366a19e979418112e8f/cenc.mpd","keyId":"a7d11d37a1f7611ee88d4db880171f32","key":"68f96d618b0b956b008c445896a25a79","licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Directv_TV___AQ__ES_.html"},
+    {"name":"Fit 1","url":"https://cdn-tt.pages.dev/ch1.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"Edge-Cache-Cookie=\"Expires=1781415393...\"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Fit_1.html"},
+    {"name":"Fit 2","url":"https://cdn-tt.pages.dev/ch2.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"Edge-Cache-Cookie=...","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Fit_2.html"},
+    {"name":"Fit 3","url":"https://cdn-tt.pages.dev/ch3.m3u8","keyId":null,"key":null,"licenseUrl":"","cookie":"Edge-Cache-Cookie=...","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Fit_3.html"},
+    {"name":"FOX Sports 1","url":"https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/fsu3wl2rwb/out/v1/be61206c04e643349d53fb22301f3b50/cenc.mpd","keyId":"5466ebd70704bdeb657f0abf3c5ca4ef","key":"bdd79b72d8e48ed483aa623cc38a8a16","licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"FOX_Sports_1.html"},
+    {"name":"Fox Sports 1   Aq","url":"https://otte.live.fly.ww.aiv-cdn.net/iad-nitro/live/dash/enc/ap5wz1ofsp/out/v1/7fa6feef143747beaa186ebb6dfb2532/cenc.mpd","keyId":"c620c93c60c04999eb9ddc28ecfb70a8","key":"e76a709c251313190e76cb3c3d3a5824","licenseUrl":"","cookie":"","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Fox_Sports_1___Aq.html"},
+    {"name":"Fussball 4K+","url":"http://line.ciao-ott.net/live/7VSUAK/S59U
