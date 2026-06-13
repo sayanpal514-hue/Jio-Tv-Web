@@ -528,6 +528,17 @@
     "fileName": "Fussball_TV_1_HD.html"
   },
   {
+    "name": "Fussball.TV 1 Uhd",
+    "url": "https://svc45.main.sl.t-online.de/bpk-tv/KID01037_FUSSBALLTV1_uhd/DASH/index.mpd",
+    "keyId": "1f09d5788fbbb03a053d03cc731f31a9",
+    "key": "d493d5a70c793362324638f61d1726ac",
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "",
+    "group": "UHD Sports",
+    "fileName": "Fussball_TV_1_Uhd.html"
+  },
+  {
     "name": "Fussball4K 2",
     "url": "http://line.diego86.com/live/GY56NW/RQWKEA/1745095.ts",
     "keyId": null,
@@ -771,11 +782,11 @@
   },
   {
     "name": "Toffee Bd FHD",
-    "url": "https://cdn-tt.pages.dev/ch1.m3u8",
+    "url": "https://cdn-tt.pages.dev/ch2.m3u8",
     "keyId": null,
     "key": null,
     "licenseUrl": "",
-    "cookie": "Edge-Cache-Cookie=https://prod-cdn01-live.toffeelive.com/live/FIFA-2026/0/master_1024.m3u8",
+    "cookie": "Edge-Cache-Cookie=\"Expires=1781464888~_GO=Generated~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Signature=AaPNU3ed81lKoqP4i6BYXwBKwyJ7j9J0qaFYPYMc8xRDJWJ-RWShOVlalN5gSHhEPtP87AyQiSQ5zCmDRyJYmGd382EI\"",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
     "fileName": "Toffee_Bd_FHD.html"
