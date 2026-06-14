@@ -473,17 +473,6 @@
     "fileName": "Fit_3.html"
   },
   {
-    "name": "FOX Sports 1",
-    "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/fsu3wl2rwb/out/v1/be61206c04e643349d53fb22301f3b50/cenc.mpd",
-    "keyId": "5466ebd70704bdeb657f0abf3c5ca4ef",
-    "key": "bdd79b72d8e48ed483aa623cc38a8a16",
-    "licenseUrl": "",
-    "cookie": "",
-    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
-    "group": "FIFA WC 2026",
-    "fileName": "FOX_Sports_1.html"
-  },
-  {
     "name": "Fox Sports 1   Aq",
     "url": "https://otte.live.fly.ww.aiv-cdn.net/iad-nitro/live/dash/enc/ap5wz1ofsp/out/v1/7fa6feef143747beaa186ebb6dfb2532/cenc.mpd",
     "keyId": "c620c93c60c04999eb9ddc28ecfb70a8",
@@ -493,6 +482,17 @@
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
     "fileName": "Fox_Sports_1___Aq.html"
+  },
+  {
+    "name": "Fs1",
+    "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/fsu3wl2rwb/out/v1/be61206c04e643349d53fb22301f3b50/cenc.mpd",
+    "keyId": "5466ebd70704bdeb657f0abf3c5ca4ef",
+    "key": "bdd79b72d8e48ed483aa623cc38a8a16",
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Fs1.html"
   },
   {
     "name": "Fussball 4K+",
@@ -803,6 +803,17 @@
     "fileName": "Tsn_1.html"
   },
   {
+    "name": "Tsn 1 N",
+    "url": "https://otte-tim.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/aezp9y6l15/out/v1/69a2a7041395406b970598f61680e7cf/cenc.mpd",
+    "keyId": "7b37e4614fcee2ec2ff6e5900c2f798f",
+    "key": "f349a9c28c55c20b9a2c50af99d1fc76",
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Tsn_1_N.html"
+  },
+  {
     "name": "Tsn 3",
     "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/lzhmuzmjsl/out/v1/c171eeb214c749f2b351c79df317b21e/cenc.mpd",
     "keyId": "f5c2b30eac11be1e8cdfc9585f5fe6af",
@@ -878,17 +889,6 @@
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
     "fileName": "Tsn_Sports_S3.html"
-  },
-  {
-    "name": "Tsn1",
-    "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/7janu55dwc/out/v1/69a2a7041395406b970598f61680e7cf/cenc.mpd",
-    "keyId": "e51aa21f2a0fef9aabc120dfb655b52f",
-    "key": "a12a987fe725a40b6be95cd84b15f689",
-    "licenseUrl": "",
-    "cookie": "",
-    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
-    "group": "FIFA WC 2026",
-    "fileName": "Tsn1.html"
   },
   {
     "name": "Unifi TV 1",
