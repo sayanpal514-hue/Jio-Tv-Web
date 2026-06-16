@@ -268,7 +268,7 @@
 
         async function init() {
             try {
-                const response = await fetch('Channel/channels.json');
+                const response = await fetch('channel/channels.json');
                 channelsData = await response.json();
                 renderFilters();
                 updateDisplay();
