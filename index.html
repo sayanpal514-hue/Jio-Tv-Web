@@ -315,7 +315,7 @@
             list.forEach(ch => {
                 const card = document.createElement('a');
                 card.className = 'channel-card';
-                card.href = 'Channel/' + ch.fileName;
+                card.href = 'channel/' + ch.fileName;
                 
                 const acronym = ch.name.split(/[\s_]/).map(w => w[0]).join('').substring(0, 3).toUpperCase();
                 
