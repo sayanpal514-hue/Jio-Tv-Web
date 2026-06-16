@@ -1,465 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FIFA World Cup 2026 — Live Channels</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;800&family=Barlow:wght@400;500&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sportlink | JioTV Dashboard</title>
+    <link rel="shortcut icon" href="https://www.jiotv.com/favicon.ico" />
+    <meta name="description" content="Access 1000+ live TV channels with Sportlink's premium dashboard.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff3c3c;
+            --bg: #0a0a0a;
+            --surface: #1a1a1a;
+            --text: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.6);
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  :root {
-    --bg:       #0a0e1a;
-    --surface:  #111827;
-    --card:     #161d2e;
-    --border:   #1e2d45;
-    --gold:     #f5c518;
-    --gold2:    #e8a900;
-    --green:    #00d46a;
-    --muted:    #64748b;
-    --text:     #e2e8f0;
-    --radius:   10px;
-  }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(255, 60, 60, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(255, 60, 60, 0.05) 0%, transparent 40%);
+            min-height: 100vh;
+        }
 
-  html { scroll-behavior: smooth; }
+        header {
+            padding: 2.5rem 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+        }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Barlow', sans-serif;
-    font-size: 15px;
-    min-height: 100vh;
-  }
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #ffffff, var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-  /* ── HERO ── */
-  header {
-    position: relative;
-    overflow: hidden;
-    padding: 56px 24px 44px;
-    text-align: center;
-    background:
-      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(245,197,24,.18) 0%, transparent 70%),
-      linear-gradient(180deg, #0d1526 0%, var(--bg) 100%);
-    border-bottom: 1px solid var(--border);
-  }
+        .search-container {
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            position: relative;
+        }
 
-  header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: repeating-linear-gradient(
-      90deg, rgba(245,197,24,.03) 0px, rgba(245,197,24,.03) 1px, transparent 1px, transparent 60px
-    ), repeating-linear-gradient(
-      0deg,  rgba(245,197,24,.03) 0px, rgba(245,197,24,.03) 1px, transparent 1px, transparent 60px
-    );
-    pointer-events: none;
-  }
+        #search {
+            width: 100%;
+            padding: 1.2rem 1.8rem;
+            border-radius: 50px;
+            background: var(--surface);
+            border: 1px solid var(--glass-border);
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
 
-  .badge {
-    display: inline-block;
-    background: var(--gold);
-    color: #000;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 11px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 4px;
-    margin-bottom: 18px;
-  }
+        #search:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(255, 60, 60, 0.15);
+            transform: translateY(-2px);
+        }
 
-  h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: clamp(2.4rem, 7vw, 4.2rem);
-    line-height: 1;
-    letter-spacing: -.01em;
-    color: #fff;
-  }
+        .container {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
 
-  h1 span { color: var(--gold); }
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
 
-  .subtitle {
-    margin-top: 12px;
-    color: var(--muted);
-    font-size: 14px;
-    letter-spacing: .04em;
-  }
+        .channel-card {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid var(--glass-border);
+            aspect-ratio: 1/1;
+            position: relative;
+            overflow: hidden;
+        }
 
-  /* ── TOOLBAR ── */
-  .toolbar {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: rgba(10,14,26,.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
+        .channel-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: var(--primary);
+            background: rgba(255, 60, 60, 0.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
 
-  .search-wrap {
-    position: relative;
-    flex: 1;
-    min-width: 200px;
-  }
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background: var(--glass);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            border: 1px solid var(--glass-border);
+            transition: 0.3s;
+        }
 
-  .search-wrap svg {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--muted);
-    pointer-events: none;
-  }
+        .channel-card:hover .icon-box {
+            background: var(--primary);
+            color: white;
+            transform: rotate(5deg);
+        }
 
-  #search {
-    width: 100%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    color: var(--text);
-    font-family: 'Barlow', sans-serif;
-    font-size: 14px;
-    padding: 9px 12px 9px 38px;
-    outline: none;
-    transition: border-color .2s;
-  }
+        .channel-logo-img {
+            width: 100%;
+            height: 70px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
 
-  #search:focus { border-color: var(--gold); }
-  #search::placeholder { color: var(--muted); }
+        .channel-card:hover .channel-logo-img {
+            transform: scale(1.1);
+        }
 
-  .count-pill {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-size: 13px;
-    color: var(--muted);
-    white-space: nowrap;
-  }
+        .channel-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--text);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
 
-  .count-pill strong { color: var(--gold); }
+        footer {
+            text-align: center;
+            padding: 4rem 1rem;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 4rem;
+        }
 
-  /* ── GRID ── */
-  main {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 28px 20px 60px;
-  }
+        .skeleton {
+            background: var(--surface);
+            animation: pulse 1.5s infinite ease-in-out;
+        }
 
-  #grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 14px;
-  }
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
 
-  /* ── CARD ── */
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    transition: transform .18s, border-color .18s, box-shadow .18s;
-    position: relative;
-  }
+        .filter-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px 0 20px;
+            margin-bottom: 20px;
+            scrollbar-width: none;
+            mask-image: linear-gradient(to right, black 80%, transparent 100%);
+        }
 
-  .card:hover {
-    transform: translateY(-3px);
-    border-color: var(--gold);
-    box-shadow: 0 8px 32px rgba(245,197,24,.12);
-  }
+        .filter-container::-webkit-scrollbar { display: none; }
 
-  .card-thumb {
-    background: linear-gradient(135deg, #111827 0%, #0d1a30 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 22px;
-    height: 90px;
-    position: relative;
-    overflow: hidden;
-  }
+        .filter-tag {
+            padding: 8px 20px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            color: var(--text-dim);
+            font-size: 14px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
 
-  .card-thumb::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,.5) 100%);
-  }
+        .filter-tag.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
 
-  .card-thumb img {
-    width: 52px;
-    height: 52px;
-    object-fit: contain;
-    position: relative;
-    z-index: 1;
-    border-radius: 50%;
-    background: rgba(255,255,255,.06);
-    padding: 6px;
-  }
+        .filter-tag:hover:not(.active) {
+            background: var(--glass-border);
+            color: var(--text);
+        }
 
-  .play-icon {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    z-index: 2;
-    width: 26px;
-    height: 26px;
-    background: var(--gold);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transform: scale(.8);
-    transition: opacity .18s, transform .18s;
-  }
-
-  .card:hover .play-icon { opacity: 1; transform: scale(1); }
-
-  .play-icon svg { width: 12px; height: 12px; fill: #000; margin-left: 1px; }
-
-  .card-body {
-    padding: 12px 14px 14px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .ch-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    color: #fff;
-    line-height: 1.25;
-    letter-spacing: .01em;
-  }
-
-  .ch-group {
-    font-size: 11px;
-    color: var(--green);
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-
-  /* ── EMPTY STATE ── */
-  #empty {
-    display: none;
-    grid-column: 1/-1;
-    text-align: center;
-    padding: 60px 0;
-    color: var(--muted);
-  }
-
-  #empty svg { width: 48px; height: 48px; margin-bottom: 12px; opacity: .4; }
-  #empty p { font-size: 15px; }
-
-  /* ── FOOTER ── */
-  footer {
-    text-align: center;
-    padding: 20px;
-    color: var(--muted);
-    font-size: 12px;
-    border-top: 1px solid var(--border);
-  }
-
-  @media (max-width: 500px) {
-    #grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .card-thumb { height: 70px; padding: 14px; }
-    .card-thumb img { width: 40px; height: 40px; }
-  }
-</style>
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .channel-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
+            .container { padding: 0 1rem; }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <div class="badge">⚽ FIFA World Cup 2026</div>
-  <h1>Live <span>Channel</span> Hub</h1>
-  <p class="subtitle">All streams · One place · Zero hassle</p>
-</header>
-
-<div class="toolbar">
-  <div class="search-wrap">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-    </svg>
-    <input id="search" type="search" placeholder="Search channels…" autocomplete="off">
-  </div>
-  <div class="count-pill">Showing <strong id="shown">0</strong> of <strong id="total">0</strong> channels</div>
-</div>
-
-<main>
-  <div id="grid">
-    <div id="empty">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-      </svg>
-      <p>No channels match your search.</p>
-    </div>
-  </div>
-</main>
-
-<footer>FIFA WC 2026 Live Hub &mdash; All rights reserved</footer>
-
-<script>
-const channels = [
-  {"name":"(DE) Fussball.TV1 (UHD/4K)","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"_DE__Fussball_TV1__UHD_4K_.html"},
-  {"name":"(HK) Now Sports 616 (UHD/4K)","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"_HK__Now_Sports_616__UHD_4K_.html"},
-  {"name":"Bdix 2","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bdix_2.html"},
-  {"name":"Bein ! HD Fr","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein___HD_Fr.html"},
-  {"name":"Bein Hdr","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Hdr.html"},
-  {"name":"beIN MAX HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"beIN_MAX_HD.html"},
-  {"name":"Bein Sports 1","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_1.html"},
-  {"name":"Bein Sports 2","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_2.html"},
-  {"name":"BeIN SPORTS 3 EN","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"BeIN_SPORTS_3_EN.html"},
-  {"name":"Bein Sports 4","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_4.html"},
-  {"name":"Bein Sports 5","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_5.html"},
-  {"name":"BeIN SPORTS HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"BeIN_SPORTS_HD.html"},
-  {"name":"Bein Sports Max","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max.html"},
-  {"name":"Bein Sports Max 1 4K","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_1_4K.html"},
-  {"name":"Bein Sports Max 1 FHD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_1_FHD.html"},
-  {"name":"Bein Sports Max 1 HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_1_HD.html"},
-  {"name":"Bein Sports Max 2 4K","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_2_4K.html"},
-  {"name":"Bein Sports Max 2 FHD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_2_FHD.html"},
-  {"name":"Bein Sports Max 2 HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_2_HD.html"},
-  {"name":"Bein Sports Max 3 4K","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_3_4K.html"},
-  {"name":"Bein Sports Max 3 FHD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_3_FHD.html"},
-  {"name":"Bein Sports Max 3 HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_3_HD.html"},
-  {"name":"Bein Sports Max 4 4K","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_4_4K.html"},
-  {"name":"Bein Sports Max 4 FHD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_4_FHD.html"},
-  {"name":"Bein Sports Max 4 HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_4_HD.html"},
-  {"name":"Bein Sports Max 5 4K","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_5_4K.html"},
-  {"name":"Bein Sports Max 5 FHD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_5_FHD.html"},
-  {"name":"Bein Sports Max 5 HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_5_HD.html"},
-  {"name":"Bein Sports Max 6 FHD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_6_FHD.html"},
-  {"name":"Bein Sports Max 6 HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bein_Sports_Max_6_HD.html"},
-  {"name":"Bioscope Bd   Aq","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bioscope_Bd___Aq.html"},
-  {"name":"Bioscope+","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Bioscope_.html"},
-  {"name":"Canal Sports","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Canal_Sports.html"},
-  {"name":"Caze TV   Aq [Pr]","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Caze_TV___Aq__Pr_.html"},
-  {"name":"Cignal TV","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Cignal_TV.html"},
-  {"name":"D Sports","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"D_Sports.html"},
-  {"name":"Dazn Hdr","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Dazn_Hdr.html"},
-  {"name":"DE | Fusball TV 1 World Cup 2026 [HD]","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"DE___Fusball_TV_1_World_Cup_2026__HD_.html"},
-  {"name":"DE | Fusball TV 2 World Cup 2026 [HD]","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"DE___Fusball_TV_2_World_Cup_2026__HD_.html"},
-  {"name":"Directv TV   AQ [ES]","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Directv_TV___AQ__ES_.html"},
-  {"name":"Fit 1","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Fit_1.html"},
-  {"name":"Fit 2","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Fit_2.html"},
-  {"name":"Fit 3","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Fit_3.html"},
-  {"name":"FOX Sports 1","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"FOX_Sports_1.html"},
-  {"name":"Fox Sports 1   Aq","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Fox_Sports_1___Aq.html"},
-  {"name":"Fussball 4K+","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Fussball_4K_.html"},
-  {"name":"Fussball TV 1","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Fussball_TV_1.html"},
-  {"name":"Fussball TV 1 HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Fussball_TV_1_HD.html"},
-  {"name":"Fussball4K 2","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Fussball4K_2.html"},
-  {"name":"Hdr Bdix","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Hdr_Bdix.html"},
-  {"name":"Himalaya Sports","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Himalaya_Sports.html"},
-  {"name":"I Screen   HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"I_Screen___HD.html"},
-  {"name":"Joj Sport   Aq","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Joj_Sport___Aq.html"},
-  {"name":"Now Hk 4K","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Now_Hk_4K.html"},
-  {"name":"Now Hk 4K 2","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Now_Hk_4K_2.html"},
-  {"name":"Nu9Ve   Aq","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Nu9Ve___Aq.html"},
-  {"name":"Orf German HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Orf_German_HD.html"},
-  {"name":"Rtbgo   Aq","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Rtbgo___Aq.html"},
-  {"name":"SporTV BR   AQ","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"SporTV_BR___AQ.html"},
-  {"name":"Sporza Sports","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Sporza_Sports.html"},
-  {"name":"SS World Cup Central","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"SS_World_Cup_Central.html"},
-  {"name":"SS World Cup Extra","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"SS_World_Cup_Extra.html"},
-  {"name":"SS World Cup Pass","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"SS_World_Cup_Pass.html"},
-  {"name":"Super Sports","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Super_Sports.html"},
-  {"name":"Super Sports Fifa","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Super_Sports_Fifa.html"},
-  {"name":"Tapmad","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Tapmad.html"},
-  {"name":"Tapmad   HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Tapmad___HD.html"},
-  {"name":"Telemundo   Aq","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Telemundo___Aq.html"},
-  {"name":"Telemundo HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Telemundo_HD.html"},
-  {"name":"Tipik Fr  Aq","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Tipik_Fr__Aq.html"},
-  {"name":"Toffee Bd FHD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Toffee_Bd_FHD.html"},
-  {"name":"Tsn 1","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Tsn_1.html"},
-  {"name":"Tsn 3","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Tsn_3.html"},
-  {"name":"Tsn 4","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Tsn_4.html"},
-  {"name":"Tsn Sports 1","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Tsn_Sports_1.html"},
-  {"name":"Tsn Sports 4","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Tsn_Sports_4.html"},
-  {"name":"Tsn Sports En   Aq","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Tsn_Sports_En___Aq.html"},
-  {"name":"Tsn Sports FHD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Tsn_Sports_FHD.html"},
-  {"name":"Tsn Sports S3","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Tsn_Sports_S3.html"},
-  {"name":"Tsn1","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Tsn1.html"},
-  {"name":"Unifi TV 1","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Unifi_TV_1.html"},
-  {"name":"Unifi TV 2","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Unifi_TV_2.html"},
-  {"name":"Unifi TV 3","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Unifi_TV_3.html"},
-  {"name":"Unite8 Sports 1   AQ","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Unite8_Sports_1___AQ.html"},
-  {"name":"Unite8 Sports 1 FHD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Unite8_Sports_1_FHD.html"},
-  {"name":"Unite8 Sports 1 HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Unite8_Sports_1_HD.html"},
-  {"name":"Unite8 Sports 2   AQ","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Unite8_Sports_2___AQ.html"},
-  {"name":"Unite8 Sports 2 HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Unite8_Sports_2_HD.html"},
-  {"name":"VIX Espanol   AQ","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"VIX_Espanol___AQ.html"},
-  {"name":"Vrt Dutch   Aq","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Vrt_Dutch___Aq.html"},
-  {"name":"Wc 1","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Wc_1.html"},
-  {"name":"Zdf German HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Zdf_German_HD.html"},
-  {"name":"Zee Bangla Sonar","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Zee_Bangla_Sonar.html"},
-  {"name":"Zee5 Bengali   HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Zee5_Bengali___HD.html"},
-  {"name":"Zee5 Hindi   HD","logo":"https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png","group":"FIFA WC 2026","fileName":"Zee5_Hindi___HD.html"}
-];
-
-// Deduplicate by fileName
-const seen = new Set();
-const unique = channels.filter(c => {
-  if (seen.has(c.fileName)) return false;
-  seen.add(c.fileName);
-  return true;
-});
-
-const grid    = document.getElementById('grid');
-const empty   = document.getElementById('empty');
-const shownEl = document.getElementById('shown');
-const totalEl = document.getElementById('total');
-const search  = document.getElementById('search');
-
-totalEl.textContent = unique.length;
-
-function render(list) {
-  // Remove existing cards
-  grid.querySelectorAll('.card').forEach(el => el.remove());
-
-  shownEl.textContent = list.length;
-  empty.style.display = list.length === 0 ? 'block' : 'none';
-
-  list.forEach(ch => {
-    const a = document.createElement('a');
-    a.className = 'card';
-    a.href = `channel/${ch.fileName}`;
-    a.innerHTML = `
-      <div class="card-thumb">
-        <img src="${ch.logo}" alt="${ch.name}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 24 24\\'><text y=\\'18\\' font-size=\\'18\\'>📺</text></svg>'">
-        <div class="play-icon">
-          <svg viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
+    <header>
+        <h1>Sportlink - Jio Tv</h1>
+        <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 5px;">by Sayan10</p>
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search 1000+ Channels..." autocomplete="off">
         </div>
-      </div>
-      <div class="card-body">
-        <div class="ch-name">${ch.name}</div>
-        <div class="ch-group">⚽ ${ch.group}</div>
-      </div>
-    `;
-    grid.appendChild(a);
-  });
-}
+        <div class="filter-container" id="filters">
+            <!-- Filter tags will be injected here -->
+        </div>
+    </header>
 
-render(unique);
+    <div class="container">
+        <div class="channel-grid" id="grid">
+            <div class="channel-card skeleton"></div>
+            <div class="channel-card skeleton"></div>
+            <div class="channel-card skeleton"></div>
+            <div class="channel-card skeleton"></div>
+            <div class="channel-card skeleton"></div>
+            <div class="channel-card skeleton"></div>
+        </div>
+    </div>
 
-search.addEventListener('input', () => {
-  const q = search.value.toLowerCase().trim();
-  render(q ? unique.filter(c => c.name.toLowerCase().includes(q)) : unique);
-});
-</script>
+    <footer>
+        <p>&copy; 2026 Sportlink Premium. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const grid = document.getElementById('grid');
+        const search = document.getElementById('search');
+        const filterContainer = document.getElementById('filters');
+        let channelsData = [];
+        let activeCategory = 'All';
+
+        async function init() {
+            try {
+                const response = await fetch('Channel/channels.json');
+                channelsData = await response.json();
+                renderFilters();
+                updateDisplay();
+            } catch (error) {
+                console.error('Error loading channels:', error);
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Failed to load channels.</p>';
+            }
+        }
+
+        function renderFilters() {
+            const categories = ['All', ...new Set(channelsData.map(ch => ch.category))];
+            filterContainer.innerHTML = '';
+            categories.forEach(cat => {
+                if (!cat) return;
+                const tag = document.createElement('div');
+                tag.className = `filter-tag ${cat === activeCategory ? 'active' : ''}`;
+                tag.textContent = cat;
+                tag.onclick = () => {
+                    activeCategory = cat;
+                    document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+                    tag.classList.add('active');
+                    updateDisplay();
+                };
+                filterContainer.appendChild(tag);
+            });
+        }
+
+        function updateDisplay() {
+            const term = search.value.toLowerCase();
+            const filtered = channelsData.filter(ch => {
+                const matchesSearch = ch.name.toLowerCase().includes(term);
+                const matchesCat = activeCategory === 'All' || ch.category === activeCategory;
+                return matchesSearch && matchesCat;
+            });
+            displayChannels(filtered);
+        }
+
+        function displayChannels(list) {
+            grid.innerHTML = '';
+            if (list.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; opacity: 0.5; padding: 40px;">No channels found.</p>';
+                return;
+            }
+            list.forEach(ch => {
+                const card = document.createElement('a');
+                card.className = 'channel-card';
+                card.href = 'channel/' + ch.fileName;
+                
+                const acronym = ch.name.split(/[\s_]/).map(w => w[0]).join('').substring(0, 3).toUpperCase();
+                
+                let iconHtml = `<div class="icon-box">${acronym}</div>`;
+                if (ch.logo) {
+                    iconHtml = `<img src="${ch.logo}" alt="${ch.name}" class="channel-logo-img" onerror="this.outerHTML='<div class=\\'icon-box\\'>${acronym}</div>'">`;
+                }
+
+                card.innerHTML = `
+                    ${iconHtml}
+                    <div class="channel-name">${ch.name.replace(/_/g, ' ')}</div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        search.addEventListener('input', updateDisplay);
+
+        init();
+    </script>
 </body>
 </html>
