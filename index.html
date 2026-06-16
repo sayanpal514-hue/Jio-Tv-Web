@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sportlink | JioTV Dashboard</title>
+    <title>Sportlink | FIFA WC Dashboard</title>
     <link rel="shortcut icon" href="https://www.jiotv.com/favicon.ico" />
     <meta name="description" content="Access 1000+ live TV channels with Sportlink's premium dashboard.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -234,7 +234,7 @@
 <body>
 
     <header>
-        <h1>Sportlink - Jio Tv</h1>
+        <h1>FIFA WC by Sportlink</h1>
         <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 5px;">by Sayan10</p>
         <div class="search-container">
             <input type="text" id="search" placeholder="Search 1000+ Channels..." autocomplete="off">
@@ -315,7 +315,7 @@
             list.forEach(ch => {
                 const card = document.createElement('a');
                 card.className = 'channel-card';
-                card.href = 'channel/' + ch.fileName;
+                card.href = 'Channel/' + ch.fileName;
                 
                 const acronym = ch.name.split(/[\s_]/).map(w => w[0]).join('').substring(0, 3).toUpperCase();
                 
