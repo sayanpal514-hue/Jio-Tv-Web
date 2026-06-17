@@ -89,7 +89,7 @@
   },
   {
     "name": "FOX SPORTS 4k",
-    "url": "https://otte-tim.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
+    "url": "https://otte-qw.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
     "keyId": "f6564ec2aee819046328a0e153be574d",
     "key": "ff46a8a1031eb27ef22576a077c98ab7",
     "licenseUrl": "",
@@ -221,7 +221,7 @@
   },
   {
     "name": "M6 FRANCE   AQ [No delay]",
-    "url": "https://origin-m6web.live.6cloud.fr/out/v1/6play/6play-m6/cmaf_cenc00/dash-short-hd.mpd?",
+    "url": "https://origin-m6web.live.6cloud.fr/out/v1/6play/6play-m6/cmaf_cenc00/dash-short-hd.mpd",
     "keyId": "433ffba670963e70857859a9dff4be04",
     "key": "51ede3a821229fe81e71282c8eff80e3",
     "licenseUrl": "",
