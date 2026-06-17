@@ -8,7 +8,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 
 # Configuration
-M3U_URL = "https://raw.githubusercontent.com/srhady/willow-event/refs/heads/main/live_sports.m3u"
+M3U_URL = "https://raw.githubusercontent.com/opensourceflix/Friday/refs/heads/main/tmp/%25/privates.m3u8"
 OUTPUT_DIR = "channel"
 
 # Ensure output directory exists and is clean
