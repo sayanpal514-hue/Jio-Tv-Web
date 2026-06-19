@@ -78,9 +78,9 @@
   },
   {
     "name": "Fox 4K 2",
-    "url": "https://otte-tim.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/huqokdsaks/out/v1/4ef90d78cd004a668bc0377f3884575b/cenc.mpd",
-    "keyId": "a6164ea0967b4bbbb51fdd6c4f83a64f",
-    "key": "b431d9ed821ca93df596168601ae5b00",
+    "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/buf9inoetu/out/v1/31d30c91fc65458789b84209d3fa22e4/cenc.mpd",
+    "keyId": "1f68713028d439ec03be07f56c1d6213",
+    "key": "20093db6455160fffed4c394def3193d",
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
@@ -100,7 +100,7 @@
   },
   {
     "name": "Fox Sports HD",
-    "url": "https://otte.live.fly.ww.aiv-cdn.net/iad-nitro/live/dash/enc/ap5wz1ofsp/out/v1/7fa6feef143747beaa186ebb6dfb2532/cenc.mpd",
+    "url": "https://otte-qw.live.pv-cdn.net/iad-nitro/live/dash/enc/ap5wz1ofsp/out/v1/7fa6feef143747beaa186ebb6dfb2532/cenc.mpd",
     "keyId": "c620c93c60c04999eb9ddc28ecfb70a8",
     "key": "e76a709c251313190e76cb3c3d3a5824",
     "licenseUrl": "",
@@ -108,17 +108,6 @@
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
     "fileName": "Fox_Sports_HD.html"
-  },
-  {
-    "name": "Fox4K",
-    "url": "https://otte-tim.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/ifz2pnwgbv/out/v1/31d30c91fc65458789b84209d3fa22e4/cenc.mpd",
-    "keyId": "1f68713028d439ec03be07f56c1d6213",
-    "key": "20093db6455160fffed4c394def3193d",
-    "licenseUrl": "",
-    "cookie": "",
-    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
-    "group": "FIFA WC 2026",
-    "fileName": "Fox4K.html"
   },
   {
     "name": "Fussball 4 Xt2",
