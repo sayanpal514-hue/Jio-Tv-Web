@@ -44,6 +44,17 @@
     "fileName": "Bein_Sports_Max.html"
   },
   {
+    "name": "Binge+",
+    "url": "https://tc-sg.rockstreamer.com/v1/019ed91616121ea540a8171c8e801f/019ed92ac80315fc600b1796d4ad8b/main.m3u8",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "referer=https://iscreen.com.bd/",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Binge_.html"
+  },
+  {
     "name": "Caze TV   Aq",
     "url": "https://a121aivottepl-a.akamaihd.net/gru-nitro/live/clients/dash/enc/a6bxtdgxts/out/v1/691e8c4b528d4e45b893a9e2e516211b/cenc.mpd",
     "keyId": "9752ef72590ef441ffa3731e0486fbc0",
