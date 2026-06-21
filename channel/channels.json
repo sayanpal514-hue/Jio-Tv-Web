@@ -1,5 +1,27 @@
 [
   {
+    "name": "Arabic FHD 2",
+    "url": "https://f4f3343a2711.eu-central-1.playback.live-video.net/api/video/v1/eu-central-1.158486161195.channel.bZ9qZZUZ6s3F.m3u8",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Arabic_FHD_2.html"
+  },
+  {
+    "name": "Arabic HD",
+    "url": "https://prod-fastly-eu-west-1.video.pscp.tv/Transcoding/v1/hls/1Dghui9xjJmcCjAs9y6vU3_bTkE2eW6Fi5BEi9ZOP1a48F4WDPDLv80MlXAquRa5jgsz8NZ4BpbDGGneYLEe8g/transcode/eu-west-1/periscope-replay-direct-prod-eu-west-1-public/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsInZlcnNpb24iOiIyIn0.eyJFbmNvZGVyU2V0dGluZyI6ImVuY29kZXJfc2V0dGluZ18xMDgwcDMwXzEwIiwiSGVpZ2h0IjoxMDgwLCJLYnBzIjo1NTAwLCJXaWR0aCI6MTkyMH0.OImMZabKYJ0cs9CnIapU-4aBk6KNBiJxi1hh-6l4BZ4/dynamic_highlatency.m3u8?type=live",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Arabic_HD.html"
+  },
+  {
     "name": "Bbc",
     "url": "https://streamxyz.shop/BBC/index.m3u8?secret=pMA3rIhFNaXkOX5kQ4BfcTu",
     "keyId": null,
@@ -11,15 +33,15 @@
     "fileName": "Bbc.html"
   },
   {
-    "name": "Bbc Sports Uk",
-    "url": "https://easyproxymiopersonale.dpdns.org/extractor/video?host=dlstreams&url=https://dlhd.pk/watch.php?id=356&redirect_stream=true&api_password=Milito22.",
+    "name": "Bbc Uk 4K",
+    "url": "https://34366344.ccjdgvtt.pages.dev/1782065007/02e0e735f5de49f0a594c9c3d722bc56/Kj_7UT1-AedNAVCkeSHXwq07RhOKSS43tiNwrI2mvW4/bbcone-uk.m3u8",
     "keyId": null,
     "key": null,
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Bbc_Sports_Uk.html"
+    "fileName": "Bbc_Uk_4K.html"
   },
   {
     "name": "beIN",
@@ -44,15 +66,37 @@
     "fileName": "beIN_4k_.html"
   },
   {
-    "name": "BeIN ARABIC FHD",
-    "url": "https://easyproxymiopersonale.dpdns.org/extractor/video?host=dlstreams&url=https://dlhd.pk/watch.php?id=966&redirect_stream=true&api_password=Milito22.",
+    "name": "BeIN ARABIC   AQ",
+    "url": "https://28cup.s3.us-east-2.amazonaws.com/max1/master.m3u8",
     "keyId": null,
     "key": null,
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "BeIN_ARABIC_FHD.html"
+    "fileName": "BeIN_ARABIC___AQ.html"
+  },
+  {
+    "name": "Bein Arabic HD",
+    "url": "https://edge2caster.pro/hls/sqdahach1ax.m3u8",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Bein_Arabic_HD.html"
+  },
+  {
+    "name": "BeIN ARABIC LOW",
+    "url": "https://prod-fastly-eu-west-1.video.pscp.tv/Transcoding/v1/hls/dpXv_Bj52CxsfzkpeY2HfAG9GNFBl7qI6s8HSUWcyRO-cjXHZqH9jkGzhEIgwNcw6R5ZRRUbA8ZV7S0DXKMrkQ/transcode/eu-west-1/periscope-replay-direct-prod-eu-west-1-public/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsInZlcnNpb24iOiIyIn0.eyJFbmNvZGVyU2V0dGluZyI6ImVuY29kZXJfc2V0dGluZ18xMDgwcDMwXzEwIiwiSGVpZ2h0IjoxMDgwLCJLYnBzIjo1NTAwLCJXaWR0aCI6MTkyMH0.OImMZabKYJ0cs9CnIapU-4aBk6KNBiJxi1hh-6l4BZ4/dynamic_highlatency.m3u8?type=live",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "BeIN_ARABIC_LOW.html"
   },
   {
     "name": "Bein Sports Max",
@@ -66,6 +110,17 @@
     "fileName": "Bein_Sports_Max.html"
   },
   {
+    "name": "Bein Sports MAX",
+    "url": "https://34366344.ccjdgvtt.pages.dev/1782065064/1549c1f2b8dd4c7bbfa39f301fe88d0b/eUF8Hwf-2b08QZyVpwWwZsXjWfT50k8dMM6yBu328mQ/beinsportsmax-sa.m3u8",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Bein_Sports_MAX.html"
+  },
+  {
     "name": "Binge+",
     "url": "https://tc-sg.rockstreamer.com/v1/019ed91616121ea540a8171c8e801f/019ed92ac80315fc600b1796d4ad8b/main.m3u8",
     "keyId": null,
@@ -77,26 +132,37 @@
     "fileName": "Binge_.html"
   },
   {
-    "name": "Caze TV   Aq",
-    "url": "https://a121aivottepl-a.akamaihd.net/gru-nitro/live/clients/dash/enc/a6bxtdgxts/out/v1/691e8c4b528d4e45b893a9e2e516211b/cenc.mpd",
-    "keyId": "9752ef72590ef441ffa3731e0486fbc0",
-    "key": "db63ec7b9f11348b7cc6808a54c99457",
+    "name": "Canal Spanish",
+    "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/ntkdl68eob/out/v1/bd5dfb7676994383881bc6e71877d29d/cenc.mpd",
+    "keyId": "d695093ea3e66d75a4d213a3e2cbf360",
+    "key": "01be3f645e89a067d2786c295f68dde4",
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Caze_TV___Aq.html"
+    "fileName": "Canal_Spanish.html"
   },
   {
     "name": "Caze TV   Aq [Br]",
-    "url": "https://otte.live.fly.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/epg9sw6owc/out/v1/e50aecefcb294fae85d6b343e0a6f1cc/cenc.mpd",
-    "keyId": "9752ef72590ef441ffa3731e0486fbc0",
-    "key": "db63ec7b9f11348b7cc6808a54c99457",
+    "url": "https://otte.live.fly.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/3ynrpdanq2/out/v1/81fd4c26584044d2b1a1cc5b32fa9af0/cenc.mpd",
+    "keyId": "34475edab991ad5e92548aebd710410a",
+    "key": "501b209cccd323ac00bf5ac15b406cb4",
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
     "fileName": "Caze_TV___Aq__Br_.html"
+  },
+  {
+    "name": "Cgp English   Aq",
+    "url": "https://otte-qw.live.pv-cdn.net/lhr-nitro/live/clients/dash/enc/72sjo8hygl/out/v1/3079be34d72a4985852d299a02406a0c/cenc.mpd",
+    "keyId": "d185684e2330de5bea436daa094a5e86",
+    "key": "014f0116154f5bf0050e03a6b0a23157",
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Cgp_English___Aq.html"
   },
   {
     "name": "Cignal English",
@@ -110,10 +176,21 @@
     "fileName": "Cignal_English.html"
   },
   {
+    "name": "Ctv Sports   Aq",
+    "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/72sjo8hygl/out/v1/3079be34d72a4985852d299a02406a0c/cenc.mpd",
+    "keyId": "d185684e2330de5bea436daa094a5e86",
+    "key": "014f0116154f5bf0050e03a6b0a23157",
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Ctv_Sports___Aq.html"
+  },
+  {
     "name": "D Sports   Aq [Es]",
-    "url": "https://otte-qw.live.pv-cdn.net/gru-nitro/live/clients/dash/enc/ubehitlwzo/out/v1/8e09c381a51f4366a19e979418112e8f/cenc.mpd",
-    "keyId": "a7d11d37a1f7611ee88d4db880171f32",
-    "key": "68f96d618b0b956b008c445896a25a79",
+    "url": "https://otte.live.fly.ww.aiv-cdn.net/gru-nitro/live/clients/dash/enc/3gg2jnixjn/out/v1/e1840e01f3f14563b66bbb944d5cc54c/cenc.mpd",
+    "keyId": "f8b207c10f3f76aeba32a360ec52b9e4",
+    "key": "afad49d20eb39670e93e371c1d669921",
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
@@ -132,41 +209,19 @@
     "fileName": "DIRECTV_4K_Live.html"
   },
   {
-    "name": "Footboll Russia",
-    "url": "https://video.beeline.tv/live/d/channel319.isml/manifest-stb.mpd",
-    "keyId": "9145a6e0f778e61866f573d4944dd533",
-    "key": "d02173d40515fea5c83944f21d0f3114",
+    "name": "Fast Server",
+    "url": "https://pulltx.jdnzrgm.com/live/hd-en-6MvZ6BDhJVAAtvt3K4.m3u8?txSecret=ad9d2c8188a8eb1b1a912df175fac11c&txTime=6A382E20",
+    "keyId": null,
+    "key": null,
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Footboll_Russia.html"
-  },
-  {
-    "name": "Fox 4K 2",
-    "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/buf9inoetu/out/v1/31d30c91fc65458789b84209d3fa22e4/cenc.mpd",
-    "keyId": "1f68713028d439ec03be07f56c1d6213",
-    "key": "20093db6455160fffed4c394def3193d",
-    "licenseUrl": "",
-    "cookie": "",
-    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
-    "group": "FIFA WC 2026",
-    "fileName": "Fox_4K_2.html"
+    "fileName": "Fast_Server.html"
   },
   {
     "name": "FOX SPORTS 4k",
-    "url": "https://otte-qw.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
-    "keyId": "f6564ec2aee819046328a0e153be574d",
-    "key": "ff46a8a1031eb27ef22576a077c98ab7",
-    "licenseUrl": "",
-    "cookie": "",
-    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
-    "group": "FIFA WC 2026",
-    "fileName": "FOX_SPORTS_4k.html"
-  },
-  {
-    "name": "FOX SPORTS 4k",
-    "url": "https://a35live-pv-ta-amazon.akamaized.net/iad-nitro/live/clients/dash/enc/pfcxjf1zas/out/v1/31d30c91fc65458789b84209d3fa22e4/cenc.mpd",
+    "url": "https://otte.live.fly.ww.aiv-cdn.net/bom-nitro/live/clients/dash/enc/buf9inoetu/out/v1/31d30c91fc65458789b84209d3fa22e4/cenc.mpd",
     "keyId": "1f68713028d439ec03be07f56c1d6213",
     "key": "20093db6455160fffed4c394def3193d",
     "licenseUrl": "",
@@ -174,6 +229,17 @@
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
     "fileName": "FOX_SPORTS_4k.html"
+  },
+  {
+    "name": "Fox Sports 4K",
+    "url": "https://34366344.ccjdgvtt.pages.dev/1782064776/de280ab98a914dc69ba72b211034dc92/EJ9vXKw092aBc2dRU-B6itHkookOd2xEl94EwCmMmfU/fox4k-usa.m3u8",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Fox_Sports_4K.html"
   },
   {
     "name": "Fox Sports FHD",
@@ -188,9 +254,31 @@
   },
   {
     "name": "Fox Sports HD",
-    "url": "https://otte-qw.live.pv-cdn.net/iad-nitro/live/dash/enc/ap5wz1ofsp/out/v1/7fa6feef143747beaa186ebb6dfb2532/cenc.mpd",
-    "keyId": "c620c93c60c04999eb9ddc28ecfb70a8",
-    "key": "e76a709c251313190e76cb3c3d3a5824",
+    "url": "https://edgestreams.pro/hls/24SDAZFcsqnj24.m3u8",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Fox_Sports_HD.html"
+  },
+  {
+    "name": "Fox Sports HD",
+    "url": "https://chatgpt.hereisman.net/playlist/52203/load-playlist?",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Fox_Sports_HD.html"
+  },
+  {
+    "name": "Fox Sports HD",
+    "url": "https://storage.googleapis.com/mslakers/btsport/manifest.m3u8",
+    "keyId": null,
+    "key": null,
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
@@ -253,26 +341,15 @@
     "fileName": "Fs1_4K.html"
   },
   {
-    "name": "Fussball 4 Xt2",
-    "url": "http://line.ciao-ott.net/live/7VSUAK/S59UJY/1745180.ts",
+    "name": "Fusball 4K",
+    "url": "https://34366344.ccjdgvtt.pages.dev/1782064916/50f8e931e18e4c8f9e3daec684092924/2foCwBU1mLEk6Me8EkNyddn_zA0VjaunelIguIpktHU/fusballtv1uhd-de.m3u8",
     "keyId": null,
     "key": null,
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Fussball_4_Xt2.html"
-  },
-  {
-    "name": "Fussball 4K",
-    "url": "http://starhub.pro/live/farhat-3379/67897-913379/742610.ts",
-    "keyId": null,
-    "key": null,
-    "licenseUrl": "",
-    "cookie": "",
-    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
-    "group": "FIFA WC 2026",
-    "fileName": "Fussball_4K.html"
+    "fileName": "Fusball_4K.html"
   },
   {
     "name": "Fussball 4K [Ger]",
@@ -286,81 +363,81 @@
     "fileName": "Fussball_4K__Ger_.html"
   },
   {
-    "name": "Fussball 4k xt",
-    "url": "http://line.diego86.com/live/GY56NW/RQWKEA/1745095.ts",
+    "name": "Fussball TV 4K",
+    "url": "https://da-50f11b292a028381000001120000000000000009.id.vx.tentcdn.eu/wp/at-live-7.tentcdn.eu/bpk-tv/WM_TV_1_UHD/default/index.mpd",
+    "keyId": "4f558eae1b005126b2ac6e9eb1a7849e",
+    "key": "17aea325d91b5e66f06a8c574f2f0b03",
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Fussball_TV_4K.html"
+  },
+  {
+    "name": "HD Stream Eng",
+    "url": "https://mainstreams.pro/hls/24SDAZFcsqnj24.m3u8",
     "keyId": null,
     "key": null,
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Fussball_4k_xt.html"
+    "fileName": "HD_Stream_Eng.html"
   },
   {
-    "name": "Fussball 4K Xt 3",
-    "url": "http://pepvip.xyz:8080/live/8795285adn/8795285/514706.ts",
+    "name": "HD Stream Es",
+    "url": "https://mainstreams.pro/hls/eJmauBDCIf.m3u8",
     "keyId": null,
     "key": null,
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Fussball_4K_Xt_3.html"
+    "fileName": "HD_Stream_Es.html"
   },
   {
-    "name": "Fussball 4k xt2",
-    "url": "http://katnaesc.xyz:8080/live/wwSb0r4u15-01-25/kEKH933/118985.ts",
+    "name": "Iscreen Bd   Aq",
+    "url": "https://m3u-tvb.pages.dev/ics.m3u8",
     "keyId": null,
     "key": null,
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Fussball_4k_xt2.html"
+    "fileName": "Iscreen_Bd___Aq.html"
   },
   {
-    "name": "Fussball 4K Xt4",
-    "url": "http://185.160.192.64/live/mangin15/85784/465816.ts",
+    "name": "Itv Sports HD",
+    "url": "https://chatgpt.hereisman.net/playlist/52318/load-playlist?",
     "keyId": null,
     "key": null,
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Fussball_4K_Xt4.html"
+    "fileName": "Itv_Sports_HD.html"
   },
   {
-    "name": "Fussball TV",
-    "url": "https://easyproxymiopersonale.dpdns.org/extractor/video?host=dlstreams&url=https://dlhd.pk/watch.php?id=263&redirect_stream=true&api_password=Milito22.",
+    "name": "Joj Sports",
+    "url": "https://dash2.antik.sk/stream/nvidia_joj_sport/playlist_cenc.mpd",
+    "keyId": "11223344556677889900112233445566",
+    "key": "4b80724d0ef86bcb2c21f7999d67739d",
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Joj_Sports.html"
+  },
+  {
+    "name": "La Spain 4K",
+    "url": "https://34366344.ccjdgvtt.pages.dev/1782064972/db5e7d00ac624459a98addc04e197411/A2X2532iSSTo6yeh83VxXTOl-iCyaA-WNeYMV82zD4U/la1uhd-es.m3u8",
     "keyId": null,
     "key": null,
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Fussball_TV.html"
-  },
-  {
-    "name": "I Screen   HD",
-    "url": "https://picocloud.thebosstv.com/main2/robi_fifa_main_abr/playlist.m3u8",
-    "keyId": null,
-    "key": null,
-    "licenseUrl": "",
-    "cookie": "referer=https://iscreen.com.bd/",
-    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
-    "group": "FIFA WC 2026",
-    "fileName": "I_Screen___HD.html"
-  },
-  {
-    "name": "Iran 4K",
-    "url": "https://ncdn.telewebion.ir/faratar/live/playlist.m3u8",
-    "keyId": null,
-    "key": null,
-    "licenseUrl": "",
-    "cookie": "",
-    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
-    "group": "FIFA WC 2026",
-    "fileName": "Iran_4K.html"
+    "fileName": "La_Spain_4K.html"
   },
   {
     "name": "M6 4K",
@@ -396,37 +473,15 @@
     "fileName": "Match_TV_HD.html"
   },
   {
-    "name": "Now Sports 4k xt",
-    "url": "http://katnaesc.xyz:8080/live/wwSb0r4u15-01-25/kEKH933/118987.ts",
+    "name": "Now Sports 4K",
+    "url": "https://34366344.ccjdgvtt.pages.dev/1782064877/a71b1e9dd77c464da3c7bd6493700bae/uqQlD5Xr2C590fn34t1JIPScFAsA4hCHQYrtHqjQGus/now-4k-hk.m3u8",
     "keyId": null,
     "key": null,
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Now_Sports_4k_xt.html"
-  },
-  {
-    "name": "Orf German HD",
-    "url": "https://simplitv-live.mdn.ors.at/live/eds/orf_1_hd-1/dash4h/orf_1_hd-1.mpd",
-    "keyId": "429bcf031bbf3146a67f3f583e4c4355",
-    "key": "d1b92aba5a38a518c8b8a1fd2bca4398",
-    "licenseUrl": "",
-    "cookie": "",
-    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
-    "group": "FIFA WC 2026",
-    "fileName": "Orf_German_HD.html"
-  },
-  {
-    "name": "Ptv Sports HD",
-    "url": "https://easyproxymiopersonale.dpdns.org/extractor/video?host=dlstreams&url=https://dlhd.pk/watch.php?id=450&redirect_stream=true&api_password=Milito22.",
-    "keyId": null,
-    "key": null,
-    "licenseUrl": "",
-    "cookie": "",
-    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
-    "group": "FIFA WC 2026",
-    "fileName": "Ptv_Sports_HD.html"
+    "fileName": "Now_Sports_4K.html"
   },
   {
     "name": "Pzirb   4K",
@@ -440,29 +495,29 @@
     "fileName": "Pzirb___4K.html"
   },
   {
-    "name": "Rtbgo   Aq",
-    "url": "https://d1211whpimeups.cloudfront.net/smil:rtbgo/chunklist.m3u8",
+    "name": "Rtb English   Aq",
+    "url": "https://d1211whpimeups.cloudfront.net/smil:rtbgo/playlist.m3u8",
     "keyId": null,
     "key": null,
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Rtbgo___Aq.html"
+    "fileName": "Rtb_English___Aq.html"
   },
   {
-    "name": "Rte English HD",
-    "url": "https://dai.google.com/linear/dash/pa/event/antwa0EiQm2PoHtx4rBtVw/stream/9217f1b8-7d77-4590-8a52-4917bcfaeed2:GRQ/manifest.mpd",
+    "name": "Rte English   Aq",
+    "url": "https://dai.google.com/linear/dash/event/antwa0EiQm2PoHtx4rBtVw/manifest.mpd",
     "keyId": "d816287e21496989eae1312925a423c5",
     "key": "00da00f13180e7e6cd5ce87d1c974e8d",
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Rte_English_HD.html"
+    "fileName": "Rte_English___Aq.html"
   },
   {
-    "name": "Somoy TV",
+    "name": "Somoy TV HD",
     "url": "https://live.thebosstv.com:30443/dwlive/Somoy-TV/chunks.m3u8",
     "keyId": null,
     "key": null,
@@ -470,35 +525,13 @@
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Somoy_TV.html"
-  },
-  {
-    "name": "Sportv Br   Aq",
-    "url": "https://a151aivottlinear-a.akamaihd.net/OTTB/sin-nitro/live/dash/enc/m7duvnk2bu/out/v1/d1ad69118b5647309b1eb7213affdb3d/cenc.mpd",
-    "keyId": "4bbcff3289d457b4dd5dbdd21221de9a",
-    "key": "c4906b9a9f8dda3c0725bddb8c497733",
-    "licenseUrl": "",
-    "cookie": "",
-    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
-    "group": "FIFA WC 2026",
-    "fileName": "Sportv_Br___Aq.html"
-  },
-  {
-    "name": "SporTV BR   AQ",
-    "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/tvezxbddeg/out/v1/3aa321e477504937a439b602e078eb18/cenc.mpd",
-    "keyId": "cb5eaea6d91fc8a702f154cefd69c976",
-    "key": "fd4b69623da596aac100e5722d8a1ca0",
-    "licenseUrl": "",
-    "cookie": "",
-    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
-    "group": "FIFA WC 2026",
-    "fileName": "SporTV_BR___AQ.html"
+    "fileName": "Somoy_TV_HD.html"
   },
   {
     "name": "Sporza Sports",
-    "url": "https://live.vrtcdn.be/groupd/live/0761024f-37fe-4254-bc37-e95d7c62b2d1/live.isml/.mpd",
-    "keyId": "893bc63340876605f52886a42e0ccce5",
-    "key": "d6c46d2d691056fbd091bf1f01b21a91",
+    "url": "https://live.vrtcdn.be/groupd/live/0761024f-37fe-4254-bc37-e95d7c62b2d1/playout.isml/.mpd",
+    "keyId": "7c0a14fc7dc3c641af8cb6506431a628",
+    "key": "f318ff7c01cca20c4a5b3d91074ca460",
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
@@ -506,15 +539,48 @@
     "fileName": "Sporza_Sports.html"
   },
   {
-    "name": "T Sports HD",
-    "url": "https://easyproxymiopersonale.dpdns.org/extractor/video?host=dlstreams&url=https://dlhd.pk/watch.php?id=270&redirect_stream=true&api_password=Milito22.",
+    "name": "TELEMUNDO 4k",
+    "url": "https://34366344.ccjdgvtt.pages.dev/1782064827/35c3b89ebbbb430bb824a9e7dcc499e3/dID_nvLbByTd7EHQrUOTPohy06i8X_o-yQKe-BeglJI/telemundo-4k.m3u8",
     "keyId": null,
     "key": null,
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "T_Sports_HD.html"
+    "fileName": "TELEMUNDO_4k.html"
+  },
+  {
+    "name": "Telemundo Es Usa",
+    "url": "https://live-oneapp-prd-news.akamaized.net/Content/CMAF_OL2-CTR-4s/Live/channel(WSNS)/master.mpd",
+    "keyId": "7d6bb9f86e133e4cb33440b493b6b672",
+    "key": "584ad285dcb9e7d42cf3e93f1cc3fe11",
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Telemundo_Es_Usa.html"
+  },
+  {
+    "name": "Telemundo FHD",
+    "url": "https://34366344.ccjdgvtt.pages.dev/1782065118/cb672a689ed74ee9aed38f01b9c9d135/_0BCq54sgUTI0ILLBZs77WWkjB7EnuJGooJ3L6UaKO0/telemundo-usa.m3u8",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Telemundo_FHD.html"
+  },
+  {
+    "name": "Telemundo HD",
+    "url": "https://edge2caster.pro/hls/eJmauBDCIf.m3u8",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Telemundo_HD.html"
   },
   {
     "name": "Telemundo HLS",
@@ -526,17 +592,6 @@
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
     "fileName": "Telemundo_HLS.html"
-  },
-  {
-    "name": "Telemundo Spanish",
-    "url": "https://live-oneapp-prd-news.akamaized.net/Content/CMAF_OL2-CTR-4s/Live/channel(WSNS)/master.mpd",
-    "keyId": "7d6bb9f86e133e4cb33440b493b6b672",
-    "key": "584ad285dcb9e7d42cf3e93f1cc3fe11",
-    "licenseUrl": "",
-    "cookie": "",
-    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
-    "group": "FIFA WC 2026",
-    "fileName": "Telemundo_Spanish.html"
   },
   {
     "name": "Tipik Fr   Aq",
@@ -605,15 +660,26 @@
     "fileName": "Toffee_5___HD.html"
   },
   {
-    "name": "Trt 2k",
-    "url": "https://tv-trt1-esdai.medya.trt.com.tr/master.m3u8",
+    "name": "Toffee Bd   Aq",
+    "url": "https://cdn-tt.pages.dev/ch4.m3u8",
     "keyId": null,
     "key": null,
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Trt_2k.html"
+    "fileName": "Toffee_Bd___Aq.html"
+  },
+  {
+    "name": "Trt 2K",
+    "url": "https://rxne77juptdeyke3tytvgqwyh.medya.trt.com.tr/master.m3u8",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Trt_2K.html"
   },
   {
     "name": "Tsn 1",
@@ -638,6 +704,50 @@
     "fileName": "Tsn_English___Aq.html"
   },
   {
+    "name": "Tsn Sports HD",
+    "url": "https://soccerball.st/s1.php",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Tsn_Sports_HD.html"
+  },
+  {
+    "name": "Tsn Sports HD",
+    "url": "https://hugh.cdn.rumble.cloud/live/y16rq9u0/slot-13/2rvn-cv3b_1080p/chunklist_DVR.m3u8",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Tsn_Sports_HD.html"
+  },
+  {
+    "name": "Tsn Sports HD",
+    "url": "https://ataide0.mercadodavoz.com.br/tsn.m3u8",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Tsn_Sports_HD.html"
+  },
+  {
+    "name": "Tsn Sports HD",
+    "url": "https://chatgpt.hereisman.net/playlist/52320/load-playlist?",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Tsn_Sports_HD.html"
+  },
+  {
     "name": "Tsn4k+",
     "url": "https://streamxyz.shop/tsn4k/index.m3u8?secret=pMA3rIhFNaXkOX5kQ4BfcTu",
     "keyId": null,
@@ -660,47 +770,36 @@
     "fileName": "Tvp_Polish_FHD.html"
   },
   {
-    "name": "Unite8 Hindi FHD",
-    "url": "http://rgkkw.live:80/live/1Aoen7elp5/IgMJ60tmAa/741567.ts",
+    "name": "Tyc Sports HD",
+    "url": "https://1nyaler.streamhostingcdn.top/stream/84/index.m3u8",
     "keyId": null,
     "key": null,
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Unite8_Hindi_FHD.html"
+    "fileName": "Tyc_Sports_HD.html"
   },
   {
-    "name": "Zdf German HD",
-    "url": "https://simplitv-live.mdn.ors.at/live/eds/zdf_hd/dash4h/zdf_hd.mpd",
-    "keyId": "c1a0ac1044a433d0856ccdc08f245084",
-    "key": "7f0e8800a6d63d7915ac181bb88ce813",
+    "name": "Unite8 Sports Hin",
+    "url": "https://sundirectgo-live.pc.cdn.bitgravity.com/svchd18/dth.mpd",
+    "keyId": "ee5dea847c44d9f6063022978e3ce382",
+    "key": "fb0ce876da1bd792260a99fb7dd97b4a",
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Zdf_German_HD.html"
+    "fileName": "Unite8_Sports_Hin.html"
   },
   {
-    "name": "Zee Bangla",
-    "url": "https://d1g8wgjurz8via.cloudfront.net/bpk-tv/ColorsHD/default/ColorsHD.m3u8",
-    "keyId": null,
-    "key": null,
+    "name": "Vix Spanish   Aq",
+    "url": "https://vod-sev-orbit2-s2.izzigo.tv/out/u/startover/dash/VIX-MUNDIAL-90-HD/default.mpd",
+    "keyId": "75074a0cbd83f5b72fb3e5c1495252a9",
+    "key": "a4a0df04b2d28f2160cead2ecdeb7203",
     "licenseUrl": "",
     "cookie": "",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Zee_Bangla.html"
-  },
-  {
-    "name": "Zee Hindi",
-    "url": "https://d1g8wgjurz8via.cloudfront.net/bpk-tv/NGCHD/default/master2.m3u8",
-    "keyId": null,
-    "key": null,
-    "licenseUrl": "",
-    "cookie": "",
-    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
-    "group": "FIFA WC 2026",
-    "fileName": "Zee_Hindi.html"
+    "fileName": "Vix_Spanish___Aq.html"
   }
 ]
