@@ -1,5 +1,16 @@
 [
   {
+    "name": "Bbc",
+    "url": "https://streamxyz.shop/BBC/index.m3u8?secret=pMA3rIhFNaXkOX5kQ4BfcTu",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "Referer=https://xyzstreams.shop/",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Bbc.html"
+  },
+  {
     "name": "Bbc Sports Uk",
     "url": "https://easyproxymiopersonale.dpdns.org/extractor/video?host=dlstreams&url=https://dlhd.pk/watch.php?id=356&redirect_stream=true&api_password=Milito22.",
     "keyId": null,
@@ -11,6 +22,28 @@
     "fileName": "Bbc_Sports_Uk.html"
   },
   {
+    "name": "beIN",
+    "url": "https://streamxyz.shop/bein/index.m3u8?secret=pMA3rIhFNaXkOX5kQ4BfcTu",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "Referer=https://xyzstreams.shop/",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "beIN.html"
+  },
+  {
+    "name": "beIN 4k+",
+    "url": "https://streamxyz.shop/bein4k/index.m3u8?secret=pMA3rIhFNaXkOX5kQ4BfcTu",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "Referer=https://xyzstreams.shop/",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "beIN_4k_.html"
+  },
+  {
     "name": "BeIN ARABIC FHD",
     "url": "https://easyproxymiopersonale.dpdns.org/extractor/video?host=dlstreams&url=https://dlhd.pk/watch.php?id=966&redirect_stream=true&api_password=Milito22.",
     "keyId": null,
@@ -20,17 +53,6 @@
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
     "fileName": "BeIN_ARABIC_FHD.html"
-  },
-  {
-    "name": "Bein Hdr 4K",
-    "url": "https://streamxyz.shop/bein4k/index.m3u8",
-    "keyId": null,
-    "key": null,
-    "licenseUrl": "",
-    "cookie": "referer=https://xyzstreams.shop/",
-    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
-    "group": "FIFA WC 2026",
-    "fileName": "Bein_Hdr_4K.html"
   },
   {
     "name": "Bein Sports Max",
@@ -132,17 +154,6 @@
     "fileName": "Fox_4K_2.html"
   },
   {
-    "name": "FOX 4K st",
-    "url": "https://streamxyz.shop/fox4k/index.m3u8",
-    "keyId": null,
-    "key": null,
-    "licenseUrl": "",
-    "cookie": "referer=https://xyzstreams.shop/",
-    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
-    "group": "FIFA WC 2026",
-    "fileName": "FOX_4K_st.html"
-  },
-  {
     "name": "FOX SPORTS 4k",
     "url": "https://otte-qw.live.pv-cdn.net/pdx-nitro/live/clients/dash/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
     "keyId": "f6564ec2aee819046328a0e153be574d",
@@ -185,6 +196,61 @@
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
     "fileName": "Fox_Sports_HD.html"
+  },
+  {
+    "name": "Fox Usa",
+    "url": "https://vfdbdfbd.pages.dev/1782035826/01d7e64f239a4f7e8a195be0a07a91df/v3S4nmFPoeYV0aGNRrflcJmRRivl32G4RbQNtxMltIA/fox-usa.m3u8",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Fox_Usa.html"
+  },
+  {
+    "name": "Fox4k+",
+    "url": "https://streamxyz.shop/fox4k/index.m3u8?secret=pMA3rIhFNaXkOX5kQ4BfcTu",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "Referer=https://xyzstreams.shop/",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Fox4k_.html"
+  },
+  {
+    "name": "Fs1",
+    "url": "https://streamxyz.shop/fs1/index.m3u8?secret=pMA3rIhFNaXkOX5kQ4BfcTu",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "Referer=https://xyzstreams.shop/",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Fs1.html"
+  },
+  {
+    "name": "Fs1 +",
+    "url": "https://vfdbdfbd.pages.dev/1782035739/29261a9ddafa4736b5cf7388181c1166/DoT0tSFnn2cMtdxUSsh525CnI9ZSlGbIntjdqFpClRk/fox-sports-1.m3u8",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Fs1__.html"
+  },
+  {
+    "name": "Fs1 4K",
+    "url": "https://streamxyz.shop/fs14k/index.m3u8?secret=pMA3rIhFNaXkOX5kQ4BfcTu",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "Referer=https://xyzstreams.shop/",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Fs1_4K.html"
   },
   {
     "name": "Fussball 4 Xt2",
@@ -451,6 +517,17 @@
     "fileName": "T_Sports_HD.html"
   },
   {
+    "name": "Telemundo HLS",
+    "url": "https://streamxyz.shop/Telemundo/index.m3u8?secret=pMA3rIhFNaXkOX5kQ4BfcTu",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "Referer=https://xyzstreams.shop/",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Telemundo_HLS.html"
+  },
+  {
     "name": "Telemundo Spanish",
     "url": "https://live-oneapp-prd-news.akamaized.net/Content/CMAF_OL2-CTR-4s/Live/channel(WSNS)/master.mpd",
     "keyId": "7d6bb9f86e133e4cb33440b493b6b672",
@@ -539,15 +616,15 @@
     "fileName": "Trt_2k.html"
   },
   {
-    "name": "Tsn 4K",
-    "url": "https://streamxyz.shop/tsn4k/index.m3u8",
+    "name": "Tsn 1",
+    "url": "https://streamxyz.shop/tsn1/index.m3u8?secret=pMA3rIhFNaXkOX5kQ4BfcTu",
     "keyId": null,
     "key": null,
     "licenseUrl": "",
-    "cookie": "referer=https://xyzstreams.shop/",
+    "cookie": "Referer=https://xyzstreams.shop/",
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
-    "fileName": "Tsn_4K.html"
+    "fileName": "Tsn_1.html"
   },
   {
     "name": "Tsn English   Aq",
@@ -559,6 +636,17 @@
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
     "fileName": "Tsn_English___Aq.html"
+  },
+  {
+    "name": "Tsn4k+",
+    "url": "https://streamxyz.shop/tsn4k/index.m3u8?secret=pMA3rIhFNaXkOX5kQ4BfcTu",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "Referer=https://xyzstreams.shop/",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Tsn4k_.html"
   },
   {
     "name": "Tvp Polish FHD",
