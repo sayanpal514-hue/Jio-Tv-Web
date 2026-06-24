@@ -220,6 +220,17 @@
     "fileName": "Fast_Server.html"
   },
   {
+    "name": "Fifa",
+    "url": "https://origin-m6web.live.6cloud.fr/out/v1/6play/6play-m6/cmaf_cenc00/dash-short-hd.mpd",
+    "keyId": "1c285ebc98483383b938f2aac331410c",
+    "key": "10accd30d969402cf0bb0fb99ad09283",
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "",
+    "group": "M6",
+    "fileName": "Fifa.html"
+  },
+  {
     "name": "Fox 4K 2",
     "url": "https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/enc/g17oisjirj/out/v1/31d30c91fc65458789b84209d3fa22e4/cenc.mpd",
     "keyId": "1f68713028d439ec03be07f56c1d6213",
