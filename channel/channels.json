@@ -616,6 +616,28 @@
     "fileName": "Telemundo_HLS.html"
   },
   {
+    "name": "Telemundo | Bay Area",
+    "url": "https://box.djdoolky76.net/stream/udptvus/telemundobayarea/master.m3u8?u=gratisph&p=b7594b1f3fc4330368923027acec015c59213e4ab57d0b52232b5b0f207b8703",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://github.com/tv-logo/tv-logos/blob/main/countries/united-states/telemundo-us.png?raw=true",
+    "group": "FIFA WORLD CUP",
+    "fileName": "Telemundo___Bay_Area.html"
+  },
+  {
+    "name": "Telemundo | Boston",
+    "url": "https://box.djdoolky76.net/stream/udptvus/telemundoboston/master.m3u8?u=gratisph&p=b7594b1f3fc4330368923027acec015c59213e4ab57d0b52232b5b0f207b8703",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://github.com/tv-logo/tv-logos/blob/main/countries/united-states/telemundo-us.png?raw=true",
+    "group": "FIFA WORLD CUP",
+    "fileName": "Telemundo___Boston.html"
+  },
+  {
     "name": "Tipik Fr   Aq",
     "url": "https://c9851ec-rbm-hilv-fsly.cdn.redbee.live/L26/6b640fa2/a765d074.isml/dash/.mpd",
     "keyId": "adca25b8779e4168a0cd710f59f61ccf",
