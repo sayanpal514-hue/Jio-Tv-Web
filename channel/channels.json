@@ -539,17 +539,6 @@
     "fileName": "Fox_UHD.html"
   },
   {
-    "name": "Fussball TV 1 HEVC H.265 dvhe",
-    "url": "https://svc.flyins.my.id/bpk-tv/KID01037_FUSSBALLTV1_uhd/DASH/index.mpd",
-    "keyId": "1f09d5788fbbb03a053d03cc731f31a9",
-    "key": "d493d5a70c793362324638f61d1726ac",
-    "licenseUrl": "",
-    "cookie": "",
-    "logo": "https://img.bolatv.my.id/group/fussball.jpg",
-    "group": "Magenta FIFA WC 2026",
-    "fileName": "Fussball_TV_1_HEVC_H_265_dvhe.html"
-  },
-  {
     "name": "Fussball TV 4K",
     "url": "https://da-50f11b292a028381000001120000000000000009.id.vx.tentcdn.eu/wp/at-live-7.tentcdn.eu/bpk-tv/WM_TV_1_UHD/default/index.mpd",
     "keyId": "4f558eae1b005126b2ac6e9eb1a7849e",
