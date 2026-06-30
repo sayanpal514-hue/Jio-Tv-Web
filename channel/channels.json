@@ -154,6 +154,17 @@
     "fileName": "Caze_TV_FHD.html"
   },
   {
+    "name": "Caz\u00e9TV",
+    "url": "https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/ui54qo0g6h/out/v1/620e1448188d4bbe9a28d0dd52f45bb7/cenc.mpd",
+    "keyId": "ba6aca5a550163c38d06646bb50f04e7",
+    "key": "516c3b471fce48a5b7a2e5ee7dd505f2",
+    "licenseUrl": "",
+    "cookie": "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Caz\u00e9TV.html"
+  },
+  {
     "name": "Ct Sports   Aq",
     "url": "https://dash2.antik.sk/stream/nvidia_ct_sport/playlist_cenc.mpd",
     "keyId": "11223344556677889900112233445566",
@@ -174,6 +185,28 @@
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
     "fileName": "Ctv_English___Aq.html"
+  },
+  {
+    "name": "Ctv Sports",
+    "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/72sjo8hygl/out/v1/3079be34d72a4985852d299a02406a0c/cenc.mpd",
+    "keyId": "d185684e2330de5bea436daa094a5e86",
+    "key": "014f0116154f5bf0050e03a6b0a23157",
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Ctv_Sports.html"
+  },
+  {
+    "name": "D Sports",
+    "url": "https://otte.cache.aiv-cdn.net/iad-nitro/live/clients/dash/enc/z5oyxzsxdk/out/v1/7695a0f64a0e424b973d5b09a2a3eb91/cenc.mpd",
+    "keyId": "f836853d8eac19446ed9535f5fc568b1",
+    "key": "b3bc5ef00602b29abac7e482d3d9fbf3",
+    "licenseUrl": "",
+    "cookie": "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "D_Sports.html"
   },
   {
     "name": "D Sports   Aq [Es]",
@@ -451,6 +484,17 @@
     "fileName": "Fox_Sport_HD.html"
   },
   {
+    "name": "Fox Sports",
+    "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/enc/ajfoeddkbz/out/v1/b78800b9b2304879b15843f455836829/cenc.mpd",
+    "keyId": "f6564ec2aee819046328a0e153be574d",
+    "key": "ff46a8a1031eb27ef22576a077c98ab7",
+    "licenseUrl": "",
+    "cookie": "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Fox_Sports.html"
+  },
+  {
     "name": "Fox Sports 4K",
     "url": "https://lb.xyzcloud3.xyz/fs14k/index.m3u8?",
     "keyId": null,
@@ -614,6 +658,17 @@
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
     "fileName": "Itv_English___Aq.html"
+  },
+  {
+    "name": "Itv Sports",
+    "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/0eiyyz8qzm/out/v1/dd17af8835fe4bd087d1a4e359b635d7/cenc.mpd",
+    "keyId": "30089c52924f037b225b82c616fee2a5",
+    "key": "f55dc8b66ed4fc6753d6035ae7e17144",
+    "licenseUrl": "",
+    "cookie": "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Itv_Sports.html"
   },
   {
     "name": "Itv Sports FHD",
@@ -891,6 +946,17 @@
     "fileName": "Sportsnet_West.html"
   },
   {
+    "name": "SporTV",
+    "url": "https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/w8kwdfmlgs/out/v1/3aa321e477504937a439b602e078eb18/cenc.mpd",
+    "keyId": "51c0ef23b17297e5c01cd7f36dd0a6ce",
+    "key": "8823f713ba6fdb9bbe0a2ad82d309a4b",
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "SporTV.html"
+  },
+  {
     "name": "SporTV   AQ",
     "url": "https://otte.cache.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/dsa3hwuhd1/out/v1/631b48c8d9ea437e8309d1a4b55acef5/cenc.mpd",
     "keyId": "3de028eafb3b2caffec03be1c1c818b3",
@@ -955,6 +1021,17 @@
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
     "fileName": "Tipik_Fr_FHD.html"
+  },
+  {
+    "name": "Tipik French",
+    "url": "https://c9851ec-rbm-hilv-fsly.cdn.redbee.live/L26/6b640fa2/a765d074.isml/dash/.mpd",
+    "keyId": "adca25b8779e4168a0cd710f59f61ccf",
+    "key": "be5383ed3cd8079f4ffe78ad067f476a",
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Tipik_French.html"
   },
   {
     "name": "TNT Sports 1",
@@ -1166,6 +1243,28 @@
     "fileName": "Tvp_Sports_HD.html"
   },
   {
+    "name": "Unite8 Sports",
+    "url": "https://artl.yowaimo.in/sflex/stream.php?id=Unite8-Sports1-Hindi-HD&ts=1781524499&token=2fbbde18a8152281ce07cc3eb921c406629c27c6421dbb2f252033bd6656973a&exp=1784548499&Powered-by-StreamFlex=363ee5f18d5a2e999d4cdc1159cda91c2f99623a15b41357d593596e17bd2af0",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Unite8_Sports.html"
+  },
+  {
+    "name": "Unite8 Sports 50fps",
+    "url": "https://ranapkbd.site/JOIN@RANAPK33/play.m3u8?id=373312",
+    "keyId": null,
+    "key": null,
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Unite8_Sports_50fps.html"
+  },
+  {
     "name": "USA Network",
     "url": "https://tmaxapp.site/usanetwork.m3u8",
     "keyId": null,
@@ -1186,5 +1285,16 @@
     "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
     "group": "FIFA WC 2026",
     "fileName": "Vix_Mundial_FHD.html"
+  },
+  {
+    "name": "Wc English",
+    "url": "https://qp-pldt-live-bpk-ucd-prod.akamaized.net/bpk-tv/fifa_ppv1/default/index.mpd",
+    "keyId": "2c338a117d434ce4bbe3569231af90f1",
+    "key": "a9633d901ee8a3f4f58ac314b5c5f4fb",
+    "licenseUrl": "",
+    "cookie": "",
+    "logo": "https://i.postimg.cc/0NYVSnkr/Gemini-Generated-Image-ykkw2cykkw2cykkw.png",
+    "group": "FIFA WC 2026",
+    "fileName": "Wc_English.html"
   }
 ]
