@@ -181,7 +181,7 @@ white-space:nowrap;pointer-events:none}
 
 <div id="cc-watermark" class="visible">
 <span class="dot"></span>
-<span>CRICK<span class="cyan">CAST</span></span>
+<span>SPORT<span class="cyan">LINK</span></span>
 </div>
 
 <div id="channel-list">
@@ -204,23 +204,6 @@ preload="none" x5-video-player-type="h5" x5-video-player-fullscreen="true"></vid
 (function(){
 "use strict";
 
-/* =========================================================
-   CONFIG — set this to your own JSON feed URL.
-   Expected schema:
-   {
-     "channels": [
-       {
-         "id": "match1",
-         "name": "Team A vs Team B",
-         "stream_url": "https://.../master.m3u8",
-         "poster": "https://.../poster.svg",   // optional
-         "type": "hls",                         // optional: "hls" | "dash" (auto-detected if omitted)
-         "key_id": "...",                       // optional — only if you use your own ClearKey DRM
-         "key": "..."                           // optional — pairs with key_id
-       }
-     ]
-   }
-========================================================= */
 var API = "https://sayan-json-4.pages.dev/Data/sports.json";
 
 var $overlay = document.getElementById("overlay");
@@ -452,11 +435,6 @@ setTimeout(function(){ injectControls($pc,$vid); },100);
 var url=ch.stream_url;
 var restrictionsRelaxed=false;
 
-/* Jio's CDN protects manifests/segments/keys with an Akamai HDNEA token
-   (the "cookie" field in the feed, e.g. "__hdnea__=st=...~exp=...~hmac=...").
-   We send it as a real Cookie header AND append the raw token (without the
-   "__hdnea__=" prefix) as a query param on manifest/segment requests, plus
-   spoof the Referer/User-Agent of the official JioTV client. */
 var cookie=ch.cookie||"", rawToken=rawCookie(cookie);
 
 function withToken(uri){
