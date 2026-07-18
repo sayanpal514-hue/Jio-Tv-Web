@@ -6,6 +6,7 @@ import shutil
 import base64
 import time
 from concurrent.futures import ThreadPoolExecutor
+import urllib.parse
 
 # Configuration
 JSON_URL = "https://sayan-json-4.pages.dev/Data/sports.json"
@@ -217,6 +218,19 @@ def fetch_key(url, session, cookie=None, retries=3):
             if i == retries - 1: pass
     return "", "", url
 
+def sanitize_filename(name):
+    """Sanitize a string to be used as a filename"""
+    # Replace invalid characters with underscores
+    name = re.sub(r'[<>:"/\\|?*]', '_', name)
+    # Remove any leading/trailing whitespace or dots
+    name = name.strip('. ')
+    # Replace spaces with underscores
+    name = name.replace(' ', '_')
+    # Ensure the name is not empty
+    if not name:
+        name = 'unknown_channel'
+    return name
+
 def generate():
     print(f"Fetching JSON from {JSON_URL}...", flush=True)
     try:
@@ -240,7 +254,8 @@ def generate():
     # List of generic names to filter out
     UNNECESSARY_NAMES = {
         'live', 'hls', 'api', 'smil', 'ngrp', 'streams', 'stream',
-        'master', 'index', 'fhd', 'sdp', 'chunklist', 'playlist'
+        'master', 'index', 'fhd', 'sdp', 'chunklist', 'playlist',
+        'unknown', 'null', 'undefined', 'none'
     }
 
     def is_hex(s):
@@ -300,6 +315,18 @@ def generate():
             if not final_name or final_name.lower() in UNNECESSARY_NAMES:
                 url_match = re.search(r'/bpk-tv/([^/]+)/', stream_url)
                 final_name = url_match.group(1) if url_match else stream_url.split('/')[-2]
+            
+            # Ensure we have a valid name
+            if not final_name or final_name.lower() in UNNECESSARY_NAMES:
+                # Try to extract from URL path
+                path_parts = stream_url.split('/')
+                for part in reversed(path_parts):
+                    clean_part = part.strip()
+                    if clean_part and not clean_part.lower() in UNNECESSARY_NAMES:
+                        final_name = clean_part
+                        break
+                if not final_name or final_name.lower() in UNNECESSARY_NAMES:
+                    final_name = f"Channel_{len(raw_channels) + 1}"
 
             clean_name = final_name.lower().strip()
             if (clean_name not in UNNECESSARY_NAMES and
@@ -314,6 +341,7 @@ def generate():
                     "logo": current_logo,
                     "group": current_group
                 })
+                print(f"ADDED: '{final_name}'", flush=True)
             else:
                 print(f"FILTERED OUT: '{final_name}' | clean='{clean_name}'", flush=True)
 
@@ -323,6 +351,10 @@ def generate():
             current_group = "Unknown"
 
     print(f"Found {len(raw_channels)} clean channels. Fetching keys...", flush=True)
+
+    if not raw_channels:
+        print("No channels found! Exiting.", flush=True)
+        return
 
     session = requests.Session()
     def process_channel(ch):
@@ -334,12 +366,12 @@ def generate():
         return {
             "name": ch['name'],
             "url": ch['url'],
-            "keyId": kid,
-            "key": k,
-            "licenseUrl": l_url,
-            "cookie": ch['cookie'],
-            "logo": ch['logo'],
-            "group": ch['group']
+            "keyId": kid or "",
+            "key": k or "",
+            "licenseUrl": l_url or "",
+            "cookie": ch['cookie'] or "",
+            "logo": ch['logo'] or "",
+            "group": ch['group'] or "Unknown"
         }
 
     with ThreadPoolExecutor(max_workers=10) as executor:
@@ -354,25 +386,46 @@ def generate():
     channels.sort(key=sort_key)
 
     print(f"Generating files...", flush=True)
-    for ch in channels:
-        safe_name = "".join([c if c.isalnum() or c in (' ', '_', '-') else '_' for c in ch['name']])
-        safe_name = safe_name.replace(' ', '_')
-        ch['fileName'] = f"{safe_name}.html"
+    successful = 0
+    
+    for idx, ch in enumerate(channels):
+        try:
+            # Sanitize the channel name for filename
+            safe_name = sanitize_filename(ch['name'])
+            # Add index to ensure uniqueness
+            base_name = safe_name
+            counter = 1
+            while os.path.exists(os.path.join(OUTPUT_DIR, f"{safe_name}.html")):
+                safe_name = f"{base_name}_{counter}"
+                counter += 1
+            
+            ch['fileName'] = f"{safe_name}.html"
+            file_path = os.path.join(OUTPUT_DIR, ch['fileName'])
+            
+            # Generate HTML content
+            content = HTML_TEMPLATE.replace("{CHANNEL_TITLE}", ch['name']) \
+                                   .replace("{STREAM_URL}", ch['url']) \
+                                   .replace("{KEY_ID}", ch['keyId'] or "") \
+                                   .replace("{KEY}", ch['key'] or "") \
+                                   .replace("{LICENSE_URL}", ch['licenseUrl'] or "") \
+                                   .replace("{COOKIE}", ch['cookie'] or "") \
+                                   .replace("{LOGO_URL}", ch['logo'] or "")
+            
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(content)
+            successful += 1
+            print(f"Created: {ch['fileName']} (Channel: {ch['name']})", flush=True)
+            
+        except Exception as e:
+            print(f"Error creating file for channel '{ch['name']}': {e}", flush=True)
 
-        file_path = os.path.join(OUTPUT_DIR, ch['fileName'])
-        content = HTML_TEMPLATE.replace("{CHANNEL_TITLE}", ch['name']) \
-                               .replace("{STREAM_URL}", ch['url']) \
-                               .replace("{KEY_ID}", ch['keyId'] or "") \
-                               .replace("{KEY}", ch['key'] or "") \
-                               .replace("{LICENSE_URL}", ch['licenseUrl'] or "") \
-                               .replace("{COOKIE}", ch['cookie'] or "") \
-                               .replace("{LOGO_URL}", ch['logo'] or "")
-        with open(file_path, "w", encoding="utf-8") as f:
-            f.write(content)
+    # Save channels.json
+    try:
+        with open(os.path.join(OUTPUT_DIR, "channels.json"), "w", encoding="utf-8") as f:
+            json.dump(channels, f, indent=2)
+        print(f"Done! Generated {successful} files and channels.json.", flush=True)
+    except Exception as e:
+        print(f"Error saving channels.json: {e}", flush=True)
 
-    with open(os.path.join(OUTPUT_DIR, "channels.json"), "w", encoding="utf-8") as f:
-        json.dump(channels, f, indent=2)
-    print(f"Done! Generated {len(channels)} files.", flush=True)
-
-if __name__ == "__main__":
+if __name__ == "__main__":   
     generate()
