@@ -9,7 +9,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 # Configuration
 JSON_URL = "https://sayan-json-4.pages.dev/Data/sports.json"
-OUTPUT_DIR = "Channel"
+OUTPUT_DIR = "channel"
 
 # Ensure output directory exists and is clean
 if os.path.exists(OUTPUT_DIR):
