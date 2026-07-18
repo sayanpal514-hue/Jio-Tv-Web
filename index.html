@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sportlink | FIFA WC Dashboard</title>
+    <title>Sportlink | JioTV Dashboard</title>
+    <link rel="shortcut icon" href="https://www.jiotv.com/favicon.ico" />
+    <meta name="description" content="Access 1000+ live TV channels with Sportlink's premium dashboard.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -232,7 +234,7 @@
 <body>
 
     <header>
-        <h1>FIFA WC by Sportlink</h1>
+        <h1>Sportlink - Jio Tv</h1>
         <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 5px;">by Sayan10</p>
         <div class="search-container">
             <input type="text" id="search" placeholder="Search 1000+ Channels..." autocomplete="off">
@@ -266,7 +268,7 @@
 
         async function init() {
             try {
-                const response = await fetch('channel/channels.json');
+                const response = await fetch('Channel/channels.json');
                 channelsData = await response.json();
                 renderFilters();
                 updateDisplay();
