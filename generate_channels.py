@@ -218,9 +218,9 @@ def fetch_key(url, session, cookie=None, retries=3):
     return "", "", url
 
 def generate():
-    print(f"Fetching M3U from {M3U_URL}...", flush=True)
+    print(f"Fetching JSON from {JSON_URL}...", flush=True)
     try:
-        response = requests.get(M3U_URL, timeout=30)
+        response = requests.get(JSON_URL, timeout=30)
         response.raise_for_status()
         lines = response.text.splitlines()
         print(f"OK - {len(lines)} lines, HTTP {response.status_code}", flush=True)
