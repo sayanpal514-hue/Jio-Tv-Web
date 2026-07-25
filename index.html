@@ -1,632 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta name="referrer" content="no-referrer">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>SPORTLINK</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shaka-player@4.16.2/dist/controls.css">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;height:100%;background:#0a0a0a;overflow:hidden;
-font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
--webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Star Sports · SportLink</title>
 
-:root{
---cc-cyan:#00e5ff;
---cc-bg:#0a0a0a;
---cc-panel:#111;
---cc-border:#1a1a1a;
---cc-text:#e0e0e0;
---cc-muted:#555;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* ---------- loading overlay ---------- */
-#overlay{position:fixed;inset:0;background:var(--cc-bg);z-index:9999;
-display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px}
-#overlay svg{animation:spin 1s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-#overlay p{color:var(--cc-muted);font-size:13px;letter-spacing:.4px;
-text-align:center;padding:0 24px;font-weight:500}
+    body {
+      min-height: 100vh;
+      background: #0b0b0b;
+      color: #f0f0f0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
 
-/* ---------- channel grid ---------- */
-#channel-list{position:fixed;inset:0;background:var(--cc-bg);z-index:9998;
-display:none;flex-direction:column;overflow-y:auto;
-padding:max(24px,env(safe-area-inset-top)) 16px max(24px,env(safe-area-inset-bottom))}
-#channel-list .list-header{display:flex;align-items:center;justify-content:center;gap:10px;
-margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--cc-border)}
-#channel-list h1{color:#fff;font-size:16px;font-weight:700;letter-spacing:.5px}
-#ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
-.ch-card{background:var(--cc-panel);border:1px solid var(--cc-border);border-radius:12px;
-overflow:hidden;cursor:pointer;text-decoration:none;display:flex;flex-direction:column;
-transition:background .2s,border-color .2s,transform .15s;-webkit-tap-highlight-color:transparent}
-.ch-card:hover{background:#161616;border-color:#252525}
-.ch-card:active{transform:scale(.96)}
-.ch-card:focus-visible{outline:2px solid var(--cc-cyan);outline-offset:2px}
-.ch-poster{width:100%;aspect-ratio:16/9;background:#0d0d0d;display:flex;
-align-items:center;justify-content:center;overflow:hidden}
-.ch-poster img,.ch-poster svg{width:100%;height:100%;object-fit:cover}
-.ch-poster .ph{color:#333;font-size:11px;letter-spacing:.5px}
-.ch-info{padding:10px 12px 12px;display:flex;flex-direction:column;gap:4px}
-.ch-info span.name{color:var(--cc-text);font-size:13px;font-weight:600;line-height:1.35}
-.ch-live-tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;
-color:#ff4d4d;letter-spacing:.5px}
-.ch-live-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:#ff4d4d;
-animation:pulse-red 1.6s ease-in-out infinite}
-@keyframes pulse-red{0%,100%{opacity:1}50%{opacity:.35}}
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(220, 20, 60, 0.25), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(0, 80, 200, 0.18), transparent 40%),
+        linear-gradient(145deg, #0a0a0a, #161616);
+      z-index: -2;
+    }
 
-/* ---------- player container ---------- */
-#pc{position:fixed;inset:0;background:#000;display:none;
-align-items:center;justify-content:center;touch-action:manipulation}
-video{width:100%;height:100%;object-fit:contain;background:#000;will-change:transform}
-video.mode-fill{object-fit:fill}
-video.mode-cover{object-fit:cover}
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 18px 20px 12px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.4), transparent);
+      backdrop-filter: blur(8px);
+    }
 
-/* ---------- SPORTLINK watermark ---------- */
-#cc-watermark{position:fixed;z-index:9996;top:max(14px,env(safe-area-inset-top));
-left:max(14px,env(safe-area-inset-left));
-display:flex;align-items:center;gap:7px;
-padding:6px 14px 6px 10px;border-radius:999px;
-background:rgba(10,10,10,.55);border:1px solid rgba(0,229,255,.25);
-backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-pointer-events:none;user-select:none;
-box-shadow:0 2px 10px rgba(0,0,0,.35)}
-#cc-watermark .dot{width:7px;height:7px;border-radius:50%;background:var(--cc-cyan);
-box-shadow:0 0 0 0 rgba(0,229,255,.6);animation:cc-pulse 1.8s ease-out infinite;flex-shrink:0}
-@keyframes cc-pulse{
-0%{box-shadow:0 0 0 0 rgba(0,229,255,.55)}
-70%{box-shadow:0 0 0 8px rgba(0,229,255,0)}
-100%{box-shadow:0 0 0 0 rgba(0,229,255,0)}
-}
-#cc-watermark span{color:#fff;font-size:12px;font-weight:800;letter-spacing:1.4px}
-#cc-watermark .cyan{color:var(--cc-cyan)}
+    .brand {
+      font-size: 28px;
+      font-weight: 800;
+      color: #e0e0e0;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+    }
 
-/* ---------- telegram icon button (grid page) ---------- */
-#tg-link{position:fixed;top:max(14px,env(safe-area-inset-top));
-right:max(14px,env(safe-area-inset-right));z-index:9995;
-display:flex;align-items:center;justify-content:center;
-width:38px;height:38px;border-radius:50%;
-background:rgba(10,10,10,.55);border:1px solid rgba(0,229,255,.25);
-backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-color:#fff;text-decoration:none;transition:background .2s,border-color .2s,transform .15s}
-#tg-link:hover{background:#161616;border-color:var(--cc-cyan)}
-#tg-link:active{transform:scale(.92)}
-#tg-link svg{width:19px;height:19px;color:var(--cc-cyan)}
+    .brand span {
+      color: #dc143c;
+      font-weight: 900;
+    }
 
-/* ---------- telegram join popup (player page) ---------- */
-#tg-modal{position:fixed;inset:0;z-index:10000;display:none;
-align-items:center;justify-content:center;
-background:rgba(0,0,0,.65);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
-padding:20px}
-#tg-modal.show{display:flex}
-.tg-box{position:relative;width:100%;max-width:320px;
-background:var(--cc-panel);border:1px solid rgba(0,229,255,.25);
-border-radius:16px;padding:28px 22px 22px;text-align:center;
-box-shadow:0 8px 30px rgba(0,0,0,.5)}
-.tg-close{position:absolute;top:10px;right:10px;
-width:28px;height:28px;border-radius:50%;border:none;
-background:transparent;color:var(--cc-muted);font-size:18px;line-height:1;
-cursor:pointer;display:flex;align-items:center;justify-content:center;
-transition:background .2s,color .2s}
-.tg-close:hover{background:#1c1c1c;color:#fff}
-.tg-icon-wrap{width:56px;height:56px;margin:0 auto 14px;border-radius:50%;
-background:rgba(0,229,255,.1);display:flex;align-items:center;justify-content:center}
-.tg-icon-wrap svg{width:28px;height:28px;color:var(--cc-cyan)}
-.tg-box h2{color:#fff;font-size:16px;font-weight:700;letter-spacing:.3px;margin-bottom:8px}
-.tg-box p{color:var(--cc-text);font-size:13px;line-height:1.5;margin-bottom:20px;opacity:.85}
-.tg-join{display:inline-flex;align-items:center;justify-content:center;gap:8px;
-width:100%;padding:11px 16px;border-radius:10px;text-decoration:none;
-background:var(--cc-cyan);color:#031418;font-size:13px;font-weight:700;
-letter-spacing:.3px;transition:opacity .15s}
-.tg-join:hover{opacity:.88}
-.tg-join svg{width:16px;height:16px}
+    .hero {
+      padding: 30px 20px 20px;
+    }
 
-/* hide watermark automatically alongside shaka UI fade - handled by JS toggling opacity */
-#cc-watermark.faded{opacity:0;transition:opacity .4s}
-#cc-watermark.visible{opacity:1;transition:opacity .25s}
+    .hero h1 {
+      font-size: 36px;
+      line-height: 1.1;
+      max-width: 720px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
 
-/* ---------- status toast ---------- */
-#status{position:fixed;top:max(12px,env(safe-area-inset-top));
-right:max(12px,env(safe-area-inset-right));z-index:9997;
-padding:5px 13px;background:rgba(8,8,8,.9);
-border:1px solid rgba(255,255,255,.05);
-font-size:11px;font-weight:500;letter-spacing:.02em;border-radius:20px;
-pointer-events:none;opacity:0;transition:opacity .3s;
-max-width:260px;text-align:right;
-backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-#status.show{opacity:1}
-#status.ok{color:var(--cc-cyan)}
-#status.warn{color:#fb923c}
-#status.err{color:#f87171}
+    .hero p {
+      color: #b0b0b0;
+      font-size: 15px;
+      max-width: 600px;
+      font-weight: 400;
+    }
 
-/* ---------- custom shaka buttons ---------- */
-.sp-btn{
-background:transparent!important;border:none!important;
-cursor:pointer!important;padding:0 8px!important;
-opacity:.8;display:flex;align-items:center;justify-content:center;gap:5px;
-height:100%;min-width:36px;transition:opacity .15s,color .15s;color:#fff!important;
--webkit-tap-highlight-color:transparent}
-.sp-btn:hover{opacity:1}
-.sp-btn:active{opacity:1;transform:scale(.92)}
-.sp-btn:focus-visible{outline:2px solid var(--cc-cyan);outline-offset:2px;border-radius:6px}
-.sp-btn svg{width:18px;height:18px;display:block;pointer-events:none;flex-shrink:0}
-.sp-btn.active{opacity:1;color:var(--cc-cyan)!important}
-.fit-ratio{font-size:11px;font-weight:600;letter-spacing:.2px;line-height:1;
-white-space:nowrap;pointer-events:none}
-.shaka-controls-container button{color:#fff!important}
-.shaka-video-container{background-color:#000!important}
+    .search-wrap {
+      padding: 0 20px 24px;
+    }
 
-@media (max-width:400px){
-.fit-ratio{font-size:9px}
-.sp-btn{padding:0 6px!important;gap:3px}
-#cc-watermark{padding:5px 11px 5px 9px}
-#cc-watermark span{font-size:10.5px;letter-spacing:1.1px}
-}
-</style>
+    .search-box {
+      width: 100%;
+      max-width: 540px;
+      padding: 14px 20px;
+      border-radius: 60px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(20, 20, 20, 0.85);
+      color: #f5f5f5;
+      outline: none;
+      font-size: 15px;
+      backdrop-filter: blur(4px);
+      transition: 0.2s;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+    }
+
+    .search-box:focus {
+      border-color: #dc143c;
+      background: rgba(10, 10, 10, 0.9);
+      box-shadow: 0 0 0 4px rgba(220, 20, 60, 0.25);
+    }
+
+    .section-title {
+      padding: 0 20px;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: -0.3px;
+      color: #eaeaea;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+      padding: 0 20px 50px;
+    }
+
+    .card {
+      position: relative;
+      min-height: 215px;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.04) translateY(-6px);
+      border-color: rgba(220, 20, 60, 0.6);
+      box-shadow: 0 22px 56px rgba(220, 20, 60, 0.25);
+      z-index: 5;
+    }
+
+    .poster {
+      height: 135px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.06), transparent 60%),
+        linear-gradient(135deg, #1e1e1e, #080808);
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      border-radius: 16px;
+      background: #f5f5f5;
+      padding: 10px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
+      transition: 0.2s;
+    }
+
+    .fallback-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #dc143c, #8b0000);
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(220, 20, 60, 0.4);
+    }
+
+    .content {
+      padding: 14px 14px 16px;
+      background: linear-gradient(to top, #0c0c0c, rgba(0, 0, 0, 0.8));
+    }
+
+    .name {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.3;
+      min-height: 36px;
+      color: #f0f0f0;
+    }
+
+    .meta {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 11px;
+      color: #9a9a9a;
+      font-weight: 500;
+    }
+
+    .live {
+      color: #fff;
+      background: #dc143c;
+      padding: 3px 9px;
+      border-radius: 30px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+
+    .watch {
+      margin-top: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 9px 0;
+      color: #fff;
+      background: #dc143c;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      transition: 0.2s;
+      letter-spacing: 0.3px;
+    }
+
+    .watch:hover {
+      background: #b01030;
+    }
+
+    .error {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-top: 40px;
+      color: #ff7a7a;
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 540px) {
+      .brand {
+        font-size: 22px;
+      }
+      .hero h1 {
+        font-size: 28px;
+      }
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        padding: 0 14px 40px;
+      }
+      .card {
+        min-height: 190px;
+      }
+      .poster {
+        height: 115px;
+      }
+      .logo {
+        width: 66px;
+        height: 66px;
+        padding: 8px;
+      }
+      .fallback-logo {
+        width: 66px;
+        height: 66px;
+        font-size: 26px;
+      }
+      .content {
+        padding: 10px 12px 14px;
+      }
+      .name {
+        font-size: 12px;
+        min-height: 30px;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="topbar">
+    <div class="brand">Star <span>Sports</span> · SportLink</div>
+  </div>
 
-<div id="overlay">
-<svg width="36" height="36" viewBox="0 0 40 40" fill="none">
-<circle cx="20" cy="20" r="16" stroke="#161616" stroke-width="4"/>
-<path d="M20 4a16 16 0 0 1 16 16" stroke="#00e5ff" stroke-width="4" stroke-linecap="round"/>
-</svg>
-<p id="loadMsg">Loading…</p>
-</div>
+  <section class="hero">
+    <h1>Watch live sports · instant</h1>
+    <p>Pick your channel and start streaming right away.</p>
+  </section>
 
-<div id="status"></div>
+  <div class="search-wrap">
+    <input id="searchInput" class="search-box" type="text" placeholder="Search channels..." />
+  </div>
 
-<div id="cc-watermark" class="visible">
-<span class="dot"></span>
-<span>SPORT<span class="cyan">LINK</span></span>
-</div>
+  <h2 class="section-title">🔥 Live channels</h2>
 
-<div id="channel-list">
-<div class="list-header"><h1>SPORTLINK — Live Channels</h1></div>
-<div id="ch-grid"></div>
-</div>
+  <div id="channelGrid" class="grid"></div>
 
-<a id="tg-link" href="https://t.me/+BMRZLxqFMctjMjU1" target="_blank" rel="noopener" title="Join SPORTLINK on Telegram" style="display:none">
-<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.05 3.16 2.53 10.33c-1.24.5-1.23 1.19-.23 1.5l4.76 1.48 1.84 5.6c.22.6.36.85.7.85.27 0 .39-.12.53-.27l1.9-1.85 4.68 3.45c.86.48 1.48.23 1.7-.8l3.06-14.3c.3-1.28-.48-1.85-1.42-1.83zM8.4 14.02l9.2-8.24c.4-.36-.09-.53-.6-.2l-11.3 7.1-4.66-1.46c-1.01-.32-1.03-1.01.22-1.5L20.35 4.5c.85-.32 1.6.2 1.32 1.5"/></svg>
-</a>
+  <script>
+    const JSON_URL = "https://binge-giotv.pages.dev/data/id.json";
+    const PLAYER_PAGE = "player.html";
 
+    const grid = document.getElementById("channelGrid");
+    const searchInput = document.getElementById("searchInput");
 
-<div id="pc">
-<video id="v" playsinline webkit-playsinline
-preload="none" x5-video-player-type="h5" x5-video-player-fullscreen="true"></video>
-</div>
+    let allChannels = [];
 
-<script src="https://cdn.jsdelivr.net/npm/shaka-player@4.16.2/dist/shaka-player.ui.min.js"></script>
-<script>
-(function(){
-"use strict";
+    async function loadChannels() {
+      try {
+        const res = await fetch(JSON_URL);
+        if (!res.ok) throw new Error("Network error");
+        const data = await res.json();
 
-var API = "https://sayan-json-4.pages.dev/Data/sports.json";
+        allChannels = data.channels || [];
+        renderChannels(allChannels);
+      } catch (e) {
+        console.error(e);
+        grid.innerHTML = `<div class="error">⚠️ Could not load channels. Please try again.</div>`;
+      }
+    }
 
-var $overlay = document.getElementById("overlay");
-var $loadMsg = document.getElementById("loadMsg");
-var $status = document.getElementById("status");
-var $list = document.getElementById("channel-list");
-var $grid = document.getElementById("ch-grid");
-var $pc = document.getElementById("pc");
-var $vid = document.getElementById("v");
-var $watermark = document.getElementById("cc-watermark");
-var _stTmr = null;
+    function renderChannels(channels) {
+      grid.innerHTML = "";
 
-function getTier(){
-var mem = navigator.deviceMemory || 4;
-var cores = navigator.hardwareConcurrency || 4;
-var mob = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-var net = conn ? (conn.effectiveType || "4g") : "4g";
-if(!mob) return "high";
-if(mem<=1.5 || cores<=2 || net==="slow-2g" || net==="2g") return "low";
-if(mem<=3 || cores<=4) return "mid";
-return "high";
-}
-var TIER = getTier();
-var PROF = {
-low: {buf:5, reBuf:1.5, behind:15, maxH:480, maxBw:1200000, bwEst:400000 },
-mid: {buf:8, reBuf:1.5, behind:25, maxH:720, maxBw:3500000, bwEst:1000000},
-high:{buf:12,reBuf:1.5, behind:30, maxH:1080,maxBw:0,       bwEst:2000000}
-}[TIER];
+      if (!channels || channels.length === 0) {
+        grid.innerHTML = `<div class="error">No channels match your search</div>`;
+        return;
+      }
 
-var FITS = ["contain","fill","cover"];
-var MODE_LABEL = {contain:"Fit",fill:"Fill",cover:"Zoom"};
-var FICO = {
-contain:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="21" x2="22" y2="21"/></svg>',
-fill: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>',
-cover: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M6 7l3 3m0 0H7m2 0V8m9-1l-3 3m0 0h2m-2 0V8M6 13l3-3m0 0H7m2 0v2m9 1l-3-3m0 0h2m-2 0v2"/></svg>'
-};
-var PIP_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><rect x="12" y="12" width="7" height="5" rx="1" fill="currentColor" stroke="none"/></svg>';
+      channels.forEach((channel) => {
+        const card = document.createElement("div");
+        card.className = "card";
 
-function toast(msg,type,dur){
-$status.textContent=msg;
-$status.className="show "+(type||"ok");
-if(_stTmr) clearTimeout(_stTmr);
-if(dur!==0){
-_stTmr=setTimeout(function(){
-$status.className=$status.className.replace("show","").trim();
-_stTmr=null;
-},dur||4000);
-}
-}
-function setMsg(m){ $loadMsg && ($loadMsg.textContent=m); }
-function hideOverlay(){ $overlay && ($overlay.style.display="none"); }
-function getChId(){ return new URLSearchParams(location.search).get("id")||""; }
-function rawCookie(c){ return c&&c.indexOf("__hdnea__=")===0?c.slice(10):(c||""); }
+        const logo = channel.logo || channel.image || channel.icon || "";
+        const firstLetter = (channel.name || channel.id || "?").charAt(0).toUpperCase();
 
-async function loadData(){
-var bustedUrl = API + (API.indexOf("?")!==-1?"&":"?") + "_t=" + Date.now();
-var r=await fetch(bustedUrl,{cache:"no-store",headers:{Accept:"application/json"}});
-if(!r.ok) throw new Error("HTTP "+r.status);
-var d=await r.json();
-if(!d||!Array.isArray(d.channels)||!d.channels.length) throw new Error("empty");
-return d;
-}
+        card.innerHTML = `
+          <div class="poster">
+            ${
+              logo
+                ? `<img class="logo" src="${logo}" alt="${channel.name || channel.id}" loading="lazy">`
+                : `<div class="fallback-logo">${firstLetter}</div>`
+            }
+          </div>
 
-function renderList(channels){
-hideOverlay();
-document.getElementById("tg-link").style.display="flex";
-var f=document.createDocumentFragment();
-channels.forEach(function(ch){
-var a=document.createElement("a");
-a.className="ch-card";
-a.href="?id="+encodeURIComponent(ch.id);
+          <div class="content">
+            <div class="name">${channel.name || channel.id}</div>
 
-var poster=document.createElement("div");
-poster.className="ch-poster";
-if(ch.poster){
-var img=document.createElement("img");
-img.src=ch.poster; img.loading="lazy"; img.alt="";
-poster.appendChild(img);
-} else {
-poster.innerHTML='<span class="ph">NO POSTER</span>';
-}
+            <div class="meta">
+              <span>ID: ${channel.id}</span>
+              <span class="live">● Live</span>
+            </div>
 
-var info=document.createElement("div");
-info.className="ch-info";
-info.innerHTML="<span class='name'>"+ch.name+"</span><span class='ch-live-tag'>LIVE</span>";
+            <button class="watch">▶ Watch</button>
+          </div>
+        `;
 
-a.appendChild(poster);
-a.appendChild(info);
-f.appendChild(a);
-});
-$grid.appendChild(f);
-$list.style.display="flex";
-}
+        card.addEventListener("click", () => {
+          window.location.href = `${PLAYER_PAGE}?id=${encodeURIComponent(channel.id)}`;
+        });
 
-function errMsg(msg){ setMsg(msg); $overlay.style.display="flex"; toast(msg,"err",0); }
+        grid.appendChild(card);
+      });
+    }
 
+    searchInput.addEventListener("input", () => {
+      const q = searchInput.value.toLowerCase().trim();
 
-function shakaErrStr(e){
-if(!e) return "Unknown error";
-var c={1:"Network",2:"Text",3:"Media",4:"Manifest",5:"Streaming",6:"DRM",7:"Player"};
-var s=(c[e.category]||"Err")+" "+e.category+":"+e.code;
-if(e.data&&e.data[0]&&typeof e.data[0]==="string") s+=" — "+e.data[0].slice(0,72);
-return s;
-}
+      const filtered = allChannels.filter((channel) =>
+        (channel.name || "").toLowerCase().includes(q) ||
+        (channel.id || "").toLowerCase().includes(q)
+      );
 
-function ratioLabel(w,h){
-if(!w||!h) return "";
-function gcd(a,b){ return b?gcd(b,a%b):a; }
-var g=gcd(w,h)||1, rw=w/g, rh=h/g;
-var common={"16:9":16/9,"4:3":4/3,"21:9":21/9,"1:1":1,"9:16":9/16,"3:2":3/2,"5:4":5/4,"2:1":2};
-var real=w/h, best=null, bestDiff=.02;
-Object.keys(common).forEach(function(k){
-var d=Math.abs(common[k]-real);
-if(d<bestDiff){ bestDiff=d; best=k; }
-});
-if(best) return best;
-if(rw<=40&&rh<=40) return rw+":"+rh;
-return real.toFixed(2)+":1";
-}
+      renderChannels(filtered);
+    });
 
-function injectControls(container,vid){
-var panel=container.querySelector(".shaka-controls-button-panel");
-if(!panel) return;
-var anchor=panel.querySelector(".shaka-fullscreen-button");
-
-var fitIdx=0;
-var fitBtn=document.createElement("button");
-fitBtn.className="sp-btn sp-fit-btn";
-fitBtn.title="Video fit: Fit";
-fitBtn.innerHTML=
-'<span class="fit-icon">'+FICO.contain+'</span>'+
-'<span class="fit-ratio">--</span>';
-if(anchor) panel.insertBefore(fitBtn,anchor);
-else panel.appendChild(fitBtn);
-
-function applyFit(i){
-fitIdx=i; var m=FITS[i];
-vid.classList.remove("mode-fill","mode-cover");
-if(m==="fill") vid.classList.add("mode-fill");
-if(m==="cover") vid.classList.add("mode-cover");
-var ic=fitBtn.querySelector(".fit-icon");
-if(ic) ic.innerHTML=FICO[m];
-fitBtn.title="Video fit: "+MODE_LABEL[m];
-}
-fitBtn.addEventListener("click",function(e){
-e.stopPropagation();applyFit((fitIdx+1)%FITS.length);
-});
-["fullscreenchange","webkitfullscreenchange"].forEach(function(ev){
-document.addEventListener(ev,function(){
-if(!(document.fullscreenElement||document.webkitFullscreenElement)) applyFit(0);
-});
-});
-
-function updateRatio(){
-var lbl=ratioLabel(vid.videoWidth,vid.videoHeight);
-var badge=fitBtn.querySelector(".fit-ratio");
-if(badge&&lbl) badge.textContent=lbl;
-}
-vid.addEventListener("loadedmetadata",updateRatio);
-vid.addEventListener("resize",updateRatio);
-updateRatio();
-
-var pipOk=!!(document.pictureInPictureEnabled||
-(vid.webkitSupportsPresentationMode&&typeof vid.webkitSetPresentationMode==="function"));
-if(pipOk){
-var pipBtn=document.createElement("button");
-pipBtn.className="sp-btn sp-pip-btn";
-pipBtn.title="Picture in Picture";
-pipBtn.innerHTML=PIP_ICON;
-panel.insertBefore(pipBtn,fitBtn);
-
-function setPipState(active){
-pipBtn.classList.toggle("active",active);
-pipBtn.title=active?"Exit Picture in Picture":"Picture in Picture";
-}
-pipBtn.addEventListener("click",async function(e){
-e.stopPropagation();
-try{
-if(document.pictureInPictureEnabled){
-if(document.pictureInPictureElement) await document.exitPictureInPicture();
-else await vid.requestPictureInPicture();
-} else if(vid.webkitSupportsPresentationMode){
-vid.webkitSetPresentationMode(
-vid.webkitPresentationMode==="picture-in-picture"?"inline":"picture-in-picture"
-);
-}
-} catch(_){ toast("PiP unavailable","warn",2500); }
-});
-vid.addEventListener("enterpictureinpicture",function(){ setPipState(true); });
-vid.addEventListener("leavepictureinpicture",function(){ setPipState(false); });
-if(vid.webkitPresentationMode!==undefined){
-vid.addEventListener("webkitpresentationmodechanged",function(){
-setPipState(vid.webkitPresentationMode==="picture-in-picture");
-});
-}
-}
-
-/* fade watermark + custom buttons together with shaka control fade */
-var mo=new MutationObserver(function(){
-var shown=container.classList.contains("shaka-controls-container")||
-!container.querySelector(".shaka-controls-container.shaka-hidden");
-});
-}
-
-function detectManifestType(ch){
-if(ch.type==="dash") return "application/dash+xml";
-if(ch.type==="hls") return "application/x-mpegurl";
-var u=(ch.stream_url||"").toLowerCase();
-if(u.indexOf(".mpd")!==-1) return "application/dash+xml";
-return "application/x-mpegurl";
-}
-
-async function startPlayer(ch){
-$pc.style.display="flex";
-
-shaka.polyfill.installAll();
-if(!shaka.Player.isBrowserSupported()){ errMsg("Browser not supported."); return; }
-
-var player=new shaka.Player();
-await player.attach($vid);
-
-new shaka.ui.Overlay(player,$pc,$vid).configure({
-controlPanelElements:["play_pause","mute","volume","time_and_duration","spacer","quality","fullscreen"],
-seekBarColors:{base:"#a8a8a8",buffered:"#00c3d9",played:"#00e5ff"}
-});
-setTimeout(function(){ injectControls($pc,$vid); },100);
-
-var url=ch.stream_url;
-var restrictionsRelaxed=false;
-
-var cookie=ch.cookie||"", rawToken=rawCookie(cookie);
-
-function withToken(uri){
-if(!rawToken) return uri;
-if(uri.indexOf("__hdnea__")!==-1) return uri;
-var sep=uri.indexOf("?")!==-1?"&":"?";
-return uri+sep+"__hdnea__="+rawToken;
-}
-var T=shaka.net.NetworkingEngine.RequestType;
-player.getNetworkingEngine().registerRequestFilter(function(type,request){
-request.headers["Referer"]="https://www.jiotv.com/";
-request.headers["User-Agent"]="Mozilla/5.0 (Linux; Android 11; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36";
-if(cookie) request.headers["Cookie"]=cookie;
-if(type===T.MANIFEST||type===T.SEGMENT) request.uris=request.uris.map(withToken);
-});
-
-function buildCfg(){
-var restr={};
-if(!restrictionsRelaxed){
-if(PROF.maxH<1080) restr.maxHeight=PROF.maxH;
-if(PROF.maxBw>0) restr.maxBandwidth=PROF.maxBw;
-}
-var cfg={
-manifest:{
-defaultPresentationDelay:4,
-retryParameters:{maxAttempts:5,baseDelay:500,backoffFactor:2,fuzzFactor:.5,timeout:30000}
-},
-streaming:{
-lowLatencyMode:false,
-bufferingGoal: PROF.buf,
-rebufferingGoal:PROF.reBuf,
-bufferBehind: PROF.behind,
-safeSeekOffset: 4,
-stallEnabled: true,
-stallThreshold: 1,
-stallSkip: .3,
-inaccurateManifestTolerance:0,
-retryParameters:{maxAttempts:5,baseDelay:500,backoffFactor:2,fuzzFactor:.5,timeout:30000}
-},
-abr:{
-enabled:true,
-defaultBandwidthEstimate:PROF.bwEst,
-switchInterval:4,
-restrictions:restr
-}
-};
-/* Only enable ClearKey DRM if the channel entry supplies its own key_id/key */
-if(ch.key_id && ch.key){
-cfg.drm={ clearKeys:{ } };
-cfg.drm.clearKeys[ch.key_id]=ch.key;
-}
-return cfg;
-}
-
-player.configure(buildCfg());
-
-var refreshing=false, retries=0, edgeTried=false, lastTry=0, started=false;
-
-function unmuteOnce(){ $vid.muted=false; }
-$pc.addEventListener("pointerdown",unmuteOnce,{capture:true,once:true});
-$pc.addEventListener("click",unmuteOnce,{capture:true,once:true});
-$pc.addEventListener("keydown",unmuteOnce,{capture:true,once:true});
-
-function goLiveEdge(){
-if(refreshing) return;
-try{ player.goToLive(); edgeTried=true; toast("Syncing…","warn",2000); }
-catch(_){ reload(); }
-}
-
-async function reload(){
-var now=Date.now();
-if(refreshing||now-lastTry<1500) return;
-if(retries>=5){ toast("Stream unavailable.","err",0); return; }
-refreshing=true; lastTry=now; retries++;
-toast("Reconnecting… ("+retries+"/5)","warn",0);
-try{
-var d=await loadData();
-var fresh=d.channels.find(function(c){ return c.id===ch.id; });
-if(!fresh) throw new Error("missing");
-ch=fresh; url=fresh.stream_url; cookie=fresh.cookie||""; rawToken=rawCookie(cookie);
-player.configure(buildCfg());
-await player.load(url, undefined, detectManifestType(ch));
-$vid.play().catch(function(){});
-retries=0; edgeTried=false;
-toast("● Live","ok",4000);
-} catch(_){
-setTimeout(reload, Math.min(1000*Math.pow(2,retries-1),8000));
-} finally{ refreshing=false; }
-}
-
-var RECOVERABLE=[1001,1002,1003,4012,6006,6007,7000,7001,7002];
-
-player.addEventListener("error",function(ev){
-var err=ev.detail, code=err&&err.code;
-if(code===4014 && !restrictionsRelaxed){
-restrictionsRelaxed=true;
-refreshing=true;
-player.configure(buildCfg());
-toast("Playing best available quality","warn",2500);
-player.load(url, undefined, detectManifestType(ch))
-.then(function(){
-$vid.play().catch(function(){});
-toast("● Live","ok",4000);
-})
-.catch(function(){ reload(); })
-.finally(function(){ refreshing=false; });
-return;
-}
-if(RECOVERABLE.indexOf(code)!==-1) reload();
-else toast(shakaErrStr(err),"err",6000);
-});
-
-try{
-setMsg("Loading stream…");
-toast("Loading…","warn",0);
-await player.load(url, undefined, detectManifestType(ch));
-hideOverlay();
-toast("Tap ▶ to start","ok",5000);
-} catch(_){
-hideOverlay();
-toast("Retrying…","warn",0);
-setTimeout(reload,1500);
-return;
-}
-
-var stallTmr=null;
-function onStall(){
-if(!started||stallTmr||refreshing) return;
-toast("Buffering…","warn",0);
-stallTmr=setTimeout(function(){
-stallTmr=null;
-if(!edgeTried) goLiveEdge(); else reload();
-},5000);
-}
-function onPlaying(){
-started=true;
-if(stallTmr){ clearTimeout(stallTmr); stallTmr=null; }
-edgeTried=false;
-if(!refreshing) toast("● Live","ok",3000);
-}
-$vid.addEventListener("waiting", onStall);
-$vid.addEventListener("stalled", onStall);
-$vid.addEventListener("playing", onPlaying);
-$vid.addEventListener("error", function(){ if(!refreshing) reload(); });
-
-document.addEventListener("visibilitychange",function(){
-if(!document.hidden){
-setTimeout(function(){
-if(started&&$vid.paused&&!refreshing) $vid.play().catch(function(){});
-},400);
-}
-});
-
-var netConn=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
-if(netConn){
-netConn.addEventListener("change",function(){
-if(!player||restrictionsRelaxed) return;
-var t=netConn.effectiveType||"4g";
-var h=t==="slow-2g"||t==="2g"?240:t==="3g"?480:PROF.maxH;
-try{ player.configure("abr.restrictions.maxHeight",h); } catch(_){}
-if(h<PROF.maxH) toast("Slow network — reducing quality","warn",3000);
-});
-}
-
-/* periodic feed refresh so a rotated/expired stream_url self-heals even without an error */
-setInterval(function(){
-if(refreshing) return;
-loadData().then(function(d){
-var fresh=d.channels.find(function(c){ return c.id===ch.id; });
-if(fresh && (fresh.stream_url!==url || fresh.cookie!==cookie)){
-url=fresh.stream_url; ch=fresh; cookie=fresh.cookie||""; rawToken=rawCookie(cookie);
-player.load(url, undefined, detectManifestType(ch)).then(function(){
-$vid.play().catch(function(){});
-});
-}
-}).catch(function(){});
-}, 5*60*1000);
-}
-
-async function main(){
-var id=getChId(), data;
-try{ setMsg("Fetching channels…"); data=await loadData(); }
-catch(_){ errMsg("Connection error."); return; }
-if(!id){ renderList(data.channels); return; }
-var ch=data.channels.find(function(c){ return c.id===id; });
-if(!ch){ errMsg("Channel not found."); return; }
-document.title="SPORTLINK — "+ch.name;
-await startPlayer(ch);
-}
-
-document.addEventListener("DOMContentLoaded",main);
-})();
-</script>
+    // load channels
+    loadChannels();
+  </script>
 </body>
 </html>
