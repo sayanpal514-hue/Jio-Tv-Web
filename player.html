@@ -213,7 +213,10 @@ box-shadow:0 20px 50px rgba(0,0,0,0.5);
 
   // ─── Configuration ───
   const CHANNEL_JSON_URL = 'https://sportlink-sky-f1.pages.dev/jtv.json';
-  const COOKIE_URL = "https://allinonereborn2.online/jstrweb2/cookies.json";
+  const COOKIE_URLS = [
+    'https://allinonereborn2.online/jstrweb2/cookies.json',
+    'https://corsproxy.io/?https://allinonereborn2.online/jstrweb2/cookies.json'
+  ];
 
   // ─── DOM refs ───
   const video = document.getElementById('video');
@@ -230,23 +233,44 @@ box-shadow:0 20px 50px rgba(0,0,0,0.5);
   function showLoading(){ loadingOverlay.classList.remove('hidden'); }
   function hideLoading(){ loadingOverlay.classList.add('hidden'); }
 
-  // ─── Fetch Cookie (from your demo) ───
-  async function fetchCookie() {
-    try {
-      const res = await fetch(COOKIE_URL, { cache: "no-store" });
-      if (!res.ok) return null;
-      const ct = res.headers.get("Content-Type") || "";
-      if (ct.includes("application/json")) {
-        const data = await res.json();
-        return extractCookie(data);
+  // ─── Fetch Cookie with multiple fallbacks ───
+  async function fetchCookieWithFallback() {
+    // Try multiple URLs
+    for (const url of COOKIE_URLS) {
+      try {
+        console.log('Trying to fetch cookie from:', url);
+        const res = await fetch(url, { 
+          cache: "no-store",
+          mode: 'cors',
+          headers: {
+            'Accept': 'application/json, text/plain, */*'
+          }
+        });
+        
+        if (!res.ok) continue;
+        
+        const ct = res.headers.get("Content-Type") || "";
+        if (ct.includes("application/json")) {
+          const data = await res.json();
+          const cookie = extractCookie(data);
+          if (cookie) {
+            console.log('Cookie found via JSON');
+            return cookie;
+          }
+        } else {
+          // plain-text fallback
+          const text = (await res.text()).trim();
+          if (text && text.length > 10) {
+            console.log('Cookie found via plain text');
+            return text;
+          }
+        }
+      } catch(e) { 
+        console.warn('Cookie fetch error from', url, e);
+        continue;
       }
-      // plain-text fallback
-      const text = (await res.text()).trim();
-      return text || null;
-    } catch(e) { 
-      console.warn('Cookie fetch error:', e);
-      return null; 
     }
+    return null;
   }
 
   function extractCookie(data) {
@@ -256,14 +280,25 @@ box-shadow:0 20px 50px rgba(0,0,0,0.5);
         if (r) return r;
       }
     } else if (data && typeof data === "object") {
-      if (data.cookie) return String(data.cookie).trim();
+      // Check for cookie field
+      if (data.cookie) {
+        const cookie = String(data.cookie).trim();
+        if (cookie.startsWith('__hdnea__=')) return cookie;
+        if (cookie.length > 20) return cookie;
+      }
       // Check for __hdnea__ directly
-      if (data.__hdnea__) return '__hdnea__=' + String(data.__hdnea__).trim();
+      if (data.__hdnea__) {
+        const val = String(data.__hdnea__).trim();
+        return val.startsWith('__hdnea__=') ? val : '__hdnea__=' + val;
+      }
       // Recursively search values
       for (const v of Object.values(data)) {
-        if (typeof v === "object") {
+        if (typeof v === "object" && v !== null) {
           const r = extractCookie(v);
           if (r) return r;
+        }
+        if (typeof v === "string" && v.includes('__hdnea__')) {
+          return v;
         }
       }
     }
@@ -300,7 +335,6 @@ box-shadow:0 20px 50px rgba(0,0,0,0.5);
     // Find target channel
     let channel = allChannels.find(c => c.id === targetId);
     if (!channel && targetId) {
-      // Try by keyId
       channel = allChannels.find(c => c.keyId === targetId);
     }
     if (!channel) channel = allChannels[0];
@@ -315,20 +349,23 @@ box-shadow:0 20px 50px rgba(0,0,0,0.5);
     setLoadingMsg('Fetching stream token…');
     let cookieValue = null;
     
-    // Try cookies URL first
-    if (channel.cookies) {
-      cookieValue = await fetchCookie();
-      if (!cookieValue) {
-        console.warn('Cookie fetch failed, trying baked-in cookie');
+    // Try to fetch from external sources
+    try {
+      cookieValue = await fetchCookieWithFallback();
+      if (cookieValue) {
+        console.log('Successfully fetched cookie from external source');
       }
+    } catch(e) {
+      console.warn('External cookie fetch failed:', e);
     }
     
     // Fallback to channel.cookie if available
     if (!cookieValue && channel.cookie) {
       cookieValue = channel.cookie;
+      console.log('Using channel.cookie');
     }
     
-    // Final fallback: use the baked-in cookie from your demo
+    // Final fallback: use the baked-in cookie
     if (!cookieValue) {
       cookieValue = "__hdnea__=st=1784930442~exp=1784952042~acl=/*~hmac=a62f3d1a5ae89d37d883ed450aff14eca0244a2825ed9a8ecc9091fdb67e3bcc";
       console.warn('Using fallback cookie');
@@ -381,6 +418,10 @@ box-shadow:0 20px 50px rgba(0,0,0,0.5);
         let urlCookie = cookieValue;
         if (cookieValue.startsWith("__hdnea__=")) {
           urlCookie = cookieValue.substring(10);
+        } else if (cookieValue.includes("__hdnea__")) {
+          // Try to extract just the value
+          const match = cookieValue.match(/__hdnea__=([^&;]+)/);
+          if (match) urlCookie = match[1];
         }
         
         const isManifestOrSegment = (type === shaka.net.NetworkingEngine.RequestType.MANIFEST || 
