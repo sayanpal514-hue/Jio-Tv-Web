@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Player · Star Sports Live</title>
+<meta name="referrer" content="no-referrer">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/shaka-player@4.16.2/dist/shaka-player.ui.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shaka-player@4.16.2/dist/controls.css"/>
+<style>
+:root{
+  --bg:#060810;
+  --surface:#0d1018;
+  --border:rgba(255,255,255,0.07);
+  --accent:#e8ff00;
+  --accent2:#ff3d3d;
+  --text:#f0f4ff;
+  --muted:rgba(240,244,255,0.45);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow:hidden}
+
+/* HEADER BAR */
+#top-bar{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:52px;
+  display:flex;align-items:center;gap:14px;padding:0 16px;
+  pointer-events:none;
+}
+#top-bar > *{pointer-events:auto}
+#back-btn{
+  background:rgba(255,255,255,0.08);
+  border:1px solid var(--border);
+  color:var(--text);font-size:18px;
+  width:36px;height:36px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;text-decoration:none;
+  transition:background .2s;
+}
+#back-btn:hover{background:rgba(255,255,255,0.15)}
+#ch-logo{width:32px;height:32px;object-fit:contain;border-radius:6px}
+#ch-name{
+  font-family:'Bebas Neue',cursive;
+  font-size:18px;letter-spacing:2px;
+}
+.live-pill{
+  background:var(--accent2);color:#fff;
+  font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px;
+  letter-spacing:1px;animation:pulse 1.5s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
+
+/* PLAYER CONTAINER */
+.shaka-video-container{
+  position:fixed;inset:0;
+  background:#000;
+  display:flex;align-items:center;justify-content:center;
+}
+video{width:100%;height:100%;object-fit:contain;background:#000}
+
+/* LOADING STATE */
+#state-overlay{
+  position:fixed;inset:0;z-index:500;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  background:var(--bg);gap:16px;
+}
+.big-spinner{
+  width:44px;height:44px;
+  border:3px solid rgba(232,255,0,0.15);
+  border-top-color:var(--accent);
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+#state-msg{font-size:14px;color:var(--muted);letter-spacing:0.5px}
+#state-overlay.hidden{display:none}
+
+/* ERROR / BLOCK OVERLAY */
+.block-overlay{
+  position:fixed;inset:0;z-index:99999;
+  display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at center,#1a1a1a,#000);
+  text-align:center;
+}
+.block-box{
+  padding:40px;max-width:480px;width:90%;
+  background:rgba(20,20,20,0.96);
+  border-radius:16px;border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+  animation:fadeUp .5s ease-out;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.block-title{font-family:'Bebas Neue',cursive;font-size:40px;letter-spacing:2px;margin-bottom:14px}
+.block-sub{font-size:13px;color:var(--muted);line-height:1.7}
+.block-sub a{color:var(--accent);text-decoration:none}
+
+/* Shaka overrides */
+.shaka-controls-container{background:transparent !important}
+</style>
+</head>
+<body>
+
+<!-- Top HUD -->
+<div id="top-bar">
+  <a id="back-btn" href="index.html">←</a>
+  <img id="ch-logo" src="" alt="">
+  <div id="ch-name">Loading…</div>
+  <div class="live-pill">● LIVE</div>
+</div>
+
+<!-- Player -->
+<div class="shaka-video-container" id="player-container">
+  <video id="video" autoplay muted playsinline preload="metadata"></video>
+</div>
+
+<!-- Loading Overlay -->
+<div id="state-overlay">
+  <div class="big-spinner"></div>
+  <div id="state-msg">Fetching channel data…</div>
+</div>
+
+<script>
+(function(){
+
+  /* ─── Sandbox guard ─── */
+  function isSandboxed(){
+    try{
+      if(window.self===window.top) return false;
+      if(window.frameElement&&window.frameElement.hasAttribute("sandbox")) return true;
+      try{ document.domain=document.domain; }catch(e){ return true; }
+      return false;
+    }catch(e){ return true; }
+  }
+  function showBlock(title,msg){
+    try{const v=document.getElementById('video');v.pause();v.removeAttribute('src');v.load();}catch(e){}
+    document.getElementById('player-container').style.display='none';
+    document.getElementById('state-overlay').classList.add('hidden');
+    const d=document.createElement('div');
+    d.className='block-overlay';
+    d.innerHTML=`<div class="block-box"><div class="block-title">${title}</div><div class="block-sub">${msg}</div></div>`;
+    document.body.appendChild(d);
+  }
+  if(isSandboxed()){
+    showBlock('Disable Sandbox','Open in Chrome browser & disable Ad blocker');
+    return;
+  }
+
+  /* ─── Constants ─── */
+  const JSON_URL = 'https://binge-giotv.pages.dev/data/id.json';
+
+  /* ─── State ─── */
+  let player = null;
+  let allChannels = [];
+  let currentId = null;
+
+  /* ─── DOM refs ─── */
+  const video = document.getElementById('video');
+  const container = document.getElementById('player-container');
+  const overlay = document.getElementById('state-overlay');
+  const stateMsg = document.getElementById('state-msg');
+  const chName = document.getElementById('ch-name');
+  const chLogo = document.getElementById('ch-logo');
+
+  /* ─── Helpers ─── */
+  function getParam(k){ return new URLSearchParams(location.search).get(k); }
+  function setMsg(t){ stateMsg.textContent = t; }
+  function showOverlay(){ overlay.classList.remove('hidden'); }
+  function hideOverlay(){ overlay.classList.add('hidden'); }
+
+  /* ─── Load & play a channel ─── */
+  async function loadChannel(id){
+    const ch = allChannels.find(c => c.id === id);
+    if(!ch) return showBlock('Not Found', 'Channel not found. <a href="index.html">← Go back</a>');
+
+    currentId = id;
+    history.replaceState(null,'',`player.html?id=${id}`);
+
+    // Update HUD
+    chName.textContent = ch.name;
+    chLogo.src = ch.logo;
+    document.title = ch.name + ' · Star Sports Live';
+
+    showOverlay();
+    setMsg('Loading ' + ch.name + '…');
+
+    try{
+      await player.unload();
+    }catch(e){}
+
+    // Extract bare cookie value
+    let cookieValue = ch.cookie || '';
+    let urlCookie = cookieValue.startsWith('__hdnea__=') ? cookieValue.substring(10) : cookieValue;
+
+    // Register network filter
+    player.getNetworkingEngine().clearAllRequestFilters();
+    if(cookieValue){
+      player.getNetworkingEngine().registerRequestFilter((type, req) => {
+        req.headers['Referer'] = 'https://www.jiotv.com/';
+        req.headers['User-Agent'] = 'plaYtv/7.1.5 (Linux;Android 13) ExoPlayerLib/2.11.6';
+        req.headers['Cookie'] = cookieValue;
+        if(
+          (type===shaka.net.NetworkingEngine.RequestType.MANIFEST ||
+           type===shaka.net.NetworkingEngine.RequestType.SEGMENT) &&
+          !req.uris[0].includes('__hdnea__')
+        ){
+          const sep = req.uris[0].includes('?') ? '&' : '?';
+          req.uris[0] += sep + '__hdnea__=' + urlCookie;
+        }
+      });
+    }
+
+    // Configure DRM
+    player.configure({
+      drm:{ clearKeys:{ [ch.keyId]: ch.key } },
+      manifest:{ defaultPresentationDelay:5 },
+      streaming:{
+        lowLatencyMode:true,
+        bufferingGoal:10,
+        rebufferingGoal:2,
+        safeSeekOffset:5
+      }
+    });
+
+    try{
+      await player.load(ch.url);
+      video.play().catch(()=>{});
+      hideOverlay();
+    }catch(e){
+      showBlock('Playback Error', 'Stream unavailable right now.<br><a href="index.html">← Back to channels</a>');
+    }
+  }
+
+  /* ─── Main init ─── */
+  async function init(){
+    shaka.polyfill.installAll();
+    if(!shaka.Player.isBrowserSupported()){
+      return showBlock('Browser Unsupported','Please use Chrome or Edge.');
+    }
+
+    video.muted = true;
+    player = new shaka.Player();
+    await player.attach(video);
+
+    const ui = new shaka.ui.Overlay(player, container, video);
+    ui.configure({
+      addBigPlayButton:true,
+      controlPanelElements:['mute','play_pause','time_and_duration','spacer','quality','picture_in_picture','fullscreen'],
+      seekBarColors:{base:'rgba(255,255,255,0.3)',buffered:'rgba(232,255,0,0.5)',played:'var(--accent)'}
+    });
+
+    video.addEventListener('play', () => { video.muted = false; });
+
+    // Fetch channel list
+    try{
+      setMsg('Fetching channel data…');
+      const res = await fetch(JSON_URL + '?_=' + Date.now());
+      const data = await res.json();
+      allChannels = data.channels || [];
+    }catch(e){
+      return showBlock('Connection Error','Could not load channel list.<br><a href="index.html">← Go back</a>');
+    }
+
+    if(!allChannels.length) return showBlock('No Channels','Channel list is empty.');
+
+    // Pick initial channel
+    const requestedId = getParam('id') || allChannels[0].id;
+    const exists = allChannels.find(c => c.id === requestedId);
+    await loadChannel(exists ? requestedId : allChannels[0].id);
+  }
+
+  init();
+
+})();
+</script>
+</body>
+</html>
