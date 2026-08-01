@@ -3,463 +3,382 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Player · Star Sports Live</title>
+<title>Live Player · Sportlink</title>
 <meta name="referrer" content="no-referrer">
 <script src="https://cdn.jsdelivr.net/npm/shaka-player@4.16.2/dist/shaka-player.ui.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shaka-player@4.16.2/dist/controls.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-
 <style>
-:root {
-    --primary: #ff3e3e;
-    --bg: #000;
-    --surface: rgba(255, 255, 255, 0.05);
-    --glass: rgba(0, 0, 0, 0.6);
-}
-
+:root{ --primary:#ff3c3c; }
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;height:100%;background:var(--bg);overflow:hidden;font-family:'Outfit', sans-serif}
-
+html,body{width:100%;height:100%;background:#000;overflow:hidden;font-family:'Outfit',sans-serif}
 .shaka-video-container{
-position:fixed;
-inset:0;
-background:#000;
-display:flex;
-align-items:center;
-justify-content:center;
+  position:fixed;inset:0;background:#000;
+  display:flex;align-items:center;justify-content:center;
 }
-
-video{
-width:100%;
-height:100%;
-object-fit:contain;
+video{width:100%;height:100%;object-fit:contain;}
+/* ── Header ── */
+.player-header{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:15px 22px;
+  background:linear-gradient(to bottom,rgba(0,0,0,0.88) 0%,transparent 100%);
+  display:flex;align-items:center;gap:14px;
+  transition:opacity .4s ease;
 }
-
-/* Header/Overlay */
-.player-header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 15px 25px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: opacity 0.3s ease;
+.back-btn{
+  color:#fff;text-decoration:none;font-size:20px;
+  background:rgba(255,255,255,0.12);
+  width:38px;height:38px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;backdrop-filter:blur(8px);
+  transition:all .25s;
 }
-
-.header-left { display: flex; align-items: center; gap: 15px; }
-.header-right { display: flex; align-items: center; gap: 10px; }
-
-.back-btn {
-    color: white;
-    text-decoration: none;
-    font-size: 24px;
-    background: rgba(255,255,255,0.1);
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s;
+.back-btn:hover{background:var(--primary);transform:scale(1.1);}
+.channel-info{display:flex;align-items:center;gap:11px;overflow:hidden;flex:1;}
+.channel-logo{
+  height:32px;width:auto;max-width:80px;
+  object-fit:contain;
+  filter:drop-shadow(0 0 8px rgba(0,0,0,0.7));
+  flex-shrink:0;
 }
-
-.back-btn:hover { background: var(--primary); transform: scale(1.1); }
-
-.channel-info { display: flex; align-items: center; gap: 12px; }
-
-.channel-logo {
-    height: 35px;
-    width: auto;
-    max-width: 100px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+.channel-name{
+  color:#fff;font-weight:700;font-size:16px;
+  text-shadow:0 2px 8px rgba(0,0,0,0.7);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
-
-.channel-name {
-    color: white;
-    font-weight: 700;
-    font-size: 18px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+.live-pill{
+  background:var(--primary);color:#fff;
+  font-size:9px;font-weight:800;letter-spacing:1px;
+  padding:3px 8px;border-radius:4px;flex-shrink:0;
+  animation:blink 1.5s ease-in-out infinite;
 }
-
-.custom-watermark{
-position:absolute;
-z-index:40;
-pointer-events:none;
-top:15%;
-right:5%;
-font-size:12px;
-font-weight:800;
-color:rgba(255,255,255,0.15);
-letter-spacing: 1px;
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.45}}
+/* ── Watermark ── */
+.watermark{
+  position:fixed;top:14%;right:5%;z-index:50;pointer-events:none;
+  font-size:11px;font-weight:800;letter-spacing:2px;
+  color:rgba(255,255,255,0.12);
 }
-
-/* Loading Overlay */
-#loading-overlay{
-position:fixed;
-inset:0;
-z-index:50;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-background:#000;
-gap:16px;
+/* ── Boot loader ── */
+#boot-loader{
+  position:fixed;inset:0;z-index:300;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:18px;background:#000;
 }
-.spinner{
-width:44px;height:44px;
-border:3px solid rgba(255,62,62,0.15);
-border-top-color:var(--primary);
-border-radius:50%;
-animation:spin .8s linear infinite;
+.spin{
+  width:42px;height:42px;
+  border:3px solid rgba(255,255,255,0.08);
+  border-top-color:var(--primary);
+  border-radius:50%;
+  animation:spin .8s linear infinite;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
-#loading-msg{font-size:14px;color:rgba(255,255,255,0.5);font-family:'Outfit',sans-serif;letter-spacing:0.5px}
-#loading-overlay.hidden{display:none}
-
-/* --- Blocker --- */
+#loader-label{color:rgba(255,255,255,0.45);font-size:13px;font-weight:500;letter-spacing:.4px;}
+/* ── Error / Block overlay ── */
 .block-overlay{
-position:fixed;
-inset:0;
-z-index:99999;
-display:flex;
-align-items:center;
-justify-content:center;
-background:radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
-text-align:center;
+  position:fixed;inset:0;z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at center,#181818 0%,#000 100%);
+  text-align:center;
 }
-
 .block-box{
-padding:40px;
-max-width:500px;
-width:90%;
-background:rgba(20, 20, 20, 0.95);
-border-radius:16px;
-border:1px solid rgba(255, 255, 255, 0.1);
-box-shadow:0 20px 50px rgba(0,0,0,0.5);
+  padding:40px 36px;max-width:460px;width:90%;
+  background:rgba(16,16,16,0.97);border-radius:18px;
+  border:1px solid rgba(255,255,255,0.07);
+  box-shadow:0 24px 70px rgba(0,0,0,0.7);
+  animation:fadeUp .5s ease;
 }
-
-.block-title{ font-size:32px; font-weight:800; color:#fff; margin-bottom:15px; text-transform: uppercase;}
-.block-sub{ font-size:14px; color:rgba(255,255,255,0.6); line-height:1.6; }
-.block-sub a{color:var(--primary);text-decoration:none}
-
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.block-title{font-size:28px;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;}
+.block-sub{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.75;}
+.refresh-btn{
+  display:inline-block;margin-top:22px;
+  padding:10px 28px;border-radius:30px;
+  background:var(--primary);color:#fff;
+  font-size:13px;font-weight:700;letter-spacing:.5px;
+  cursor:pointer;border:none;font-family:'Outfit',sans-serif;
+  transition:opacity .2s;
+}
+.refresh-btn:hover{opacity:.85;}
 @media(max-width:700px){
-    .player-header { padding: 10px 15px; }
-    .channel-name { font-size: 15px; }
-    .channel-logo { height: 25px; }
+  .player-header{padding:10px 14px;}
+  .channel-name{font-size:14px;}
+  .channel-logo{height:24px;}
+  .block-title{font-size:22px;}
+  .block-box{padding:28px 22px;}
 }
 </style>
 </head>
 <body>
-
-<!-- Loading Overlay -->
-<div id="loading-overlay">
-    <div class="spinner"></div>
-    <div id="loading-msg">Loading channel…</div>
-</div>
-
-<!-- Header -->
 <div class="player-header" id="header">
-    <div class="header-left">
-        <a href="index.html" class="back-btn">←</a>
-        <div class="channel-info">
-            <img id="ch-logo" src="" alt="" class="channel-logo" onerror="this.style.display='none'">
-            <span class="channel-name" id="ch-name">Loading…</span>
-        </div>
-    </div>
-    <div class="header-right">
-        <span style="font-family:'Outfit',sans-serif;font-size:20px;color:white;letter-spacing:1px;font-weight:800;">SPORT<span style="color:#ff3e3e;">LINK</span></span>
-    </div>
+  <a href="jtv.html" class="back-btn">←</a>
+  <div class="channel-info">
+    <img id="ch-logo" src="" alt="" class="channel-logo" onerror="this.style.display='none'" style="display:none">
+    <span id="ch-name" class="channel-name">Sportlink</span>
+  </div>
+  <span class="live-pill">● LIVE</span>
 </div>
-
-<!-- Player -->
 <div class="shaka-video-container" id="player-container">
-    <video id="video" autoplay muted playsinline preload="metadata"></video>
-    <div class="custom-watermark">SPORTLINK</div>
+  <video id="video" autoplay muted playsinline preload="metadata"></video>
 </div>
-
+<div class="watermark">SPORTLINK</div>
+<div id="boot-loader">
+  <div class="spin"></div>
+  <div id="loader-label">Fetching playlist…</div>
+</div>
 <script>
 (function(){
-  // ─── Sandbox Guard ───
-  function isSandboxedEnv(){
-    try {
-      if (window.self === window.top) return false;
-      if (window.frameElement && window.frameElement.hasAttribute("sandbox")) return true;
-      try { document.domain = document.domain; if (window.frameElement && !window.frameElement.getAttribute("sandbox")) return false; } catch (e) { return true; }
+  // ── CONFIG ─────────────────────────────────────────────────────────────────
+  const M3U_URL    = 'https://sportlink-jiotv10.vercel.app/jtv.m3u';
+  const REFRESH_MS = 7 * 60 * 1000;   // background cookie refresh
+  const MAX_RETRY  = 3;
+  const LOAD_TIMEOUT_MS = 20000;       // 20 s timeout per load attempt
+  const UA = 'plaYtv/7.1.5 (Linux;Android 13) ExoPlayerLib/2.11.6';
+  // ──────────────────────────────────────────────────────────────────────────
+  const $ = id => document.getElementById(id);
+  const loaderEl = $('boot-loader');
+  const labelEl  = $('loader-label');
+  const headerEl = $('header');
+  function setLabel(txt){ if(labelEl) labelEl.textContent = txt; }
+  function hideLoader(){ if(loaderEl) loaderEl.style.display = 'none'; }
+  function showError(title, msg){
+    hideLoader();
+    if(headerEl) headerEl.style.display = 'none';
+    const video = $('video');
+    try{ video.pause(); video.removeAttribute('src'); video.load(); }catch(e){}
+    $('player-container').style.display = 'none';
+    const ov = document.createElement('div');
+    ov.className = 'block-overlay';
+    ov.innerHTML = `
+      <div class="block-box">
+        <div class="block-title">${title}</div>
+        <div class="block-sub">${msg}</div>
+        <button class="refresh-btn" onclick="location.reload()">↺ Try Again</button>
+      </div>`;
+    document.body.appendChild(ov);
+  }
+  /* ── Sandbox guard ── */
+  function isSandboxed(){
+    try{
+      if(window.self===window.top) return false;
+      if(window.frameElement?.hasAttribute('sandbox')) return true;
+      try{ document.domain=document.domain; }catch(e){ return true; }
       return false;
-    } catch(e) { return true; }
+    }catch(e){ return true; }
   }
-  function triggerBlockScreen(title, message){
-    const container = document.getElementById("player-container");
-    const video = document.getElementById("video");
-    try { video.pause(); video.removeAttribute('src'); video.load(); } catch(e){}
-    const overlay = document.createElement("div");
-    overlay.className = "block-overlay";
-    overlay.innerHTML = `<div class="block-box"><div class="block-title">${title}</div><div class="block-sub">${message}</div></div>`;
-    document.body.appendChild(overlay);
-    container.style.display = 'none';
-    document.getElementById('header').style.display = 'none';
-    document.getElementById('loading-overlay').classList.add('hidden');
-  }
-  if(isSandboxedEnv()){
-    triggerBlockScreen('Access Denied', 'Please open in a standard browser and disable ad-blockers.');
+  if(isSandboxed()){
+    document.addEventListener('DOMContentLoaded', ()=>{
+      showError('Access Denied','Open in Chrome browser &amp; disable ad-blockers.');
+    });
     return;
   }
-
-  // ─── Configuration ───
-  const CHANNEL_JSON_URL = 'https://sportlink-sky-f1.pages.dev/jtv.json';
-  const COOKIE_URLS = [
-    'https://allinonereborn2.online/jstrweb2/cookies.json',
-    'https://corsproxy.io/?https://allinonereborn2.online/jstrweb2/cookies.json'
-  ];
-
-  // ─── DOM refs ───
-  const video = document.getElementById('video');
-  const container = document.getElementById('player-container');
-  const loadingOverlay = document.getElementById('loading-overlay');
-  const loadingMsg = document.getElementById('loading-msg');
-  const chName = document.getElementById('ch-name');
-  const chLogo = document.getElementById('ch-logo');
-  const header = document.getElementById('header');
-
-  // ─── Helpers ───
+  /* ── State ── */
+  let allChannels  = [];
+  let currentId    = null;
+  let retryCount   = 0;
+  let refreshTimer = null;
+  let player       = null;
+  let isLoading    = false;   // prevent concurrent loads
   function getParam(k){ return new URLSearchParams(location.search).get(k); }
-  function setLoadingMsg(msg){ if(loadingMsg) loadingMsg.textContent = msg; }
-  function showLoading(){ loadingOverlay.classList.remove('hidden'); }
-  function hideLoading(){ loadingOverlay.classList.add('hidden'); }
-
-  // ─── Fetch Cookie with multiple fallbacks ───
-  async function fetchCookieWithFallback() {
-    // Try multiple URLs
-    for (const url of COOKIE_URLS) {
-      try {
-        console.log('Trying to fetch cookie from:', url);
-        const res = await fetch(url, { 
-          cache: "no-store",
-          mode: 'cors',
-          headers: {
-            'Accept': 'application/json, text/plain, */*'
-          }
-        });
-        
-        if (!res.ok) continue;
-        
-        const ct = res.headers.get("Content-Type") || "";
-        if (ct.includes("application/json")) {
-          const data = await res.json();
-          const cookie = extractCookie(data);
-          if (cookie) {
-            console.log('Cookie found via JSON');
-            return cookie;
-          }
-        } else {
-          // plain-text fallback
-          const text = (await res.text()).trim();
-          if (text && text.length > 10) {
-            console.log('Cookie found via plain text');
-            return text;
-          }
+  /* ── Header auto-hide ── */
+  let hideTimer;
+  function showHeader(){
+    if(!headerEl) return;
+    headerEl.style.opacity = '1';
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(()=>{ headerEl.style.opacity='0'; }, 3500);
+  }
+  document.addEventListener('mousemove', showHeader);
+  document.addEventListener('touchstart', showHeader);
+  showHeader();
+  /* ── M3U parser ── */
+  function parseM3U(text){
+    const channels = [];
+    const lines = text.split(/\r?\n/).map(l=>l.trim());
+    let i = 0;
+    while(i < lines.length){
+      if(!lines[i].startsWith('#EXTINF')){ i++; continue; }
+      const inf = lines[i];
+      const ch = {
+        id:    (inf.match(/tvg-id="([^"]*)"/)      ||[])[1] || '',
+        name:  (inf.match(/tvg-name="([^"]*)"/)    ||[])[1] || inf.split(',').pop().trim(),
+        logo:  (inf.match(/tvg-logo="([^"]*)"/)    ||[])[1] || '',
+        group: (inf.match(/group-title="([^"]*)"/) ||[])[1] || '',
+        licenseKey:'', streamUrl:'', isHLS:false, cookie:'', ua:UA
+      };
+      i++;
+      while(i<lines.length && lines[i].startsWith('#KODIPROP')){
+        if(lines[i].includes('license_key='))
+          ch.licenseKey = lines[i].split('license_key=').pop().trim();
+        i++;
+      }
+      while(i<lines.length && lines[i].startsWith('#')) i++;
+      if(i<lines.length && lines[i] && !lines[i].startsWith('#')){
+        const raw  = lines[i];
+        const pipe = raw.indexOf('|');
+        const url  = pipe!==-1 ? raw.substring(0,pipe) : raw;
+        ch.streamUrl = url;
+        ch.isHLS     = url.includes('.m3u8');
+        if(pipe!==-1){
+          raw.substring(pipe+1).split('&').forEach(p=>{
+            const eq=p.indexOf('='); if(eq===-1) return;
+            const k=p.substring(0,eq), v=p.substring(eq+1);
+            if(k==='User-Agent') ch.ua     = v;
+            if(k==='Cookie')     ch.cookie = v;
+          });
         }
-      } catch(e) { 
-        console.warn('Cookie fetch error from', url, e);
-        continue;
+        i++;
+      }
+      if(ch.streamUrl) channels.push(ch);
+    }
+    return channels;
+  }
+  /* ── Fetch M3U ── */
+  async function fetchData(){
+    const r = await fetch(M3U_URL+'?_='+Date.now(),{cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    allChannels = parseM3U(await r.text());
+  }
+  /* ── ClearKey DRM ── */
+  function buildDrm(licKey){
+    if(!licKey||!licKey.includes(':')) return null;
+    const [kid,key] = licKey.split(':');
+    return (kid&&key) ? {drm:{clearKeys:{[kid]:key}}} : null;
+  }
+  /* ── Request filter — adds Cookie header + __hdnea__ to URL ── */
+  function applyFilter(ch){
+    player.getNetworkingEngine().clearAllRequestFilters();
+    player.getNetworkingEngine().registerRequestFilter((type, req)=>{
+      req.headers['Referer']    = 'https://www.jiotv.com/';
+      req.headers['User-Agent'] = ch.ua;
+      if(ch.cookie){
+        req.headers['Cookie'] = ch.cookie;
+        // Strip "Cookie=" prefix if present, extract token value only
+        const rawCookie = ch.cookie;  // e.g. "__hdnea__=st=...~hmac=..."
+        const token = rawCookie.startsWith('__hdnea__=')
+          ? rawCookie.substring(10)   // → "st=...~hmac=..."
+          : rawCookie;
+        // Append to manifest + segment URLs (required by JioTV/Akamai CDN)
+        const isMpdOrSeg =
+          type === shaka.net.NetworkingEngine.RequestType.MANIFEST ||
+          type === shaka.net.NetworkingEngine.RequestType.SEGMENT;
+        if(isMpdOrSeg && !req.uris[0].includes('__hdnea__')){
+          req.uris[0] += (req.uris[0].includes('?') ? '&' : '?') + '__hdnea__=' + token;
+        }
+      }
+    });
+  }
+  /* ── Background refresh ── */
+  function scheduleRefresh(){
+    clearTimeout(refreshTimer);
+    refreshTimer = setTimeout(async()=>{
+      try{
+        await fetchData();
+        const ch = allChannels.find(c=>String(c.id)===String(currentId));
+        if(ch && !$('video').paused) applyFilter(ch);
+      }catch(e){ console.warn('[refresh]',e); }
+      scheduleRefresh();
+    }, REFRESH_MS);
+  }
+  /* ── Load with timeout wrapper ── */
+  function loadWithTimeout(url){
+    return Promise.race([
+      player.load(url),
+      new Promise((_,rej)=> setTimeout(()=> rej(new Error('Timeout after '+LOAD_TIMEOUT_MS+'ms')), LOAD_TIMEOUT_MS))
+    ]);
+  }
+  /* ── Load & play ── */
+  async function loadChannel(id, isRetry){
+    if(isLoading && !isRetry) return;
+    isLoading = true;
+    if(!isRetry){
+      retryCount = 0;
+      setLabel('Connecting to stream…');
+    }
+    // Refresh data on every attempt to get fresh cookies
+    try{ await fetchData(); }catch(e){ console.warn('[m3u]',e); }
+    const ch = allChannels.find(c=>String(c.id)===String(id));
+    if(!ch){ showError('Not Found','Channel not available.'); isLoading=false; return; }
+    currentId = id;
+    // Update header
+    document.title = ch.name + ' | Sportlink';
+    $('ch-name').textContent = ch.name;
+    const logo = $('ch-logo');
+    if(ch.logo){ logo.src=ch.logo; logo.style.display=''; }
+    else logo.style.display='none';
+    try{ await player.unload(); }catch(e){}
+    applyFilter(ch);
+    player.configure({
+      manifest:  { defaultPresentationDelay:5 },
+      streaming: { lowLatencyMode:true, bufferingGoal:10, rebufferingGoal:2, safeSeekOffset:5 }
+    });
+    if(!ch.isHLS){
+      const drm = buildDrm(ch.licenseKey);
+      if(drm) player.configure(drm);
+    }
+    try{
+      await loadWithTimeout(ch.streamUrl);
+      $('video').play().catch(()=>{});
+      retryCount = 0;
+      isLoading  = false;
+      hideLoader();
+      scheduleRefresh();
+    }catch(err){
+      console.error('[load] attempt',retryCount+1,'error:',err.message||err);
+      if(retryCount < MAX_RETRY){
+        retryCount++;
+        setLabel('Retry '+retryCount+'/'+MAX_RETRY+' — reconnecting…');
+        setTimeout(()=> loadChannel(id, true), 2500);
+      }else{
+        isLoading = false;
+        showError(
+          'Stream Error',
+          'Unable to play this channel.<br><br>' +
+          'The stream token may have expired — ' +
+          'try refreshing to get a fresh playlist.'
+        );
       }
     }
-    return null;
   }
-
-  function extractCookie(data) {
-    if (Array.isArray(data)) {
-      for (const item of data) {
-        const r = extractCookie(item);
-        if (r) return r;
-      }
-    } else if (data && typeof data === "object") {
-      // Check for cookie field
-      if (data.cookie) {
-        const cookie = String(data.cookie).trim();
-        if (cookie.startsWith('__hdnea__=')) return cookie;
-        if (cookie.length > 20) return cookie;
-      }
-      // Check for __hdnea__ directly
-      if (data.__hdnea__) {
-        const val = String(data.__hdnea__).trim();
-        return val.startsWith('__hdnea__=') ? val : '__hdnea__=' + val;
-      }
-      // Recursively search values
-      for (const v of Object.values(data)) {
-        if (typeof v === "object" && v !== null) {
-          const r = extractCookie(v);
-          if (r) return r;
-        }
-        if (typeof v === "string" && v.includes('__hdnea__')) {
-          return v;
-        }
-      }
-    }
-    return null;
-  }
-
-  // ─── Main Player Logic ───
-  async function init() {
+  /* ── Boot ── */
+  document.addEventListener('DOMContentLoaded', async()=>{
     shaka.polyfill.installAll();
-    if(!shaka.Player.isBrowserSupported()) {
-      return triggerBlockScreen('Browser Unsupported', 'Please use Chrome or Edge.');
+    if(!shaka.Player.isBrowserSupported()){
+      showError('Unsupported Browser','Use Chrome on desktop or Android.');
+      return;
     }
-
-    // ─── 1. Fetch channel data ───
-    setLoadingMsg('Loading channel data…');
-    showLoading();
-
-    let allChannels = [];
-    let targetId = getParam('id');
-    
-    try {
-      const res = await fetch(CHANNEL_JSON_URL + '?_=' + Date.now());
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      allChannels = await res.json();
-    } catch(e) {
-      console.error('Channel fetch error:', e);
-      return triggerBlockScreen('Connection Error', 'Could not load channel list.<br><a href="index.html">← Go back</a>');
-    }
-
-    if (!allChannels || allChannels.length === 0) {
-      return triggerBlockScreen('No Channels', 'Channel list is empty.');
-    }
-
-    // Find target channel
-    let channel = allChannels.find(c => c.id === targetId);
-    if (!channel && targetId) {
-      channel = allChannels.find(c => c.keyId === targetId);
-    }
-    if (!channel) channel = allChannels[0];
-    if (!channel) return triggerBlockScreen('Error', 'No valid channel found.');
-
-    // Update UI
-    chName.textContent = channel.name;
-    chLogo.src = channel.logo || '';
-    document.title = channel.name + ' · Sportlink';
-
-    // ─── 2. Fetch fresh cookie ───
-    setLoadingMsg('Fetching stream token…');
-    let cookieValue = null;
-    
-    // Try to fetch from external sources
-    try {
-      cookieValue = await fetchCookieWithFallback();
-      if (cookieValue) {
-        console.log('Successfully fetched cookie from external source');
-      }
-    } catch(e) {
-      console.warn('External cookie fetch failed:', e);
-    }
-    
-    // Fallback to channel.cookie if available
-    if (!cookieValue && channel.cookie) {
-      cookieValue = channel.cookie;
-      console.log('Using channel.cookie');
-    }
-    
-    // Final fallback: use the baked-in cookie
-    if (!cookieValue) {
-      cookieValue = "__hdnea__=st=1784930442~exp=1784952042~acl=/*~hmac=a62f3d1a5ae89d37d883ed450aff14eca0244a2825ed9a8ecc9091fdb67e3bcc";
-      console.warn('Using fallback cookie');
-    }
-
-    // ─── 3. Setup Shaka Player ───
-    setLoadingMsg('Starting stream…');
-    
-    const player = new shaka.Player();
+    const video     = $('video');
+    const container = $('player-container');
+    video.muted = true;
+    player = new shaka.Player();
     await player.attach(video);
-
-    // UI Overlay
+    // Only log Shaka errors — do NOT retry here to avoid loop with loadChannel
+    player.addEventListener('error', ev=>{
+      console.error('[Shaka error]', ev.detail.code, ev.detail);
+    });
     const ui = new shaka.ui.Overlay(player, container, video);
     ui.configure({
       addBigPlayButton: true,
-      controlPanelElements: ["mute","play_pause","time_and_duration","spacer","quality","picture_in_picture","fullscreen"]
+      controlPanelElements:['mute','play_pause','time_and_duration','spacer','quality','picture_in_picture','fullscreen'],
+      seekBarColors:{ base:'rgba(255,255,255,0.25)', buffered:'rgba(255,60,60,0.5)', played:'#ff3c3c' }
     });
-
-    // DRM Config
-    const drmConfig = {};
-    if (channel.keyId && channel.key) {
-      drmConfig.clearKeys = { [channel.keyId]: channel.key };
+    video.addEventListener('play', ()=>{ video.muted = false; });
+    setLabel('Fetching playlist…');
+    try{
+      await fetchData();
+    }catch(e){
+      showError('Connection Error','Could not load channel list.<br>'+e.message);
+      return;
     }
-    player.configure({
-      drm: drmConfig,
-      manifest: { defaultPresentationDelay: 5 },
-      streaming: { 
-        lowLatencyMode: true, 
-        bufferingGoal: 10, 
-        rebufferingGoal: 2,
-        safeSeekOffset: 5
-      }
-    });
-
-    // ─── 4. Request Filter with Cookie ───
-    const streamUrl = channel.streamUrl || channel.url;
-    if (!streamUrl) {
-      return triggerBlockScreen('Error', 'No stream URL available for this channel.');
+    if(!allChannels.length){
+      showError('Empty Playlist','Playlist loaded but no channels found.');
+      return;
     }
-
-    player.getNetworkingEngine().clearAllRequestFilters();
-    player.getNetworkingEngine().registerRequestFilter((type, request) => {
-      request.headers["Referer"] = "https://www.jiotv.com/";
-      request.headers["User-Agent"] = "plaYtv/7.1.5 (Linux;Android 13) ExoPlayerLib/2.11.6";
-      
-      if (cookieValue) {
-        request.headers["Cookie"] = cookieValue;
-        
-        // Append __hdnea__ to URL if needed
-        let urlCookie = cookieValue;
-        if (cookieValue.startsWith("__hdnea__=")) {
-          urlCookie = cookieValue.substring(10);
-        } else if (cookieValue.includes("__hdnea__")) {
-          // Try to extract just the value
-          const match = cookieValue.match(/__hdnea__=([^&;]+)/);
-          if (match) urlCookie = match[1];
-        }
-        
-        const isManifestOrSegment = (type === shaka.net.NetworkingEngine.RequestType.MANIFEST || 
-                                     type === shaka.net.NetworkingEngine.RequestType.SEGMENT);
-        if (isManifestOrSegment && !request.uris[0].includes("__hdnea__")) {
-          const sep = request.uris[0].includes("?") ? "&" : "?";
-          request.uris[0] += sep + "__hdnea__=" + urlCookie;
-        }
-      }
-    });
-
-    // ─── 5. Load and Play ───
-    try {
-      await player.load(streamUrl);
-      await video.play().catch(() => {});
-      hideLoading();
-      
-      // Header auto-hide
-      let hideTimeout;
-      const showHeader = () => {
-        header.style.opacity = '1';
-        clearTimeout(hideTimeout);
-        hideTimeout = setTimeout(() => { header.style.opacity = '0'; }, 3000);
-      };
-      container.addEventListener('mousemove', showHeader);
-      container.addEventListener('touchstart', showHeader);
-      showHeader();
-      
-    } catch(e) {
-      console.error('Playback error:', e);
-      triggerBlockScreen('Playback Error', 'Stream unavailable right now.<br><a href="index.html">← Back to channels</a>');
-    }
-
-    video.addEventListener("play", () => { video.muted = false; });
-  }
-
-  // ─── Start ───
-  init();
+    const reqId  = getParam('id') || allChannels[0].id;
+    const target = allChannels.find(c=>String(c.id)===String(reqId));
+    setLabel('Loading '+(target?.name||'channel')+'…');
+    await loadChannel(target ? reqId : allChannels[0].id);
+  });
 })();
 </script>
 </body>
