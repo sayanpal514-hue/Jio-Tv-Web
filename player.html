@@ -130,6 +130,7 @@ video{width:100%;height:100%;object-fit:contain;}
 (function(){
   // ── CONFIG ─────────────────────────────────────────────────────────────────
   const M3U_URL    = 'https://sportlink-jiotv10.vercel.app/jtv.m3u';
+  const FALLBACK_COOKIE_URL = 'https://allinonereborn2.online/jstrweb2/cookies.json';
   const REFRESH_MS = 7 * 60 * 1000;   // background cookie refresh
   const MAX_RETRY  = 3;
   const LOAD_TIMEOUT_MS = 20000;       // 20 s timeout per load attempt
@@ -179,7 +180,95 @@ video{width:100%;height:100%;object-fit:contain;}
   let refreshTimer = null;
   let player       = null;
   let isLoading    = false;   // prevent concurrent loads
+  let fallbackCookies = {};   // store fallback cookies
+  let cookieFailCount = 0;    // track cookie fetch failures
+  
   function getParam(k){ return new URLSearchParams(location.search).get(k); }
+  
+  /* ── Fetch fallback cookies ── */
+  async function fetchFallbackCookies(){
+    try {
+      const response = await fetch(FALLBACK_COOKIE_URL + '?_=' + Date.now(), {
+        cache: 'no-store'
+      });
+      if(!response.ok) throw new Error('HTTP ' + response.status);
+      const data = await response.json();
+      fallbackCookies = data;
+      cookieFailCount = 0;
+      console.log('[Fallback] Cookies loaded successfully');
+      return true;
+    } catch(e) {
+      cookieFailCount++;
+      console.warn('[Fallback] Failed to load cookies:', e);
+      if(cookieFailCount >= 3) {
+        console.warn('[Fallback] Multiple failures, using existing cookies');
+      }
+      return false;
+    }
+  }
+  
+  /* ── Get cookie for channel ── */
+  function getChannelCookie(channelId, channelName) {
+    // Try multiple ways to match the channel
+    const idStr = String(channelId);
+    
+    // Direct match by ID
+    if(fallbackCookies[idStr]) {
+      return fallbackCookies[idStr];
+    }
+    
+    // Try to match by channel name (case insensitive)
+    if(channelName) {
+      const nameLower = channelName.toLowerCase();
+      for(const [key, value] of Object.entries(fallbackCookies)) {
+        if(key.toLowerCase() === nameLower) {
+          return value;
+        }
+      }
+    }
+    
+    // Try partial match for common channels
+    const commonMatches = {
+      'star sports': ['star sports', 'star sports 1', 'star sports 2', 'star sports 3'],
+      'sony': ['sony', 'sony ten', 'sony six', 'sony max'],
+      'hotstar': ['hotstar', 'disney+ hotstar'],
+      'viacom': ['viacom', 'colors', 'mtv'],
+      'zee': ['zee', 'zee tv', 'zee cinema'],
+      'sports': ['sports', 'sports 18', 'sports channel'],
+      'espn': ['espn', 'star sports'],
+      'star': ['star', 'star plus', 'star gold']
+    };
+    
+    if(channelName) {
+      const nameLower = channelName.toLowerCase();
+      for(const [key, values] of Object.entries(commonMatches)) {
+        if(values.some(v => nameLower.includes(v) || v.includes(nameLower))) {
+          for(const [cookieKey, cookieValue] of Object.entries(fallbackCookies)) {
+            if(cookieKey.toLowerCase().includes(key) || key.includes(cookieKey.toLowerCase())) {
+              return cookieValue;
+            }
+          }
+        }
+      }
+    }
+    
+    // If still no match, try to find any cookie that might work
+    const fallbackKeys = Object.keys(fallbackCookies);
+    if(fallbackKeys.length > 0) {
+      // Try to match first few characters of channel ID
+      const idPrefix = idStr.substring(0, 3);
+      for(const key of fallbackKeys) {
+        if(key.startsWith(idPrefix)) {
+          return fallbackCookies[key];
+        }
+      }
+      // Last resort: use the first available cookie
+      return fallbackCookies[fallbackKeys[0]];
+    }
+    
+    return null;
+  }
+  
   /* ── Header auto-hide ── */
   let hideTimer;
   function showHeader(){
@@ -191,6 +280,7 @@ video{width:100%;height:100%;object-fit:contain;}
   document.addEventListener('mousemove', showHeader);
   document.addEventListener('touchstart', showHeader);
   showHeader();
+  
   /* ── M3U parser ── */
   function parseM3U(text){
     const channels = [];
@@ -233,28 +323,44 @@ video{width:100%;height:100%;object-fit:contain;}
     }
     return channels;
   }
+  
   /* ── Fetch M3U ── */
   async function fetchData(){
     const r = await fetch(M3U_URL+'?_='+Date.now(),{cache:'no-store'});
     if(!r.ok) throw new Error('HTTP '+r.status);
     allChannels = parseM3U(await r.text());
   }
+  
   /* ── ClearKey DRM ── */
   function buildDrm(licKey){
     if(!licKey||!licKey.includes(':')) return null;
     const [kid,key] = licKey.split(':');
     return (kid&&key) ? {drm:{clearKeys:{[kid]:key}}} : null;
   }
+  
   /* ── Request filter — adds Cookie header + __hdnea__ to URL ── */
   function applyFilter(ch){
     player.getNetworkingEngine().clearAllRequestFilters();
     player.getNetworkingEngine().registerRequestFilter((type, req)=>{
       req.headers['Referer']    = 'https://www.jiotv.com/';
       req.headers['User-Agent'] = ch.ua;
-      if(ch.cookie){
-        req.headers['Cookie'] = ch.cookie;
+      
+      // Try to get cookie - first from channel, then from fallback
+      let cookieValue = ch.cookie || '';
+      
+      // If no cookie in channel data, try fallback
+      if(!cookieValue && Object.keys(fallbackCookies).length > 0) {
+        const fallbackCookie = getChannelCookie(ch.id, ch.name);
+        if(fallbackCookie) {
+          cookieValue = fallbackCookie;
+          console.log('[Fallback] Using fallback cookie for channel:', ch.name);
+        }
+      }
+      
+      if(cookieValue){
+        req.headers['Cookie'] = cookieValue;
         // Strip "Cookie=" prefix if present, extract token value only
-        const rawCookie = ch.cookie;  // e.g. "__hdnea__=st=...~hmac=..."
+        const rawCookie = cookieValue;
         const token = rawCookie.startsWith('__hdnea__=')
           ? rawCookie.substring(10)   // → "st=...~hmac=..."
           : rawCookie;
@@ -268,18 +374,24 @@ video{width:100%;height:100%;object-fit:contain;}
       }
     });
   }
+  
   /* ── Background refresh ── */
   function scheduleRefresh(){
     clearTimeout(refreshTimer);
     refreshTimer = setTimeout(async()=>{
       try{
-        await fetchData();
+        // Refresh both M3U and fallback cookies
+        await Promise.all([
+          fetchData(),
+          fetchFallbackCookies()
+        ]);
         const ch = allChannels.find(c=>String(c.id)===String(currentId));
         if(ch && !$('video').paused) applyFilter(ch);
       }catch(e){ console.warn('[refresh]',e); }
       scheduleRefresh();
     }, REFRESH_MS);
   }
+  
   /* ── Load with timeout wrapper ── */
   function loadWithTimeout(url){
     return Promise.race([
@@ -287,6 +399,7 @@ video{width:100%;height:100%;object-fit:contain;}
       new Promise((_,rej)=> setTimeout(()=> rej(new Error('Timeout after '+LOAD_TIMEOUT_MS+'ms')), LOAD_TIMEOUT_MS))
     ]);
   }
+  
   /* ── Load & play ── */
   async function loadChannel(id, isRetry){
     if(isLoading && !isRetry) return;
@@ -295,27 +408,50 @@ video{width:100%;height:100%;object-fit:contain;}
       retryCount = 0;
       setLabel('Connecting to stream…');
     }
-    // Refresh data on every attempt to get fresh cookies
-    try{ await fetchData(); }catch(e){ console.warn('[m3u]',e); }
+    
+    // Refresh data and fallback cookies on every attempt
+    try{ 
+      await Promise.all([
+        fetchData(),
+        fetchFallbackCookies()
+      ]);
+    } catch(e){ 
+      console.warn('[m3u]',e); 
+    }
+    
     const ch = allChannels.find(c=>String(c.id)===String(id));
     if(!ch){ showError('Not Found','Channel not available.'); isLoading=false; return; }
     currentId = id;
+    
     // Update header
     document.title = ch.name + ' | Sportlink';
     $('ch-name').textContent = ch.name;
     const logo = $('ch-logo');
     if(ch.logo){ logo.src=ch.logo; logo.style.display=''; }
     else logo.style.display='none';
+    
     try{ await player.unload(); }catch(e){}
+    
+    // Add fallback cookie to channel if available
+    if(!ch.cookie && Object.keys(fallbackCookies).length > 0) {
+      const fallbackCookie = getChannelCookie(ch.id, ch.name);
+      if(fallbackCookie) {
+        ch.cookie = fallbackCookie;
+        console.log('[Fallback] Applied fallback cookie to channel:', ch.name);
+      }
+    }
+    
     applyFilter(ch);
     player.configure({
       manifest:  { defaultPresentationDelay:5 },
       streaming: { lowLatencyMode:true, bufferingGoal:10, rebufferingGoal:2, safeSeekOffset:5 }
     });
+    
     if(!ch.isHLS){
       const drm = buildDrm(ch.licenseKey);
       if(drm) player.configure(drm);
     }
+    
     try{
       await loadWithTimeout(ch.streamUrl);
       $('video').play().catch(()=>{});
@@ -340,6 +476,7 @@ video{width:100%;height:100%;object-fit:contain;}
       }
     }
   }
+  
   /* ── Boot ── */
   document.addEventListener('DOMContentLoaded', async()=>{
     shaka.polyfill.installAll();
@@ -352,28 +489,37 @@ video{width:100%;height:100%;object-fit:contain;}
     video.muted = true;
     player = new shaka.Player();
     await player.attach(video);
+    
     // Only log Shaka errors — do NOT retry here to avoid loop with loadChannel
     player.addEventListener('error', ev=>{
       console.error('[Shaka error]', ev.detail.code, ev.detail);
     });
+    
     const ui = new shaka.ui.Overlay(player, container, video);
     ui.configure({
       addBigPlayButton: true,
       controlPanelElements:['mute','play_pause','time_and_duration','spacer','quality','picture_in_picture','fullscreen'],
       seekBarColors:{ base:'rgba(255,255,255,0.25)', buffered:'rgba(255,60,60,0.5)', played:'#ff3c3c' }
     });
+    
     video.addEventListener('play', ()=>{ video.muted = false; });
     setLabel('Fetching playlist…');
+    
     try{
-      await fetchData();
-    }catch(e){
+      await Promise.all([
+        fetchData(),
+        fetchFallbackCookies()
+      ]);
+    } catch(e){
       showError('Connection Error','Could not load channel list.<br>'+e.message);
       return;
     }
+    
     if(!allChannels.length){
       showError('Empty Playlist','Playlist loaded but no channels found.');
       return;
     }
+    
     const reqId  = getParam('id') || allChannels[0].id;
     const target = allChannels.find(c=>String(c.id)===String(reqId));
     setLabel('Loading '+(target?.name||'channel')+'…');
