@@ -66,6 +66,8 @@
       color:#666;
       font-size:11px;
       font-weight:500;
+      margin-left:auto;
+      padding-left:12px;
     }
 
     /* Search Bar */
@@ -131,6 +133,7 @@
       padding:4px 0 14px 0;
       -webkit-overflow-scrolling:touch;
       scrollbar-width:none;
+      flex-shrink:0;
     }
     #category-filter::-webkit-scrollbar{display:none}
     .filter-pill{
@@ -159,37 +162,40 @@
       box-shadow:0 4px 15px rgba(239,68,68,0.3);
     }
 
+    /* Channel Grid - FIXED */
     #ch-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-      gap:14px;
+      grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));
+      gap:12px;
       padding-bottom:20px;
+      width:100%;
     }
     
     .ch-card{
       background:linear-gradient(145deg,#111,#0d0d0d);
       border:1px solid #1a1a1a;
-      border-radius:14px;
-      padding:16px 12px;
+      border-radius:12px;
+      padding:14px 10px;
       cursor:pointer;
       text-decoration:none;
       display:flex;
       flex-direction:column;
       align-items:center;
       text-align:center;
-      gap:10px;
+      gap:8px;
       transition:all .3s cubic-bezier(.4,0,.2,1);
       -webkit-tap-highlight-color:transparent;
-      min-height:130px;
+      min-height:120px;
       justify-content:center;
       position:relative;
       overflow:hidden;
+      width:100%;
     }
     .ch-card::before{
       content:'';
       position:absolute;
       inset:0;
-      border-radius:14px;
+      border-radius:12px;
       padding:1px;
       background:linear-gradient(135deg,transparent,transparent);
       -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
@@ -198,9 +204,9 @@
       transition:all .4s;
     }
     .ch-card:hover{
-      transform:translateY(-3px);
+      transform:translateY(-2px);
       border-color:#ef4444;
-      box-shadow:0 8px 30px rgba(239,68,68,0.15);
+      box-shadow:0 8px 25px rgba(239,68,68,0.12);
     }
     .ch-card:hover::before{
       background:linear-gradient(135deg,#ef4444,#f97316,#eab308);
@@ -215,12 +221,12 @@
     
     .ch-card .category-badge{
       position:absolute;
-      top:8px;
-      right:8px;
+      top:6px;
+      right:6px;
       font-size:7px;
       font-weight:600;
       text-transform:uppercase;
-      letter-spacing:.5px;
+      letter-spacing:.4px;
       padding:2px 8px;
       border-radius:8px;
       background:rgba(255,255,255,0.06);
@@ -230,13 +236,14 @@
     
     .ch-card .ch-logo{
       width:100%;
-      max-width:110px;
+      max-width:100px;
       height:auto;
-      max-height:55px;
+      max-height:50px;
       object-fit:contain;
       border-radius:6px;
       padding:4px;
       transition:transform .3s;
+      background:rgba(255,255,255,0.02);
     }
     .ch-card:hover .ch-logo{
       transform:scale(1.05);
@@ -244,16 +251,22 @@
     
     .ch-card .ch-name{
       color:#e0e0e0;
-      font-size:12px;
+      font-size:11px;
       font-weight:600;
       line-height:1.3;
       letter-spacing:.2px;
+      display:-webkit-box;
+      -webkit-line-clamp:2;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+      max-height:32px;
+      width:100%;
     }
     
     .ch-card .ch-placeholder{
       width:100%;
-      max-width:110px;
-      height:55px;
+      max-width:100px;
+      height:50px;
       background:linear-gradient(135deg,#1a1a1a,#111);
       border-radius:8px;
       display:flex;
@@ -279,6 +292,7 @@
       text-align:center;
       padding:60px 20px;
       font-size:14px;
+      width:100%;
     }
     #no-results .icon{
       font-size:48px;
@@ -335,22 +349,87 @@
       background: #7f1d1d !important;
     }
 
-    @media (max-width:400px){
+    /* Responsive */
+    @media (max-width:500px){
+      #ch-grid{
+        grid-template-columns:repeat(auto-fill, minmax(120px, 1fr));
+        gap:10px;
+      }
+      .ch-card{
+        min-height:100px;
+        padding:10px 8px;
+      }
+      .ch-card .ch-logo{
+        max-height:35px;
+        max-width:80px;
+      }
+      .ch-card .ch-name{
+        font-size:10px;
+        max-height:26px;
+      }
+      .ch-card .ch-placeholder{
+        height:35px;
+        max-width:80px;
+        font-size:11px;
+      }
+      .ch-card .category-badge{
+        font-size:6px;
+        padding:1px 6px;
+        top:4px;
+        right:4px;
+      }
       .fit-ratio{font-size:9px}
       .sp-btn{padding:0 6px!important;gap:3px}
-      #ch-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
-      .ch-card{min-height:110px;padding:12px 8px}
-      .ch-card .ch-logo{max-height:40px}
-      .ch-card .ch-name{font-size:10px}
       #channel-list .header h1{font-size:15px}
       .filter-pill{font-size:8px;padding:4px 10px}
       #search-input{font-size:12px;padding:8px 12px 8px 34px}
     }
+    @media (max-width:400px){
+      #ch-grid{
+        grid-template-columns:repeat(auto-fill, minmax(100px, 1fr));
+        gap:8px;
+      }
+      .ch-card{
+        min-height:85px;
+        padding:8px 6px;
+        border-radius:10px;
+      }
+      .ch-card .ch-logo{
+        max-height:30px;
+        max-width:70px;
+      }
+      .ch-card .ch-name{
+        font-size:9px;
+        max-height:22px;
+      }
+      .ch-card .ch-placeholder{
+        height:30px;
+        max-width:70px;
+        font-size:10px;
+      }
+    }
     @media (min-width:768px){
-      #ch-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}
-      .ch-card{min-height:150px;padding:20px 16px}
-      .ch-card .ch-logo{max-height:65px}
-      .ch-card .ch-name{font-size:14px}
+      #ch-grid{
+        grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));
+        gap:16px;
+      }
+      .ch-card{
+        min-height:140px;
+        padding:18px 14px;
+      }
+      .ch-card .ch-logo{
+        max-height:60px;
+        max-width:120px;
+      }
+      .ch-card .ch-name{
+        font-size:13px;
+        max-height:36px;
+      }
+      .ch-card .ch-placeholder{
+        height:60px;
+        max-width:120px;
+        font-size:16px;
+      }
     }
   </style>
 </head>
@@ -370,6 +449,7 @@
   <div class="header">
     <h1>⚡ SPORTLINK</h1>
     <span class="subtitle">JioTV+</span>
+    <span class="count" id="channelCount">0 channels</span>
   </div>
   
   <!-- Search Bar -->
@@ -408,6 +488,7 @@ var $filter  = document.getElementById("category-filter");
 var $searchInput = document.getElementById("search-input");
 var $searchClear = document.getElementById("search-clear");
 var $noResults = document.getElementById("no-results");
+var $channelCount = document.getElementById("channelCount");
 var $pc      = document.getElementById("pc");
 var $vid     = document.getElementById("v");
 var _stTmr   = null;
@@ -480,7 +561,6 @@ async function loadData(){
   }
   
   channels = channels.map(function(ch) {
-    // Normalize field names - support both old and new formats
     var normalized = {
       id: ch.id || ch.channel_id || '',
       name: ch.name || ch.title || '',
@@ -527,18 +607,17 @@ function renderFilters(channels){
     });
     f.appendChild(pill);
   });
+  $filter.innerHTML = '';
   $filter.appendChild(f);
 }
 
 function applyFilters(){
   var filtered = allChannels;
   
-  // Category filter
   if(currentCategory !== 'All') {
     filtered = filtered.filter(function(ch){ return ch.category === currentCategory; });
   }
   
-  // Search filter
   if(searchQuery.trim()) {
     var q = searchQuery.trim().toLowerCase();
     filtered = filtered.filter(function(ch){
@@ -551,14 +630,7 @@ function applyFilters(){
 
 function renderChannels(filtered){
   // Update count
-  var countEl = document.querySelector('.header .count');
-  if(!countEl) {
-    var header = document.querySelector('.header');
-    var count = document.createElement('span');
-    count.className = 'count';
-    header.appendChild(count);
-  }
-  document.querySelector('.header .count').textContent = filtered.length + ' channels';
+  $channelCount.textContent = filtered.length + ' channels';
   
   // Show/hide no results
   if(filtered.length === 0) {
@@ -569,11 +641,11 @@ function renderChannels(filtered){
   $grid.style.display = 'grid';
   $noResults.style.display = 'none';
   
-  var f=document.createDocumentFragment();
+  var f = document.createDocumentFragment();
   filtered.forEach(function(ch){
-    var a=document.createElement("a");
-    a.className="ch-card";
-    a.href="?id="+encodeURIComponent(ch.id);
+    var a = document.createElement("a");
+    a.className = "ch-card";
+    a.href = "?id=" + encodeURIComponent(ch.id);
     
     var badgeHtml = '';
     if(ch.category && ch.category !== 'General') {
@@ -584,7 +656,8 @@ function renderChannels(filtered){
     if(ch.logo && ch.logo.trim()) {
       logoHtml = '<img class="ch-logo" src="'+ch.logo+'" alt="'+ch.name+'" loading="lazy" onerror="this.style.display=\'none\'">';
     } else {
-      var initials = ch.name.split(' ').slice(0,2).map(function(w){ return w[0]; }).join('');
+      var words = ch.name.split(' ').slice(0,2);
+      var initials = words.map(function(w){ return w[0]; }).join('');
       logoHtml = '<div class="ch-placeholder"><span class="initials">'+initials+'</span></div>';
     }
     
@@ -909,7 +982,6 @@ $searchClear.addEventListener('click', function(){
   $searchInput.focus();
 });
 
-// ── Keyboard shortcut: Escape to clear search ──────────────────────────
 $searchInput.addEventListener('keydown', function(e){
   if(e.key === 'Escape') {
     $searchClear.click();
