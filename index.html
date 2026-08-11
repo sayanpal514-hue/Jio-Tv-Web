@@ -15,7 +15,6 @@
       font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
       -webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 
-    /* Custom scrollbar */
     ::-webkit-scrollbar{width:4px}
     ::-webkit-scrollbar-track{background:#0a0a0a}
     ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#ef4444,#f97316);border-radius:4px}
@@ -31,14 +30,16 @@
       display:none;flex-direction:column;overflow-y:auto;
       padding:max(24px,env(safe-area-inset-top)) 16px max(24px,env(safe-area-inset-bottom))}
     
-    /* Header with gradient */
+    /* Header */
     #channel-list .header{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      margin-bottom:20px;
+      margin-bottom:16px;
       padding-bottom:12px;
       border-bottom:1px solid #141414;
+      flex-wrap:wrap;
+      gap:8px;
     }
     #channel-list .header h1{
       color:#fff;
@@ -67,7 +68,103 @@
       font-weight:500;
     }
 
-    #ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+    /* Search Bar */
+    #search-container{
+      position:relative;
+      margin-bottom:14px;
+    }
+    #search-input{
+      width:100%;
+      padding:10px 16px 10px 40px;
+      border-radius:12px;
+      border:1px solid #1a1a1a;
+      background:#111;
+      color:#e0e0e0;
+      font-size:13px;
+      font-weight:400;
+      outline:none;
+      transition:all .3s;
+    }
+    #search-input:focus{
+      border-color:#ef4444;
+      box-shadow:0 0 0 3px rgba(239,68,68,0.15);
+      background:#161616;
+    }
+    #search-input::placeholder{
+      color:#555;
+      font-size:12px;
+    }
+    #search-icon{
+      position:absolute;
+      left:14px;
+      top:50%;
+      transform:translateY(-50%);
+      color:#555;
+      font-size:16px;
+      pointer-events:none;
+    }
+    #search-clear{
+      position:absolute;
+      right:12px;
+      top:50%;
+      transform:translateY(-50%);
+      background:none;
+      border:none;
+      color:#555;
+      font-size:16px;
+      cursor:pointer;
+      display:none;
+      padding:4px 6px;
+      border-radius:50%;
+      transition:all .2s;
+    }
+    #search-clear:hover{
+      background:rgba(255,255,255,0.05);
+      color:#aaa;
+    }
+    #search-clear.visible{display:block}
+
+    #category-filter{
+      display:flex;
+      gap:8px;
+      overflow-x:auto;
+      padding:4px 0 14px 0;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+    }
+    #category-filter::-webkit-scrollbar{display:none}
+    .filter-pill{
+      flex-shrink:0;
+      padding:5px 14px;
+      border-radius:16px;
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.3px;
+      text-transform:uppercase;
+      cursor:pointer;
+      background:#111;
+      color:#666;
+      border:1px solid #1a1a1a;
+      transition:all .25s;
+      white-space:nowrap;
+    }
+    .filter-pill:hover{
+      background:#1a1a1a;
+      color:#aaa;
+    }
+    .filter-pill.active{
+      background:linear-gradient(135deg,#ef4444,#f97316);
+      color:#fff;
+      border-color:transparent;
+      box-shadow:0 4px 15px rgba(239,68,68,0.3);
+    }
+
+    #ch-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+      gap:14px;
+      padding-bottom:20px;
+    }
     
     .ch-card{
       background:linear-gradient(145deg,#111,#0d0d0d);
@@ -116,7 +213,6 @@
       outline-offset:2px;
     }
     
-    /* Category badge */
     .ch-card .category-badge{
       position:absolute;
       top:8px;
@@ -176,40 +272,18 @@
       background-clip:text;
     }
 
-    /* Category filter pills */
-    #category-filter{
-      display:flex;
-      gap:8px;
-      overflow-x:auto;
-      padding:4px 0 14px 0;
-      -webkit-overflow-scrolling:touch;
-      scrollbar-width:none;
+    /* No results */
+    #no-results{
+      display:none;
+      color:#555;
+      text-align:center;
+      padding:60px 20px;
+      font-size:14px;
     }
-    #category-filter::-webkit-scrollbar{display:none}
-    .filter-pill{
-      flex-shrink:0;
-      padding:5px 14px;
-      border-radius:16px;
-      font-size:10px;
-      font-weight:600;
-      letter-spacing:.3px;
-      text-transform:uppercase;
-      cursor:pointer;
-      background:#111;
-      color:#666;
-      border:1px solid #1a1a1a;
-      transition:all .25s;
-      white-space:nowrap;
-    }
-    .filter-pill:hover{
-      background:#1a1a1a;
-      color:#aaa;
-    }
-    .filter-pill.active{
-      background:linear-gradient(135deg,#ef4444,#f97316);
-      color:#fff;
-      border-color:transparent;
-      box-shadow:0 4px 15px rgba(239,68,68,0.3);
+    #no-results .icon{
+      font-size:48px;
+      margin-bottom:16px;
+      display:block;
     }
 
     #pc{position:fixed;inset:0;background:#000;display:none;
@@ -270,6 +344,7 @@
       .ch-card .ch-name{font-size:10px}
       #channel-list .header h1{font-size:15px}
       .filter-pill{font-size:8px;padding:4px 10px}
+      #search-input{font-size:12px;padding:8px 12px 8px 34px}
     }
     @media (min-width:768px){
       #ch-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}
@@ -296,8 +371,20 @@
     <h1>⚡ SPORTLINK</h1>
     <span class="subtitle">JioTV+</span>
   </div>
+  
+  <!-- Search Bar -->
+  <div id="search-container">
+    <span id="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="Search channels..." autocomplete="off">
+    <button id="search-clear" aria-label="Clear search">✕</button>
+  </div>
+  
   <div id="category-filter"></div>
   <div id="ch-grid"></div>
+  <div id="no-results">
+    <span class="icon">📺</span>
+    No channels found matching your search.
+  </div>
 </div>
 
 <div id="pc">
@@ -318,11 +405,15 @@ var $status  = document.getElementById("status");
 var $list    = document.getElementById("channel-list");
 var $grid    = document.getElementById("ch-grid");
 var $filter  = document.getElementById("category-filter");
+var $searchInput = document.getElementById("search-input");
+var $searchClear = document.getElementById("search-clear");
+var $noResults = document.getElementById("no-results");
 var $pc      = document.getElementById("pc");
 var $vid     = document.getElementById("v");
 var _stTmr   = null;
 var allChannels = [];
 var currentCategory = 'All';
+var searchQuery = '';
 
 function getTier(){
   var mem   = navigator.deviceMemory || 4;
@@ -389,14 +480,14 @@ async function loadData(){
   }
   
   channels = channels.map(function(ch) {
-    // Normalize field names (support both formats)
+    // Normalize field names - support both old and new formats
     var normalized = {
       id: ch.id || ch.channel_id || '',
       name: ch.name || ch.title || '',
-      stream_url: ch.stream_url || ch.url || ch.stream || '',
+      stream_url: ch.mpd || ch.stream_url || ch.url || ch.stream || '',
       cookie: ch.cookie || ch.cookie_data || '',
       cookie_expires: ch.cookie_expires || ch.cookie_expire || '',
-      key_id: ch.key_id || ch.keyId || ch.kid || '',
+      key_id: ch.keyId || ch.key_id || ch.kid || '',
       key: ch.key || ch.key_data || '',
       logo: ch.logo || ch.logo_url || ch.image || '',
       category: ch.category || ch.genre || 'General'
@@ -432,19 +523,33 @@ function renderFilters(channels){
       document.querySelectorAll('.filter-pill').forEach(function(p){
         p.classList.toggle('active', p.dataset.category === cat);
       });
-      renderChannels(channels);
+      applyFilters();
     });
     f.appendChild(pill);
   });
   $filter.appendChild(f);
 }
 
-function renderChannels(channels){
-  var filtered = channels;
+function applyFilters(){
+  var filtered = allChannels;
+  
+  // Category filter
   if(currentCategory !== 'All') {
-    filtered = channels.filter(function(ch){ return ch.category === currentCategory; });
+    filtered = filtered.filter(function(ch){ return ch.category === currentCategory; });
   }
   
+  // Search filter
+  if(searchQuery.trim()) {
+    var q = searchQuery.trim().toLowerCase();
+    filtered = filtered.filter(function(ch){
+      return ch.name.toLowerCase().includes(q);
+    });
+  }
+  
+  renderChannels(filtered);
+}
+
+function renderChannels(filtered){
   // Update count
   var countEl = document.querySelector('.header .count');
   if(!countEl) {
@@ -455,19 +560,26 @@ function renderChannels(channels){
   }
   document.querySelector('.header .count').textContent = filtered.length + ' channels';
   
+  // Show/hide no results
+  if(filtered.length === 0) {
+    $grid.style.display = 'none';
+    $noResults.style.display = 'block';
+    return;
+  }
+  $grid.style.display = 'grid';
+  $noResults.style.display = 'none';
+  
   var f=document.createDocumentFragment();
   filtered.forEach(function(ch){
     var a=document.createElement("a");
     a.className="ch-card";
     a.href="?id="+encodeURIComponent(ch.id);
     
-    // Category badge
     var badgeHtml = '';
     if(ch.category && ch.category !== 'General') {
       badgeHtml = '<span class="category-badge">'+ch.category+'</span>';
     }
     
-    // Logo
     var logoHtml = '';
     if(ch.logo && ch.logo.trim()) {
       logoHtml = '<img class="ch-logo" src="'+ch.logo+'" alt="'+ch.name+'" loading="lazy" onerror="this.style.display=\'none\'">';
@@ -493,7 +605,7 @@ function renderList(data){
   var channels = data.channels || data;
   allChannels = channels;
   renderFilters(channels);
-  renderChannels(channels);
+  applyFilters();
   $list.style.display="flex";
 }
 
@@ -624,8 +736,7 @@ async function startPlayer(ch){
       if(PROF.maxH<1080) restr.maxHeight=PROF.maxH;
       if(PROF.maxBw>0)   restr.maxBandwidth=PROF.maxBw;
     }
-    return {
-      drm:{ clearKeys:{ [keyId]:key } },
+    var cfg = {
       manifest:{
         defaultPresentationDelay:4,
         ignoreTextStreamFailures:true,
@@ -650,6 +761,10 @@ async function startPlayer(ch){
         restrictions:restr
       }
     };
+    if (keyId && key) {
+      cfg.drm = { clearKeys: { [keyId]: key } };
+    }
+    return cfg;
   }
 
   player.configure(buildCfg());
@@ -658,9 +773,12 @@ async function startPlayer(ch){
   player.getNetworkingEngine().registerRequestFilter(function(type,req){
     req.headers["Referer"]    ="https://www.jiotv.com/";
     req.headers["User-Agent"] ="Mozilla/5.0 (Linux; Android 11; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36";
-    req.headers["Cookie"]     =cookie;
-    if(type===T.MANIFEST||type===T.SEGMENT)
+    if(cookie) {
+      req.headers["Cookie"] = cookie;
+    }
+    if(type===T.MANIFEST||type===T.SEGMENT) {
       req.uris=req.uris.map(function(u){ return withCookie(u,raw); });
+    }
   });
 
   var refreshing=false, retries=0, edgeTried=false, lastTry=0, started=false;
@@ -774,6 +892,29 @@ async function startPlayer(ch){
     });
   }
 }
+
+// ── Search Handler ──────────────────────────────────────────────────────
+function handleSearch(){
+  searchQuery = $searchInput.value;
+  $searchClear.classList.toggle('visible', searchQuery.length > 0);
+  applyFilters();
+}
+
+$searchInput.addEventListener('input', handleSearch);
+$searchClear.addEventListener('click', function(){
+  $searchInput.value = '';
+  searchQuery = '';
+  $searchClear.classList.remove('visible');
+  applyFilters();
+  $searchInput.focus();
+});
+
+// ── Keyboard shortcut: Escape to clear search ──────────────────────────
+$searchInput.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') {
+    $searchClear.click();
+  }
+});
 
 async function main(){
   var id=getChId(), data;
