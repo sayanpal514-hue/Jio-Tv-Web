@@ -477,7 +477,7 @@
 (function(){
 "use strict";
 
-var API = "https://raw.githubusercontent.com/sportlive18/jio-tv-auto-update-playlist/refs/heads/main/jtv.json";
+var API = "https://raw.githubusercontent.com/sportlive18/jio-tv-auto-update-playlist/refs/heads/main/jtvplus3.m3u";
 
 var $overlay = document.getElementById("overlay");
 var $loadMsg = document.getElementById("loadMsg");
@@ -544,41 +544,88 @@ function withCookie(u,r){
   return u+(u.indexOf("?")!==-1?"&":"?")+"__hdnea__="+r;
 }
 
-async function loadData(){
-  var r=await fetch(API,{cache:"no-store",headers:{Accept:"application/json"}});
-  if(!r.ok) throw new Error("HTTP "+r.status);
-  var d=await r.json();
-  
+// ── M3U Parser ──────────────────────────────────────────────────────────
+function parseM3U(text) {
+  var lines = text.split(/\r?\n/);
   var channels = [];
-  if(d && Array.isArray(d.channels)) {
-    channels = d.channels;
-  } else if(d && Array.isArray(d)) {
-    channels = d;
-  } else if(d && d.id) {
-    channels = [d];
-  } else {
-    throw new Error("Invalid data format");
-  }
-  
-  channels = channels.map(function(ch) {
-    var normalized = {
-      id: ch.id || ch.channel_id || '',
-      name: ch.name || ch.title || '',
-      stream_url: ch.mpd || ch.stream_url || ch.url || ch.stream || '',
-      cookie: ch.cookie || ch.cookie_data || '',
-      cookie_expires: ch.cookie_expires || ch.cookie_expire || '',
-      key_id: ch.keyId || ch.key_id || ch.kid || '',
-      key: ch.key || ch.key_data || '',
-      logo: ch.logo || ch.logo_url || ch.image || '',
-      category: ch.category || ch.genre || 'General'
-    };
-    if (normalized.stream_url) {
-      normalized.stream_url = normalized.stream_url.replace(/\/\//g, '/').replace(':/', '://');
+  var current = null;
+
+  for (var i = 0; i < lines.length; i++) {
+    var line = lines[i].trim();
+    if (!line) continue;
+
+    // EXTINF line - channel metadata
+    if (line.startsWith('#EXTINF:')) {
+      current = {};
+      // Parse attributes like tvg-id="143" tvg-name="..." tvg-logo="..." group-title="..."
+      var attrRegex = /([a-zA-Z0-9-]+)="([^"]*)"/g;
+      var match;
+      while ((match = attrRegex.exec(line)) !== null) {
+        var key = match[1];
+        var val = match[2];
+        if (key === 'tvg-id') current.id = val;
+        else if (key === 'tvg-name') current.name = val;
+        else if (key === 'tvg-logo') current.logo = val;
+        else if (key === 'group-title') current.category = val;
+      }
+      // Fallback: name after last comma
+      var commaIdx = line.lastIndexOf(',');
+      if (commaIdx !== -1) {
+        var namePart = line.substring(commaIdx + 1).trim();
+        if (namePart) current.name = namePart;
+      }
+      // Defaults
+      if (!current.id) current.id = 'ch_' + channels.length;
+      if (!current.name) current.name = current.id;
+      if (!current.category) current.category = 'General';
     }
-    return normalized;
-  });
+    // KODIPROP lines
+    else if (line.startsWith('#KODIPROP:')) {
+      if (!current) continue;
+      var prop = line.substring(10).trim();
+      if (prop.startsWith('inputstream.adaptive.license_key=')) {
+        var lk = prop.substring(prop.indexOf('=') + 1);
+        var parts = lk.split(':');
+        if (parts.length >= 2 && parts[0] !== 'null') {
+          current.key_id = parts[0];
+          current.key = parts[1];
+        }
+      }
+    }
+    // EXTHTTP line
+    else if (line.startsWith('#EXTHTTP:')) {
+      if (!current) continue;
+      var jsonStr = line.substring(9).trim();
+      try {
+        var httpData = JSON.parse(jsonStr);
+        if (httpData.cookie) current.cookie = httpData.cookie;
+      } catch (e) { /* ignore parse errors */ }
+    }
+    // EXTVLCOPT lines
+    else if (line.startsWith('#EXTVLCOPT:')) {
+      // Could parse user-agent if needed, currently unused
+    }
+    // URL line
+    else if (!line.startsWith('#')) {
+      if (current) {
+        current.stream_url = line;
+        channels.push(current);
+        current = null;
+      }
+    }
+  }
+
+  return channels;
+}
+
+async function loadData(){
+  var r = await fetch(API, {cache: "no-store", headers: {Accept: "text/plain"}});
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  var text = await r.text();
   
-  if(!channels.length) throw new Error("No channels found");
+  var channels = parseM3U(text);
+  
+  if (!channels.length) throw new Error("No channels found");
   return { channels: channels };
 }
 
