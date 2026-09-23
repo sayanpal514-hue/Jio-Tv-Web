@@ -193,6 +193,169 @@
       .ch-card .ch-logo{max-height:65px}
       .ch-card .ch-name{font-size:14px}
     }
+
+    /* ════════════════════════════════════════════
+       TELEGRAM POPUP
+    ════════════════════════════════════════════ */
+    #tgOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999;
+      padding: 20px;
+      animation: fadeInPopup 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    #tgOverlay.show {
+      display: flex;
+    }
+
+    #tgCard {
+      width: 100%;
+      max-width: 400px;
+      background: linear-gradient(160deg, #121821, #0a0c0f);
+      border: 1px solid rgba(79, 195, 247, 0.15);
+      border-radius: 24px;
+      padding: 36px 28px 28px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), 0 0 60px rgba(79, 195, 247, 0.03);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #tgCard::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 20%, rgba(79, 195, 247, 0.04), transparent 60%);
+      pointer-events: none;
+    }
+
+    #tgIcon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #2AABEE, #229ED9);
+      box-shadow: 0 0 40px rgba(42, 171, 238, 0.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    #tgIcon svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    #tgCard h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 700;
+      color: #ffffff;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      position: relative;
+      z-index: 1;
+      letter-spacing: -0.01em;
+    }
+
+    #tgCard p {
+      margin: 0 0 24px;
+      color: #8e9baf;
+      font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tgBtns {
+      display: flex;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tgBtn {
+      flex: 1;
+      height: 48px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: clamp(0.85rem, 1vw, 1rem);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      letter-spacing: 0.01em;
+    }
+
+    #joinNow {
+      background: linear-gradient(135deg, #4fc3f7, #2196f3);
+      color: #ffffff;
+      box-shadow: 0 6px 24px rgba(79, 195, 247, 0.25);
+    }
+
+    #joinNow:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(79, 195, 247, 0.35);
+    }
+
+    #joinedBtn {
+      background: rgba(255, 255, 255, 0.05);
+      color: #8e9baf;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    #joinedBtn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+    }
+
+    @keyframes fadeInPopup {
+      from {
+        opacity: 0;
+        transform: scale(0.95) translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      #tgCard {
+        padding: 24px 18px 20px;
+        border-radius: 20px;
+      }
+      #tgIcon {
+        width: 60px;
+        height: 60px;
+      }
+      #tgIcon svg {
+        width: 30px;
+        height: 30px;
+      }
+      #tgCard h2 {
+        font-size: 1.2rem;
+      }
+      #tgCard p {
+        font-size: 0.85rem;
+        margin-bottom: 18px;
+      }
+      .tgBtn {
+        height: 42px;
+        font-size: 0.8rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -234,6 +397,23 @@
 <div id="pc">
   <video id="v" playsinline webkit-playsinline
     preload="none" x5-video-player-type="h5" x5-video-player-fullscreen="true"></video>
+</div>
+
+<!-- ====== TELEGRAM POPUP ====== -->
+<div id="tgOverlay">
+  <div id="tgCard">
+    <div id="tgIcon">
+      <svg viewBox="0 0 24 24" fill="white" width="36" height="36">
+        <path d="M23.05 2.1L19.6 21.3c-.26 1.15-.94 1.43-1.9.9l-5.26-3.88-2.54 2.45c-.28.28-.52.52-1.06.52l.38-5.4L19.9 5.8c.46-.4-.1-.63-.72-.23L7.5 13.03l-5.24-1.64c-1.14-.36-1.16-1.14.24-1.68L21.6.9c.95-.36 1.78.23 1.45 1.2z"/>
+      </svg>
+    </div>
+    <h2>Join Telegram Channel</h2>
+    <p>Get match links &amp; live updates delivered straight to your phone.</p>
+    <div class="tgBtns">
+      <button class="tgBtn" id="joinedBtn">Already Joined</button>
+      <button class="tgBtn" id="joinNow">Join Now</button>
+    </div>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/shaka-player@4.16.2/dist/shaka-player.ui.min.js"></script>
@@ -817,6 +997,47 @@ async function main(){
 }
 
 document.addEventListener("DOMContentLoaded",main);
+})();
+</script>
+
+<!-- ====== TELEGRAM POPUP SCRIPT ====== -->
+<script>
+(function () {
+  const tgOverlay = document.getElementById('tgOverlay');
+
+  function closePopup() {
+    tgOverlay.classList.remove('show');
+  }
+
+  // Show popup after 3 seconds
+  setTimeout(function () {
+    tgOverlay.classList.add('show');
+  }, 3000);
+
+  // Join Now → open Telegram link, then close
+  document.getElementById('joinNow').onclick = function () {
+    window.open('https://t.me/sportlink10', '_blank');
+    closePopup();
+  };
+
+  // Already Joined → just close
+  document.getElementById('joinedBtn').onclick = function () {
+    closePopup();
+  };
+
+  // Click on dark backdrop → close
+  tgOverlay.addEventListener('click', function (e) {
+    if (e.target === tgOverlay) {
+      closePopup();
+    }
+  });
+
+  // ESC key → close
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && tgOverlay.classList.contains('show')) {
+      closePopup();
+    }
+  });
 })();
 </script>
 </body>
