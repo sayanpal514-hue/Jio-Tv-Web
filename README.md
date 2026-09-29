@@ -48,7 +48,7 @@ cd Jio-Tv-Web
 
 ### Using the Application
 
-1. Visit the [live demo](https://sayan-jtv.pages.dev/player?id=544)
+1. Visit the [live demo](https://sayan-jtv.pages.dev/?id=1106)
 2. Browse through available channels
 3. Click on a channel to start streaming
 4. Use the search bar to find specific channels
