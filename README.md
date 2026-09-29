@@ -4,7 +4,7 @@ A modern web-based interface for accessing Jio TV content through Sportlink inte
 
 ## 🚀 Live Demo
 
-[Sportlink Jio TV Mini](https://sportlink-jio-tv-mini.pages.dev/)
+[Jio TV ](https://sayan-jtv.pages.dev/)
 
 ## 📋 About
 
@@ -48,7 +48,7 @@ cd Jio-Tv-Web
 
 ### Using the Application
 
-1. Visit the [live demo](https://sportlink-jio-tv-mini.pages.dev/player?id=544)
+1. Visit the [live demo](https://sayan-jtv.pages.dev/player?id=544)
 2. Browse through available channels
 3. Click on a channel to start streaming
 4. Use the search bar to find specific channels
