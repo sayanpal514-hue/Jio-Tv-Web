@@ -59,27 +59,14 @@ The application can be configured by modifying the following:
 - `id` parameter in the URL for different channel IDs
 - CSS variables for custom styling
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
 ## 👤 Author
 
 **Sayan Pal**
 - GitHub: [@sayanpal514-hue](https://github.com/sayanpal514-hue)
 
-## 🙏 Acknowledgments
-
-- Sportlink for providing the platform
-- All contributors and users of this project
 
 ## 📞 Support
 
-For support, please open an issue in the GitHub repository or contact the maintainer.
+Your single click = big help ☕
+
+✨ Click here to support by clicking [ https://sportlink10-ajp.pages.dev/support  ]( https://sportlink10-ajp.pages.dev/support  )✨
